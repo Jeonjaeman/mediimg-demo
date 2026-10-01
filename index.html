@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MEDIIMG 리뉴얼 데모 6종</title>
+<link rel="icon" href="assets/brand/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root { --bg: #0b0d12; --card: #13161d; --line: #232733; --text: #eef0f5; --mute: #8b93a5; --accent: #7df5e0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 72px 32px 96px; }
+  header { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap; margin-bottom: 48px; }
+  header img { height: 34px; display: block; margin-bottom: 28px; }
+  h1 { font-size: clamp(32px, 4.4vw, 56px); line-height: 1.08; letter-spacing: -0.03em; font-weight: 600; margin: 0; text-wrap: balance; }
+  header p { max-width: 420px; color: var(--mute); font-size: 15px; line-height: 1.65; margin: 0; }
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  a.card { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; color: inherit; text-decoration: none; transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s; }
+  a.card:hover { transform: translateY(-6px); border-color: #3a4154; }
+  a.card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .thumb { aspect-ratio: 16 / 10; background: #05070b; overflow: hidden; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+  a.card:hover .thumb img { transform: scale(1.04); }
+  .body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .no { font-size: 12px; letter-spacing: .12em; color: var(--accent); font-variant-numeric: tabular-nums; }
+  h2 { font-size: 21px; letter-spacing: -0.02em; font-weight: 600; margin: 0; }
+  .ref { font-size: 13px; color: var(--mute); }
+  .desc { font-size: 14.5px; line-height: 1.65; color: #c5cad6; margin: 4px 0 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 14px; }
+  .chips span { font-size: 11.5px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--mute); }
+  footer { margin-top: 56px; color: var(--mute); font-size: 13px; line-height: 1.7; border-top: 1px solid var(--line); padding-top: 24px; }
+  @media (max-width: 980px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 640px) { .wrap { padding: 48px 16px 64px; } .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <img src="assets/brand/logo_mediimg.png" alt="MEDIIMG">
+      <h1>메인 페이지 리뉴얼 데모 6종</h1>
+    </div>
+    <p>같은 내용, 여섯 가지 컨셉. 각 데모는 메인 페이지만 구현했고 메뉴와 버튼은 hover 효과만 있습니다. 데스크톱 크롬에서 보는 것을 권합니다.</p>
+  </header>
+
+  <main class="grid">
+    <a class="card" href="01-brainall/">
+      <div class="thumb"><img src="_thumbs/01.jpg" alt="데모 01 첫 화면" loading="lazy"></div>
+      <div class="body">
+        <span class="no">DEMO 01</span>
+        <h2>국내 의료기업형</h2>
+        <span class="ref">레퍼런스 · brainall.kr</span>
+        <p class="desc">남색 화면에서 "Neu / Flow" 두 단어가 갈라지고, 3D 뇌 영상 뒤로 소개 문장이 한 단어씩 켜집니다.</p>
+        <div class="chips"><span>GSAP 고정 스크롤</span><span>3D 영상</span><span>탭 캐러셀</span></div>
+      </div>
+    </a>
+    <a class="card" href="02-lusion/">
+      <div class="thumb"><img src="_thumbs/02.jpg" alt="데모 02 첫 화면" loading="lazy"></div>
+      <div class="body">
+        <span class="no">DEMO 02</span>
+        <h2>실시간 3D 스튜디오형</h2>
+        <span class="ref">레퍼런스 · lusion.co</span>
+        <p class="desc">커서에 밀려나는 적혈구, 스크롤에 따라 자라나고 색이 입혀지는 혈관, 혈관 내부를 통과하는 터널.</p>
+        <div class="chips"><span>three.js 실시간</span><span>물리 인터랙션</span><span>터널</span></div>
+      </div>
+    </a>
+    <a class="card" href="03-whitedesert/">
+      <div class="thumb"><img src="_thumbs/03.jpg" alt="데모 03 첫 화면" loading="lazy"></div>
+      <div class="body">
+        <span class="no">DEMO 03</span>
+        <h2>다큐멘터리 잡지형</h2>
+        <span class="ref">레퍼런스 · white-desert.com</span>
+        <p class="desc">스크롤하면 MRI 보어 안으로 들어가 흰 화면으로 이어집니다. 초대형 제목과 세리프, 넓은 여백.</p>
+        <div class="chips"><span>영상 프레임 스크롤</span><span>마스크 전환</span><span>가로 흐름</span></div>
+      </div>
+    </a>
+    <a class="card" href="04-unitedcarriers/">
+      <div class="thumb"><img src="_thumbs/04.jpg" alt="데모 04 첫 화면" loading="lazy"></div>
+      <div class="body">
+        <span class="no">DEMO 04</span>
+        <h2>여정형</h2>
+        <span class="ref">레퍼런스 · unitedcarriers.com</span>
+        <p class="desc">MRI 촬영에서 컬러 혈관, 보고서까지를 하나의 긴 스크롤 여정으로. 스크롤 속도에 반응하는 SIG 게이지.</p>
+        <div class="chips"><span>이미지 시퀀스</span><span>three.js 점 구름</span><span>FAQ</span></div>
+      </div>
+    </a>
+    <a class="card" href="05-alethia/">
+      <div class="thumb"><img src="_thumbs/05.jpg" alt="데모 05 첫 화면" loading="lazy"></div>
+      <div class="body">
+        <span class="no">DEMO 05</span>
+        <h2>계측 대시보드형</h2>
+        <span class="ref">레퍼런스 · alethia.earth</span>
+        <p class="desc">어둠 속에 떠 있는 혈관으로 카메라가 다가가고, 그 위에 수치 주석과 데이터 카드가 얹힙니다.</p>
+        <div class="chips"><span>시퀀스 + 주석 UI</span><span>데이터 카드</span><span>전후 비교</span></div>
+      </div>
+    </a>
+    <a class="card" href="06-gigavis/">
+      <div class="thumb"><img src="_thumbs/06.jpg" alt="데모 06 첫 화면" loading="lazy"></div>
+      <div class="body">
+        <span class="no">DEMO 06</span>
+        <h2>브랜드 필름형</h2>
+        <span class="ref">레퍼런스 · gigavis.com</span>
+        <p class="desc">32초 브랜드 필름이 히어로. 영상은 글자 없이 만들고 한글 타이포는 웹에서 실시간 모션으로 얹어, KR/EN이 즉시 바뀝니다.</p>
+        <div class="chips"><span>키네틱 타이포</span><span>자모 조합 타이핑</span><span>원형 와이프</span></div>
+      </div>
+    </a>
+  </main>
+
+  <footer>
+    제안용 시안입니다. 이미지와 영상은 AI(GPT Image 2.5, Seedance 2.5)로 생성했고, 제품 화면·로고·병원 로고는 현재 mediimg.com의 것을 썼습니다.<br>
+    일부 수치는 예시 값입니다.
+  </footer>
+</div>
+</body>
+</html>

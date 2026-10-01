@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MEDIIMG — NeuFlow | One scan. Every vessel in color.</title>
+<meta name="description" content="NeuFlow는 TOF-MRA 한 번으로 뇌혈관을 3D 컬러와 SIG 수치로 분석하는 소프트웨어입니다.">
+<link rel="icon" href="../assets/brand/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.css">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body>
+
+<!-- ───────── preloader ───────── -->
+<div class="pre" id="pre" aria-hidden="true">
+  <div class="pre-in">
+    <span class="pre-lab">MEDIIMG / NEUFLOW</span>
+    <span class="pre-num" id="preNum">000</span>
+    <span class="pre-bar"><i id="preBar"></i></span>
+    <span class="pre-lab pre-lab--r">TOF-MRA → SIG</span>
+  </div>
+</div>
+
+<main>
+
+<!-- ───────── 01 hero ───────── -->
+<section class="hero" id="hero" aria-label="NeuFlow">
+  <div class="hero-pin" id="heroPin">
+    <canvas class="hero-gl" id="heroGl"></canvas>
+    <img class="hero-fallback" src="../assets/img/s9_vessel_wide_black.webp" alt="" loading="lazy">
+    <div class="hero-scrim"></div>
+    <div class="hero-tags" id="heroTags" aria-hidden="true"></div>
+
+    <div class="hero-ui" id="heroUi">
+      <div class="ticker">
+        <span class="ticker-lab">NOTICE:</span>
+        <div class="ticker-run" aria-hidden="true">
+          <div class="ticker-track">
+            <span>FDA 510(k) CLEARED · K240385</span><i>|</i>
+            <span>ISO 13485 · ISO 27001</span><i>|</i>
+            <span>11,579+ PATIENTS ANALYZED</span><i>|</i>
+            <span>식약처 의료기기 인증 · 제인 23-4077호</span><i>|</i>
+            <span>90+ HOSPITALS</span><i>|</i>
+            <span>FDA 510(k) CLEARED · K240385</span><i>|</i>
+            <span>ISO 13485 · ISO 27001</span><i>|</i>
+            <span>11,579+ PATIENTS ANALYZED</span><i>|</i>
+            <span>식약처 의료기기 인증 · 제인 23-4077호</span><i>|</i>
+            <span>90+ HOSPITALS</span><i>|</i>
+          </div>
+        </div>
+        <span class="ticker-r">NO CONTRAST <i>|</i> NO EXTRA SCAN</span>
+      </div>
+
+      <header class="top">
+        <span class="top-logo"><img src="../assets/brand/logo_mediimg_header.png" alt="MEDIIMG" width="529" height="132"></span>
+        <nav class="top-nav" aria-label="주요 메뉴">
+          <button type="button" class="nav-i"><i>→</i><span>Company</span></button>
+          <button type="button" class="nav-i"><i>→</i><span>Technology</span></button>
+          <button type="button" class="nav-i"><i>→</i><span>NeuFlow</span></button>
+          <button type="button" class="nav-i"><i>→</i><span>Evidence</span></button>
+          <button type="button" class="nav-i"><i>→</i><span>Contact</span></button>
+        </nav>
+        <div class="top-r">
+          <span class="lang"><button type="button" class="is-on">KR</button><em>/</em><button type="button">EN</button></span>
+          <button type="button" class="pill pill--light"><span>도입 문의</span></button>
+        </div>
+      </header>
+
+      <div class="hero-copy">
+        <p class="hero-eyebrow"><span>NEUFLOW</span><i></i><span>BRAIN VESSEL · SIG ANALYSIS</span></p>
+        <h1 class="hero-h" aria-label="One scan. Every vessel in color.">
+          <span class="ln"><span>ONE SCAN.</span></span>
+          <span class="ln"><span>EVERY VESSEL</span></span>
+          <span class="ln"><span>IN <em>COLOR.</em></span></span>
+        </h1>
+        <p class="hero-kr">이미 찍은 MRA 한 번으로,<br>뇌혈관을 색과 숫자로.</p>
+        <p class="hero-sub">NeuFlow는 TOF-MRA 한 번으로 뇌혈관을 3D 컬러와 SIG 수치로 분석하는 소프트웨어입니다. 추가 촬영도, 조영제도 필요 없습니다.</p>
+        <div class="hero-cta">
+          <button type="button" class="pill pill--light"><span>도입 문의</span></button>
+          <button type="button" class="pill pill--ghost"><span>NeuFlow 보기</span></button>
+        </div>
+      </div>
+
+      <div class="hero-meta" aria-hidden="true">
+        <span>FIG. 01 — CIRCLE OF WILLIS</span>
+        <span id="heroPts">00,000 PTS · SIG MAP</span>
+        <span class="hero-scroll"><i></i>SCROLL</span>
+      </div>
+      <div class="hero-scale" aria-hidden="true"><b>15.0</b><i></i><b>0.0</b><em>SIG</em></div>
+    </div>
+
+    <div class="hero-wash" id="heroWash"></div>
+  </div>
+</section>
+
+<!-- ───────── 02 intro ───────── -->
+<section class="intro" id="intro">
+  <div class="intro-l">
+    <figure class="intro-thumb">
+      <video muted playsinline loop autoplay preload="metadata" poster="../assets/video/v8_vessel_turn.poster.webp" src="../assets/video/v8_vessel_turn.mp4"></video>
+      <figcaption>NEUFLOW · 3D SIG MAP</figcaption>
+    </figure>
+    <h2 class="intro-h" id="introH" data-fill>촬영을 더하지 않습니다.<br>의미를 더합니다.</h2>
+  </div>
+  <div class="intro-r">
+    <div class="intro-p" data-reveal>
+      <p>2D 흑백 MRA가 놓치던 혈관벽의 혈류역학 정보를, 색과 숫자로 정량화합니다. 병원에서 이미 찍는 TOF-MRA 한 번이면 충분합니다.</p>
+      <p>추가 촬영 0회. 조영제 없음. 분석은 약 5분. 판독실에 놓이는 것은 새로운 장비가 아니라, 새로운 시선입니다.</p>
+      <button type="button" class="pill pill--line"><span>NeuFlow 알아보기</span></button>
+    </div>
+    <ul class="stats">
+      <li class="stat"><b class="stat-n" data-count="11579" data-suffix="+">11,579+</b><span class="stat-l">분석한 환자 수 <em>Patients analyzed</em></span></li>
+      <li class="stat"><b class="stat-n" data-count="98" data-suffix="%">98%</b><span class="stat-l">사용자 만족도 <em>User satisfaction</em></span></li>
+      <li class="stat"><b class="stat-n" data-count="90" data-suffix="+">90+</b><span class="stat-l">설치 병원 <em>Hospitals</em></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ───────── 03 journey (pinned image sequence) ───────── -->
+<section class="journey" id="journey" aria-label="한 번의 촬영이 보고서가 되기까지">
+  <div class="j-stage" id="jStage">
+    <div class="j-ghosts" aria-hidden="true">
+      <span class="j-ghost" id="ghostA">TOF-MRA</span>
+      <span class="j-ghost" id="ghostB">SIG COLOR</span>
+    </div>
+
+    <div class="j-frame" id="jFrame">
+      <div class="j-seq j-seq--mri" id="seqMriWrap"><canvas id="seqMri"></canvas></div>
+      <div class="j-seq j-seq--col" id="seqColWrap"><canvas id="seqCol"></canvas></div>
+    </div>
+    <div class="j-over" id="jOver" aria-hidden="true">
+      <span class="roi" style="--x:49.4%;--y:55%"><i></i><b>BA<em>9.07</em></b></span>
+      <span class="roi roi--l" style="--x:36.5%;--y:63%"><i></i><b>ICA&nbsp;L<em>7.11</em></b></span>
+      <span class="roi roi--m" style="--x:63%;--y:36.5%"><i></i><b>MCA&nbsp;R<em>6.23</em></b></span>
+    </div>
+    <figure class="j-teaser" id="jTeaser" aria-hidden="true">
+      <img src="../assets/brand/real_report.png" alt="" loading="lazy">
+      <figcaption>05 → REPORT</figcaption>
+    </figure>
+
+    <div class="j-hud">
+      <div class="gauge" id="gauge">
+        <svg viewBox="0 0 60 60" aria-hidden="true">
+          <circle class="gauge-ring" cx="30" cy="30" r="26"/>
+          <circle class="gauge-arc" id="gaugeArc" cx="30" cy="30" r="26" pathLength="100"/>
+          <circle class="gauge-dot" id="gaugeDot" cx="30" cy="30" r="2.6"/>
+        </svg>
+        <div class="gauge-t">
+          <span>SIG</span>
+          <b id="gaugeVal">0.00</b>
+          <span>SI/mm</span>
+        </div>
+      </div>
+      <div class="j-count">
+        <b id="jStep">01</b><span>/ 05</span>
+        <i class="j-bar"><i id="jBar"></i></i>
+      </div>
+    </div>
+
+    <div class="j-band" id="jBand">
+      <div class="j-cap" id="jCap">
+        <div class="j-cap-items">
+          <div class="j-cap-i is-on" data-step="1">
+            <span class="j-cap-no">01 — SCAN</span>
+            <strong>평소처럼 MRA를 촬영합니다</strong>
+            <em>기존에 촬영한 TOF-MRA를 그대로 씁니다. 추가 촬영 0회.</em>
+          </div>
+          <div class="j-cap-i" data-step="2">
+            <span class="j-cap-no">02 — RECONSTRUCT</span>
+            <strong>3D 혈관으로 재구성합니다</strong>
+            <em>자동 분할로 3차원 혈관 구조를 만듭니다.</em>
+          </div>
+          <div class="j-cap-i" data-step="3">
+            <span class="j-cap-no">03 — COLOR</span>
+            <strong>SIG가 색으로 입혀집니다</strong>
+            <em>혈류역학 데이터를 파랑에서 빨강까지, 색으로 시각화합니다.</em>
+          </div>
+        </div>
+        <div class="j-cap-meta">
+          <span>FRAME <b id="jFrameNo">001</b> / 097</span>
+          <span class="j-cap-hint">SCROLL TO PLAY ↓</span>
+        </div>
+      </div>
+
+      <div class="j-panel" id="jPanel">
+        <div class="j-track" id="jTrack">
+          <div class="j-lead">
+            <h3><span>ONE SCAN.</span><span class="is-dim">FIVE STEPS.</span></h3>
+            <p>MRA 한 장이 보고서가 되기까지, 다섯 단계가 한 번에 이어집니다. 의료진은 평소처럼 촬영하고, NeuFlow가 나머지를 계산합니다.</p>
+          </div>
+          <article class="j-col" data-col="1">
+            <figure><img src="../assets/brand/real_step1_tof_source.png" alt="" loading="lazy" style="object-position:50% 12%"></figure>
+            <span class="j-col-no">01</span>
+            <h4>TOF-MRA<br>불러오기</h4>
+            <p>기존에 촬영한 MRA 영상을 그대로 사용합니다.</p>
+          </article>
+          <article class="j-col" data-col="2">
+            <figure><img src="../assets/brand/real_step2_3d.png" alt="" loading="lazy"></figure>
+            <span class="j-col-no">02</span>
+            <h4>3D 혈관<br>재구성</h4>
+            <p>자동 분할로 3차원 혈관 구조를 생성합니다.</p>
+          </article>
+          <article class="j-col" data-col="3">
+            <figure><img src="../assets/brand/real_step3_sig.png" alt="" loading="lazy" style="object-position:50% 80%"></figure>
+            <span class="j-col-no">03</span>
+            <h4>SIG 컬러<br>매핑</h4>
+            <p>혈류역학 데이터를 색으로 시각화합니다.</p>
+          </article>
+          <article class="j-col" data-col="4">
+            <figure><img src="../assets/brand/real_step4_roi.png" alt="" loading="lazy" style="object-position:50% 55%"></figure>
+            <span class="j-col-no">04</span>
+            <h4>ROI 정밀<br>측정</h4>
+            <p>관심 혈관의 지름·길이·SIG 수치를 측정합니다.</p>
+          </article>
+          <article class="j-col" data-col="5">
+            <figure><img src="../assets/brand/real_report.png" alt="" loading="lazy" style="object-position:50% 0%"></figure>
+            <span class="j-col-no">05</span>
+            <h4>뇌혈관<br>건강 보고서</h4>
+            <p>환자 설명용 리포트를 자동으로 생성합니다.</p>
+          </article>
+        </div>
+        <div class="j-foot">
+          <button type="button" class="pill pill--ghost pill--sm"><span>구동 프로세스</span></button>
+          <span class="j-dots" id="jDots"><i></i><i></i><i></i><i></i><i></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 04 route: vertical vessel + features + arrival ───────── -->
+<section class="route" id="route" aria-label="주요 기능">
+  <svg class="route-svg" id="routeSvg" aria-hidden="true">
+    <defs>
+      <linearGradient id="jetGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000">
+        <stop offset="0" stop-color="#1b2bff"/>
+        <stop offset=".24" stop-color="#00a8ff"/>
+        <stop offset=".46" stop-color="#12c98a"/>
+        <stop offset=".66" stop-color="#ffcc00"/>
+        <stop offset=".84" stop-color="#ff7a00"/>
+        <stop offset="1" stop-color="#ff1f1f"/>
+      </linearGradient>
+    </defs>
+    <path class="route-wall" id="routeWall"/>
+    <g id="routeTwigs"></g>
+    <path class="route-flow" id="routeFlow"/>
+    <g class="route-cell route-cell--s" id="routeCell3"><circle r="5"/></g>
+    <g class="route-cell route-cell--s" id="routeCell2"><circle r="7"/></g>
+    <g class="route-cell" id="routeCell"><circle class="c-halo" r="21"/><circle class="c-body" r="13"/><circle class="c-dimple" r="6"/><circle class="c-shine" cx="-4.5" cy="-5" r="2.4"/></g>
+  </svg>
+  <span class="route-tag" id="routeTag" aria-hidden="true">00 / 06</span>
+
+  <header class="route-head">
+    <p class="eyebrow" data-reveal><span>04</span> FEATURES</p>
+    <h2 class="disp route-h" data-lines>
+      <span class="ln"><span class="is-dim">FOLLOW</span></span>
+      <span class="ln"><span>THE VESSEL</span></span>
+      <span class="ln"><span>DOWNSTREAM</span></span>
+    </h2>
+    <p class="route-lead" data-reveal>혈관을 따라 내려가며 만나는 여섯 가지 기능. 한 번의 분석이 판독의 근거가 되고, 환자가 이해하는 설명이 됩니다.</p>
+  </header>
+
+  <ol class="route-list" id="routeList">
+    <li class="feat feat--r">
+      <div class="feat-in">
+        <figure><img src="../assets/img/p8_vessel_macro.webp" alt="" loading="lazy"></figure>
+        <span class="feat-no">01</span>
+        <h3 class="disp">3D COLOR &amp;<br>SIG DATA</h3>
+        <h4>3D 컬러 &amp; SIG 정량 데이터</h4>
+        <p>전체 혈관과 선택 혈관의 혈류역학 특성을 수치로 확인합니다.</p>
+      </div>
+    </li>
+    <li class="feat feat--l">
+      <div class="feat-in">
+        <figure><img src="../assets/img/p9_workstation.webp" alt="" loading="lazy" style="object-position:50% 38%"></figure>
+        <span class="feat-no">02</span>
+        <h3 class="disp">PACS<br>INTEGRATION</h3>
+        <h4>PACS 연동</h4>
+        <p>기존 병원 시스템에 그대로 연결됩니다. 워크플로를 바꿀 필요가 없습니다.</p>
+      </div>
+    </li>
+    <li class="feat feat--r">
+      <div class="feat-in">
+        <figure><img src="../assets/img/s2_reading_room.webp" alt="" loading="lazy" style="object-position:70% 40%"></figure>
+        <span class="feat-no">03</span>
+        <h3 class="disp">3D × 2D<br>OVERLAY</h3>
+        <h4>3D·2D 중첩</h4>
+        <p>2D 슬라이스 위에 3D 컬러 혈관을 겹쳐 정확한 위치를 확인합니다.</p>
+      </div>
+    </li>
+    <li class="feat feat--l">
+      <div class="feat-in">
+        <figure><img src="../assets/brand/real_step4_roi.png" alt="" loading="lazy" style="object-position:50% 52%"></figure>
+        <span class="feat-no">04</span>
+        <h3 class="disp">PER-VESSEL<br>MEASUREMENT</h3>
+        <h4>혈관별 정밀 측정</h4>
+        <p>관심 혈관의 지름, 길이, SIG를 구간별로 정밀하게 측정합니다.</p>
+      </div>
+    </li>
+    <li class="feat feat--r">
+      <div class="feat-in">
+        <figure><img src="../assets/img/p1_doctor_patient.webp" alt="" loading="lazy" style="object-position:40% 45%"></figure>
+        <span class="feat-no">05</span>
+        <h3 class="disp">BRAIN VESSEL<br>HEALTH REPORT</h3>
+        <h4>뇌혈관 건강 보고서</h4>
+        <p>환자가 이해하는 한 장의 리포트가 자동으로 만들어집니다.</p>
+      </div>
+    </li>
+    <li class="feat feat--l">
+      <div class="feat-in">
+        <figure><img src="../assets/img/p6_hands_tablet.webp" alt="" loading="lazy" style="object-position:50% 42%"></figure>
+        <span class="feat-no">06</span>
+        <h3 class="disp">PERSONAL<br>CARE GUIDE</h3>
+        <h4>맞춤 건강 가이드</h4>
+        <p>개인별 뇌혈관 관리 가이드로 정기 추적 관리까지 이어집니다.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="arrive" id="arrive">
+    <span class="arrive-ghost" aria-hidden="true">ARRIVED</span>
+    <div class="arrive-in">
+      <div class="arrive-copy">
+        <p class="eyebrow eyebrow--w" data-reveal><span>05</span> ARRIVED</p>
+        <h2 class="disp arrive-h" data-lines>
+          <span class="ln"><span>ARRIVED —</span></span>
+        </h2>
+        <h3 class="arrive-kr" data-reveal>뇌혈관<br>건강 보고서</h3>
+        <p class="arrive-p" data-reveal>여정의 끝에는 환자가 직접 보고 이해하는 한 장의 리포트가 놓입니다. 색으로 본 혈관, 숫자로 읽는 SIG, 그리고 개인별 관리 가이드까지.</p>
+        <dl class="arrive-dl" data-reveal>
+          <div><dt>분석 시간</dt><dd>약 5분</dd></div>
+          <div><dt>추가 촬영</dt><dd>0회</dd></div>
+        </dl>
+        <button type="button" class="pill pill--light" data-reveal><span>소개서 받기</span></button>
+      </div>
+      <div class="arrive-report" id="arriveReport">
+        <i class="arrive-node" id="arriveNode"></i>
+        <figure class="paper" id="paper">
+          <img src="../assets/brand/real_report.png" alt="NeuFlow 뇌혈관 건강 보고서 예시" loading="lazy" width="329" height="474">
+        </figure>
+        <span class="paper-cap">REAL REPORT · SAMPLE</span>
+      </div>
+      <div class="arrive-ui" id="arriveUi">
+        <figure class="screen" id="screen">
+          <img src="../assets/brand/real_software_ui.png" alt="NeuFlow 분석 화면" loading="lazy" width="926" height="485">
+        </figure>
+        <span class="paper-cap">NEUFLOW 분석 화면 · POWERED BY VINT</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 05 trusted by ───────── -->
+<section class="trust" id="trust">
+  <div class="trust-head">
+    <p class="eyebrow" data-reveal><span>06</span> TRUSTED BY</p>
+    <h2 class="disp trust-h" data-lines>
+      <span class="ln"><span class="is-dim">TRUSTED IN</span></span>
+      <span class="ln"><span>90+ HOSPITALS</span></span>
+    </h2>
+    <p class="trust-lead" data-reveal>대학병원 판독실부터 검진센터까지, NeuFlow는 이미 진료 현장에서 쓰이고 있습니다.</p>
+  </div>
+  <ul class="logos" id="logos">
+    <li><img src="../assets/brand/hosp_snuh.png" alt="서울대병원" loading="lazy"></li>
+    <li><img src="../assets/brand/hosp_asan.png" alt="서울아산병원" loading="lazy"></li>
+    <li><img src="../assets/brand/hosp_samsung.png" alt="삼성서울병원" loading="lazy"></li>
+    <li><img src="../assets/brand/hosp_boramae.png" alt="보라매병원" loading="lazy"></li>
+    <li><img src="../assets/brand/hosp_ajou.png" alt="아주대병원" loading="lazy"></li>
+    <li><img src="../assets/brand/hosp_jeonbuk.png" alt="전북대병원" loading="lazy"></li>
+    <li><img src="../assets/brand/hosp_chungnam.png" alt="충남대병원" loading="lazy"></li>
+    <li><img src="../assets/brand/hosp_ulsan.png" alt="울산대병원" loading="lazy"></li>
+    <li><img src="../assets/brand/hosp_mountsinai.png" alt="Mount Sinai" loading="lazy"></li>
+    <li class="logos-more"><b>90+</b><span>INSTALLED SITES</span></li>
+  </ul>
+  <ul class="certs" data-reveal>
+    <li><span>FDA</span>FDA 510(k) Cleared · K240385</li>
+    <li><span>식약처</span>식약처 의료기기 인증 · 제인 23-4077호</li>
+    <li><span>QMS</span>GMP · ISO 13485 · ISO 27001</li>
+  </ul>
+</section>
+
+<!-- ───────── 06 voices (sticky stack) ───────── -->
+<section class="voices" id="voices">
+  <div class="voices-head">
+    <p class="eyebrow" data-reveal><span>07</span> VOICES</p>
+    <h2 class="disp voices-h" data-lines>
+      <span class="ln"><span class="is-dim">FROM THE</span></span>
+      <span class="ln"><span>READING ROOM</span></span>
+    </h2>
+  </div>
+  <div class="voices-stack">
+    <article class="voice voice--k" style="--i:0">
+      <span class="voice-no">01 / 03</span>
+      <blockquote>“MRA의 PET을 보는 것 같습니다. 컬러로 보는 즉시 확인이 되고 확신이 섭니다.”</blockquote>
+      <footer><i></i>신경과 전문병원 병원장</footer>
+    </article>
+    <article class="voice voice--b" style="--i:1">
+      <span class="voice-no">02 / 03</span>
+      <blockquote>“이제 뇌혈관을 컬러와 숫자로 볼 수 있습니다.”</blockquote>
+      <footer><i></i>신경과 전문의</footer>
+    </article>
+    <article class="voice voice--w" style="--i:2">
+      <span class="voice-no">03 / 03</span>
+      <blockquote>“뉴플로우로 판독한다는 소문을 듣고 환자분들이 먼저 찾아오십니다.”</blockquote>
+      <footer><i></i>신경과 개원의</footer>
+    </article>
+  </div>
+</section>
+
+<!-- ───────── 07 evidence ───────── -->
+<section class="evi" id="evi">
+  <div class="evi-head">
+    <p class="eyebrow" data-reveal><span>08</span> EVIDENCE</p>
+    <h2 class="disp evi-h" data-lines>
+      <span class="ln"><span>PUBLISHED,</span></span>
+      <span class="ln"><span class="is-dim">NOT PROMISED</span></span>
+    </h2>
+    <p class="evi-lead" data-reveal>등록 특허 7건, SCI(E) 논문 다수. 모야모야병·뇌경색·뇌동맥류·소혈관질환 연구에 적용되고 있습니다.</p>
+  </div>
+  <ul class="evi-list">
+    <li class="evi-row" data-reveal><span class="evi-no">01</span><strong>모야모야병 진행 예측</strong><em>Stroke</em><span class="evi-y">2020</span><i>↗</i></li>
+    <li class="evi-row" data-reveal><span class="evi-no">02</span><strong>뇌경색 예후와 SIG</strong><em>Frontiers in Neurology</em><span class="evi-y">2023</span><i>↗</i></li>
+    <li class="evi-row" data-reveal><span class="evi-no">03</span><strong>뇌동맥류와 혈류역학 지표</strong><em>Cerebrovascular Diseases</em><span class="evi-y">2024</span><i>↗</i></li>
+  </ul>
+</section>
+
+<!-- ───────── 08 faq ───────── -->
+<section class="faq" id="faq">
+  <div class="faq-head">
+    <p class="eyebrow" data-reveal><span>09</span> FAQ</p>
+    <h2 class="disp faq-h" data-lines>
+      <span class="ln"><span>QUESTIONS,</span></span>
+      <span class="ln"><span class="is-dim">ANSWERED</span></span>
+    </h2>
+    <p class="faq-lead" data-reveal>도입 전에 가장 많이 묻는 다섯 가지.</p>
+  </div>
+  <div class="acc" id="acc">
+    <div class="acc-i is-open">
+      <button type="button" class="acc-q" aria-expanded="true" aria-controls="a1" id="q1"><span class="acc-no">01</span><span class="acc-t">추가 촬영이 필요한가요?</span><i class="acc-x"></i></button>
+      <div class="acc-a" id="a1" role="region" aria-labelledby="q1"><div><p>아니요. 병원에서 이미 촬영한 TOF-MRA를 그대로 씁니다. 추가 촬영도, 조영제도 필요 없습니다.</p></div></div>
+    </div>
+    <div class="acc-i">
+      <button type="button" class="acc-q" aria-expanded="false" aria-controls="a2" id="q2"><span class="acc-no">02</span><span class="acc-t">분석에 얼마나 걸리나요?</span><i class="acc-x"></i></button>
+      <div class="acc-a" id="a2" role="region" aria-labelledby="q2"><div><p>약 5분입니다. MRA를 불러오면 3D 혈관 재구성과 SIG 컬러 매핑이 자동으로 이어집니다.</p></div></div>
+    </div>
+    <div class="acc-i">
+      <button type="button" class="acc-q" aria-expanded="false" aria-controls="a3" id="q3"><span class="acc-no">03</span><span class="acc-t">기존 PACS와 연동되나요?</span><i class="acc-x"></i></button>
+      <div class="acc-a" id="a3" role="region" aria-labelledby="q3"><div><p>네. DICOM 기반으로 연동됩니다. 기존 병원 시스템에 그대로 연결해 쓸 수 있습니다.</p></div></div>
+    </div>
+    <div class="acc-i">
+      <button type="button" class="acc-q" aria-expanded="false" aria-controls="a4" id="q4"><span class="acc-no">04</span><span class="acc-t">어떤 인증을 받았나요?</span><i class="acc-x"></i></button>
+      <div class="acc-a" id="a4" role="region" aria-labelledby="q4"><div><p>FDA 510(k) Cleared · K240385, 식약처 의료기기 인증 · 제인 23-4077호. 품질·보안 체계는 GMP · ISO 13485 · ISO 27001을 갖추고 있습니다.</p></div></div>
+    </div>
+    <div class="acc-i">
+      <button type="button" class="acc-q" aria-expanded="false" aria-controls="a5" id="q5"><span class="acc-no">05</span><span class="acc-t">환자에게는 무엇이 제공되나요?</span><i class="acc-x"></i></button>
+      <div class="acc-a" id="a5" role="region" aria-labelledby="q5"><div><p>뇌혈관 건강 보고서와 맞춤 건강 가이드가 제공됩니다. 내 뇌혈관 상태를 색으로 직접 보고, 보고서로 이해할 수 있습니다.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 09 cta ───────── -->
+<section class="cta" id="cta">
+  <div class="cta-orb" aria-hidden="true"></div>
+  <p class="eyebrow eyebrow--w" data-reveal><span>10</span> CONTACT</p>
+  <h2 class="disp cta-h" data-lines>
+    <span class="ln"><span>READY TO SEE</span></span>
+    <span class="ln"><span>THE <em>FLOW?</em></span></span>
+  </h2>
+  <p class="cta-kr" data-reveal>이미 찍은 MRA로, 뇌혈관을 색과 숫자로 봅니다.</p>
+  <div class="cta-btns" data-reveal>
+    <button type="button" class="pill pill--light pill--lg"><span>도입 문의</span></button>
+    <button type="button" class="pill pill--ghost pill--lg"><span>데모 신청</span></button>
+    <button type="button" class="pill pill--ghost pill--lg"><span>소개서 받기</span></button>
+  </div>
+</section>
+
+</main>
+
+<!-- ───────── footer ───────── -->
+<footer class="foot">
+  <div class="foot-top">
+    <div class="foot-brand">
+      <img src="../assets/brand/logo_mediimg_header.png" alt="MEDIIMG" width="529" height="132" loading="lazy">
+      <p>보이지 않던 혈류의 힘을, 보이게.</p>
+    </div>
+    <nav class="foot-nav" aria-label="푸터 메뉴">
+      <button type="button" class="nav-i"><i>→</i><span>Company</span></button>
+      <button type="button" class="nav-i"><i>→</i><span>Technology</span></button>
+      <button type="button" class="nav-i"><i>→</i><span>NeuFlow</span></button>
+      <button type="button" class="nav-i"><i>→</i><span>Evidence</span></button>
+      <button type="button" class="nav-i"><i>→</i><span>Contact</span></button>
+    </nav>
+    <ul class="foot-cert">
+      <li>FDA 510(k) Cleared · K240385</li>
+      <li>식약처 의료기기 인증 · 제인 23-4077호</li>
+      <li>GMP · ISO 13485 · ISO 27001</li>
+    </ul>
+  </div>
+  <div class="foot-info">
+    <p>(주)메디이미지 <i>|</i> 사업자등록번호 313-87-00931 <i>|</i> 서울 서초구 강남대로16길 3, 양재디에스타워 701호 <i>|</i> 연구소: 분당서울대병원 헬스케어혁신파크</p>
+    <p>TEL 02-484-5773 <i>|</i> info@mediimg.com</p>
+  </div>
+  <div class="foot-bot">
+    <span>© 2026 MEDIIMG Co., Ltd.</span>
+    <span>DEMO 04 — JOURNEY CONCEPT</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script type="module" src="main.js"></script>
+</body>
+</html>
