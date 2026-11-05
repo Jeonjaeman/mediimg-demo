@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MEDIIMG · NeuFlow — 뇌졸중 위험신호, 뉴플로우의 SIG로 놓치지 마세요</title>
+<meta name="description" content="NeuFlow는 TOF-MRA 영상에서 뇌혈관의 구조와 혈류 관련 특성을 분석하는 의료기기 소프트웨어입니다. 기존 영상에 담긴 정보를 3차원 혈관 영상과 SIG 정량정보로 제시해, 의료진이 뇌졸중 위험을 살펴보도록 돕습니다.">
+<meta name="theme-color" content="#02050c">
+<link rel="icon" href="../assets/brand/favicon.png">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.css">
+<link rel="preload" as="image" href="../assets/seq/specimen/0001.webp">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ───────── loader ───────── -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__row">
+    <span>MEDIIMG / NEUFLOW</span>
+    <span>LOADING SPECIMEN 01</span>
+    <span id="loaderNum">000</span>
+  </div>
+  <div class="loader__bar"><i id="loaderBar"></i></div>
+</div>
+
+<!-- ───────── header ───────── -->
+<header class="hd" id="hd" data-tone="dark">
+  <span class="hd__logo" aria-label="MEDIIMG"><img src="../assets/brand/logo_mediimg_header.png" alt="MEDIIMG" width="529" height="132"></span>
+
+  <nav class="hd__nav" aria-label="주 메뉴">
+    <div class="hd__item has-sub">
+      <button type="button" class="hd__link">Technology <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5"/></svg></button>
+      <div class="hd__sub">
+        <span><i>01</i>SIG — Signal Intensity Gradient</span>
+        <span><i>02</i>VINT Engine</span>
+        <span><i>03</i>Workflow · 5 Steps</span>
+      </div>
+    </div>
+    <div class="hd__item has-sub">
+      <button type="button" class="hd__link">NeuFlow <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5"/></svg></button>
+      <div class="hd__sub">
+        <span><i>01</i>3D Color &amp; SIG Data</span>
+        <span><i>02</i>ROI Measurement</span>
+        <span><i>03</i>Health Report</span>
+        <span><i>04</i>Risk Signal</span>
+      </div>
+    </div>
+    <div class="hd__item"><button type="button" class="hd__link">Company</button></div>
+    <div class="hd__item"><button type="button" class="hd__link">Evidence</button></div>
+    <div class="hd__item"><button type="button" class="hd__link">Contact</button></div>
+  </nav>
+
+  <div class="hd__right">
+    <div class="hd__lang" role="group" aria-label="언어"><button type="button" class="is-on">KR</button><span>/</span><button type="button">EN</button></div>
+    <button type="button" class="hd__cta"><span>도입 문의</span><i class="ico"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i></button>
+    <button type="button" class="hd__burger" id="burger" aria-label="메뉴 열기" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="mnav" id="mnav" aria-hidden="true">
+  <ul>
+    <li><span>01</span>Company</li>
+    <li><span>02</span>Technology</li>
+    <li><span>03</span>NeuFlow</li>
+    <li><span>04</span>Evidence</li>
+    <li><span>05</span>Contact</li>
+  </ul>
+  <p>KR / EN</p>
+</div>
+
+<main>
+
+<!-- ───────── 01 hero : frame sequence + annotations ───────── -->
+<section class="hero" id="hero" data-tone="dark">
+  <div class="hero__stage">
+    <canvas class="hero__canvas" id="seq" aria-hidden="true"></canvas>
+    <div class="hero__dim" aria-hidden="true"></div>
+    <div class="hero__scrim hero__scrim--a" aria-hidden="true"></div>
+    <div class="hero__scrim hero__scrim--b" aria-hidden="true"></div>
+
+    <!-- annotation frames -->
+    <div class="anno" aria-hidden="true">
+      <div class="abox" data-box="a"><span class="achip achip--bl">SIG <b id="liveSig">4.33</b> SI/mm</span></div>
+      <div class="abox" data-box="b"><span class="achip achip--tr">Δ 1.2</span></div>
+      <div class="abox" data-box="c">
+        <span class="achip achip--br">Lt. ICA</span>
+        <span class="aread">ROI 03 — Ø 4.1 mm<br>LEN 18.6 mm · θ 62°</span>
+      </div>
+      <div class="alead" data-lead="m1"><i></i><span>MCA · M1</span></div>
+    </div>
+
+    <!-- phase A : headline -->
+    <div class="hero__intro">
+      <div class="hero__head">
+        <h1 class="hero__title">
+          <span class="ln"><span>뇌졸중 위험신호,</span></span>
+          <span class="ln"><span>뉴플로우의 SIG로</span></span>
+          <span class="ln"><span>놓치지 마세요.</span></span>
+        </h1>
+        <button type="button" class="btn hero__btn"><span>도입 문의</span><i class="ico"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i></button>
+      </div>
+      <div class="hero__foot">
+        <div class="hero__sub">
+          <p class="hero__cert">FDA 510(k) Cleared · K240385 &nbsp;—&nbsp; 식약처 의료기기 인증 · 제인 23-4077호</p>
+          <p><strong>TOF-MRA 기반 뇌혈관질환 위험 마커.</strong><br>NeuFlow는 TOF-MRA 영상에서 뇌혈관의 구조와 혈류 관련 특성을 분석하는 의료기기 소프트웨어입니다. 기존 영상에 담긴 정보를 3차원 혈관 영상과 SIG 정량정보로 제시해, 의료진이 뇌졸중 위험을 살펴보도록 돕습니다.</p>
+          <button type="button" class="btn hero__btn-m"><span>도입 문의</span><i class="ico"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i></button>
+        </div>
+        <div class="hero__scroll"><i></i>Scroll to discover</div>
+      </div>
+    </div>
+
+    <!-- phase B : statement + pin markers -->
+    <div class="hero__state">
+      <p class="hero__kicker">SIGNAL INTENSITY GRADIENT<br>혈관별 정량정보</p>
+      <h2 class="hero__stmt">
+        <span class="ln"><span>혈관 경계의 신호 변화를,</span></span>
+        <span class="ln"><span>혈관별</span></span>
+        <span class="ln"><span>정량정보로.</span></span>
+      </h2>
+      <div class="pin" data-pin="high"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">HIGH SIG<br><b>5.82 SI/mm</b></span></div></div>
+      <div class="pin" data-pin="low"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">LOW SIG<br><b>1.94 SI/mm</b></span></div></div>
+      <div class="pin pin--left" data-pin="roi"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">ROI · Lt. ICA<br><b>4.33 SI/mm</b></span></div></div>
+      <div class="pin pin--left" data-pin="m1"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">MCA · M1<br><b>Ø 2.8 mm</b></span></div></div>
+    </div>
+
+    <!-- phase C : numbered accordion -->
+    <div class="hero__steps">
+      <div class="steps__lead">
+        <svg class="steps__arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg>
+        <div>
+          <h2>기존 TOF-MRA 영상에서<br>보고서와 해석까지.</h2>
+          <p>PROCESS — <span id="stepNow">01</span> / 05</p>
+        </div>
+      </div>
+      <ol class="steps" id="steps">
+        <li class="step is-open">
+          <button type="button" class="step__head"><span class="step__no">01.</span><span class="step__tt">TOF-MRA 영상 활용</span><i class="step__plus"></i></button>
+          <div class="step__body"><div class="step__bodyin"><div class="step__grid">
+            <div><p>분석에 적합한 기존 촬영 영상을 사용합니다.</p><span class="step__meta">INPUT · TOF-MRA</span></div>
+            <img src="../assets/brand/real_step1_tof_source.png" alt="TOF-MRA 원본 영상 화면" loading="lazy">
+          </div></div></div>
+          <i class="step__bar"></i>
+        </li>
+        <li class="step">
+          <button type="button" class="step__head"><span class="step__no">02.</span><span class="step__tt">3차원 혈관 구성</span><i class="step__plus"></i></button>
+          <div class="step__body"><div class="step__bodyin"><div class="step__grid">
+            <div><p>3차원 혈관 정보를 구성해 혈관의 위치와 형태를 확인합니다.</p><span class="step__meta">AUTO SEGMENTATION</span></div>
+            <img src="../assets/brand/real_step2_3d.png" alt="3D 혈관 재구성 화면" loading="lazy">
+          </div></div></div>
+          <i class="step__bar"></i>
+        </li>
+        <li class="step">
+          <button type="button" class="step__head"><span class="step__no">03.</span><span class="step__tt">SIG 정량 분석</span><i class="step__plus"></i></button>
+          <div class="step__body"><div class="step__bodyin"><div class="step__grid">
+            <div><p>혈관 경계 부근의 신호 변화를 분석해 혈관별 정량정보를 얻습니다.</p><span class="step__meta">COLOR MAP · 0.0 – 15.0</span></div>
+            <img src="../assets/brand/real_step3_sig.png" alt="SIG 컬러 매핑 화면" loading="lazy">
+          </div></div></div>
+          <i class="step__bar"></i>
+        </li>
+        <li class="step">
+          <button type="button" class="step__head"><span class="step__no">04.</span><span class="step__tt">관심 영역 정량화</span><i class="step__plus"></i></button>
+          <div class="step__body"><div class="step__bodyin"><div class="step__grid">
+            <div><p>관심 영역의 SIG를 정량화합니다.</p><span class="step__meta">Ø · LENGTH · SIG</span></div>
+            <img src="../assets/brand/real_step4_roi.png" alt="ROI 측정 화면" loading="lazy">
+          </div></div></div>
+          <i class="step__bar"></i>
+        </li>
+        <li class="step">
+          <button type="button" class="step__head"><span class="step__no">05.</span><span class="step__tt">보고서 제공과 해석</span><i class="step__plus"></i></button>
+          <div class="step__body"><div class="step__bodyin"><div class="step__grid">
+            <div><p>혈관 정보와 정량정보를 보고서로 확인하고, 의료진이 임상 정보와 함께 해석합니다.</p><span class="step__meta">REPORT · 의료진 해석</span></div>
+            <img src="../assets/brand/real_report.png" alt="뇌혈관 건강 보고서" loading="lazy">
+          </div></div></div>
+          <i class="step__bar"></i>
+        </li>
+      </ol>
+    </div>
+
+    <div class="hud" aria-hidden="true"><span>SPECIMEN 01</span><span id="hudFrame">FRAME 001/121</span><span id="hudZoom">×1.00</span></div>
+  </div>
+</section>
+
+<!-- ───────── 02 who it's for ───────── -->
+<section class="who sec sec--cream" data-tone="light">
+  <div class="wrap">
+    <header class="sec__head">
+      <span class="tag" data-reveal>WHO IT'S FOR</span>
+      <h2 class="h2 js-lines"><span class="ln"><span>같은 보고서를,</span></span><span class="ln"><span>의료진과 환자가 함께 확인합니다.</span></span></h2>
+    </header>
+    <div class="who__grid">
+      <article class="wcard" data-card-reveal>
+        <div class="wcard__media"><img src="../assets/img/p1_doctor_patient.webp" alt="태블릿으로 환자에게 뇌혈관 결과를 설명하는 신경과 의사" loading="lazy"></div>
+        <div class="wcard__top"><span>FOR CLINICIANS</span><span>의료진 · 병원</span></div>
+        <i class="wcard__go"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i>
+        <div class="wcard__body">
+          <h3>의료진과 병원 —<br>정량값의 임상적 의미를 함께 검토</h3>
+          <ul><li>혈관 구조 · SIG · 위험신호 해석</li><li>환자에게 설명할 내용의 구체화</li></ul>
+        </div>
+      </article>
+      <article class="wcard" data-card-reveal>
+        <div class="wcard__media"><img src="../assets/img/p10_patient_mri.webp" alt="MRI 검사를 앞둔 환자와 방사선사" loading="lazy"></div>
+        <div class="wcard__top"><span>FOR PATIENTS</span><span>환자 · 검진자</span></div>
+        <i class="wcard__go"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i>
+        <div class="wcard__body">
+          <h3>환자와 피검진자 —<br>검사 수치의 의미 이해</h3>
+          <ul><li>담당 의료진의 설명으로 확인</li><li>상담과 추적 관찰에서 확인할 내용 정리</li></ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 03 technology : floating glass data cards ───────── -->
+<section class="tech" id="tech" data-tone="dark">
+  <div class="tech__stage">
+    <div class="tech__visual"><img src="../assets/img/p9_workstation.webp" alt="NeuFlow가 실행 중인 워크스테이션 모니터" loading="lazy"></div>
+
+    <svg class="tech__wires" aria-hidden="true"></svg>
+
+    <div class="tech__copy tech__copy--a">
+      <span class="tag" data-reveal>SIG TECHNOLOGY</span>
+      <h2 class="h2 h2--sm js-lines"><span class="ln"><span>혈관 경계의 신호에서,</span></span><span class="ln"><span>혈관별 정량정보를</span></span><span class="ln"><span>얻습니다.</span></span></h2>
+      <p data-reveal>NeuFlow는 TOF-MRA 영상의 혈관 경계 부근에서 나타나는 신호(SIG, Signal Intensity Gradient) 변화를 분석해 혈관별 정량정보를 얻습니다. SIG는 혈관벽전단응력과 관련된 혈류역학적 특성을 이해하는 대리지표로 연구되어 왔습니다.</p>
+      <button type="button" class="btn" data-reveal><span>SIG 기술 보기</span><i class="ico"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i></button>
+    </div>
+
+    <div class="tech__copy tech__copy--b">
+      <span class="tag">VINT ENGINE</span>
+      <h2 class="h2 h2--sm">수치와 임상적 해석을<br>한 보고서에서.</h2>
+      <p>뇌혈관 건강 보고서는 3차원 혈관 구조와 SIG 정량정보를 제공하고, 뇌졸중과 관련된 위험신호의 해석을 더합니다.</p>
+      <ul class="flist">
+        <li><i>F.01</i>혈관 구조 정보</li>
+        <li><i>F.02</i>SIG 정량정보</li>
+        <li><i>F.03</i>SIG 기반 뇌졸중 위험 신호 해석</li>
+        <li><i>F.04</i>임상 정보와 함께하는 결과 검토</li>
+        <li><i>F.05</i>의료진과 병원</li>
+        <li><i>F.06</i>환자와 피검진자</li>
+      </ul>
+    </div>
+
+    <div class="tech__cards">
+      <!-- score -->
+      <article class="gc gc--score" data-gc="score" data-anchor="0.352,0.262">
+        <div class="gc__in">
+          <header class="gc__hd"><span>위험신호 해석</span><em>시안 예시</em></header>
+          <div class="gauge">
+            <svg viewBox="0 0 200 112" aria-hidden="true">
+              <path class="gauge__bg" d="M14 104 A86 86 0 0 1 186 104" pathLength="100"/>
+              <path class="gauge__val" id="gaugeVal" d="M14 104 A86 86 0 0 1 186 104" pathLength="100"/>
+              <g class="gauge__ticks"><path d="M100 6v7M39.2 31.2l5 5M160.8 31.2l-5 5M14 104h7M186 104h-7"/></g>
+            </svg>
+            <div class="gauge__num"><b id="cScore">7.4</b><span>/ 10</span></div>
+          </div>
+          <footer class="gc__seg"><span class="is-on">양호</span><span>중간</span><span>주의</span></footer>
+          <i class="gc__node"></i>
+        </div>
+      </article>
+
+      <!-- roi -->
+      <article class="gc gc--roi" data-gc="roi" data-anchor="0.578,0.468">
+        <div class="gc__in">
+          <header class="gc__hd"><span class="mono">ROI · Lt. ICA</span><em><i class="live"></i>MEASURED</em></header>
+          <div class="roi__val"><b id="cRoi">4.33</b><span>SI/mm</span></div>
+          <svg class="roi__spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true">
+            <path class="roi__area" d="M0 34 L22 30 44 31 66 24 88 26 110 14 132 18 154 9 176 15 198 20 220 17 V44 H0Z"/>
+            <path class="roi__line" d="M0 34 L22 30 44 31 66 24 88 26 110 14 132 18 154 9 176 15 198 20 220 17"/>
+            <circle cx="154" cy="9" r="3.2"/>
+          </svg>
+          <footer class="gc__kv"><span>Ø <b>4.1</b> mm</span><span>LEN <b>18.6</b> mm</span></footer>
+          <i class="gc__node"></i>
+        </div>
+      </article>
+
+      <!-- bars -->
+      <article class="gc gc--bars" data-gc="bars" data-anchor="0.493,0.50">
+        <div class="gc__in">
+          <header class="gc__hd"><span>혈관별 SIG</span><em>SI/mm</em></header>
+          <div class="bars">
+            <div class="bar is-hi" style="--v:.72"><b>4.33</b><i></i><span>ICA</span></div>
+            <div class="bar" style="--v:.62"><b>3.71</b><i></i><span>MCA</span></div>
+            <div class="bar" style="--v:.49"><b>2.94</b><i></i><span>ACA</span></div>
+            <div class="bar" style="--v:.85"><b>5.12</b><i></i><span>BA</span></div>
+            <div class="bar" style="--v:.56"><b>3.38</b><i></i><span>VA</span></div>
+          </div>
+          <footer class="gc__kv"><span>MEAN <b>3.90</b></span><span>MAX <b>5.12</b> · BA</span></footer>
+          <i class="gc__node"></i>
+        </div>
+      </article>
+
+      <!-- time -->
+      <article class="gc gc--time" data-gc="time" data-anchor="0.408,0.60">
+        <div class="gc__in">
+          <header class="gc__hd"><span>분석 흐름</span><em>PROCESS</em></header>
+          <div class="time__val"><b id="cTime">03</b><span>STEPS</span></div>
+          <div class="time__seg" style="grid-template-columns:repeat(3,1fr)"><i></i><i></i><i></i></div>
+          <footer class="gc__kv"><span>영상 활용</span><span>정량 분석</span><span>보고서</span></footer>
+          <i class="gc__node"></i>
+        </div>
+      </article>
+
+      <span class="tchip tchip--aqua">SIG ↑ 5.12</span>
+      <span class="tchip tchip--white"><i></i>TOF-MRA</span>
+    </div>
+
+    <p class="tech__note"><i><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 5 8.6 9.5 3.6"/></svg></i>실제 분석 가능 여부는 촬영 조건과 영상 품질, 의료기관의 운영 방식에 따라 확인이 필요합니다.</p>
+  </div>
+</section>
+
+<!-- ───────── 04 before / after ───────── -->
+<section class="cmp sec sec--cream" data-tone="light">
+  <div class="wrap">
+    <header class="sec__head sec__head--split">
+      <div>
+        <span class="tag" data-reveal>BEFORE / AFTER</span>
+        <h2 class="h2 js-lines"><span class="ln"><span>TOF-MRA 흑백 이미지가,</span></span><span class="ln"><span>SIG 정량정보가 됩니다.</span></span></h2>
+      </div>
+      <p data-reveal>SIG 정보가 나오기 전에는 뇌혈관의 상태를 정량적 수치로 분석하기 어려웠습니다. 손잡이를 좌우로 움직여 보세요.</p>
+    </header>
+
+    <div class="ba" id="ba" style="--pos:50%" data-reveal>
+      <img class="ba__img" src="../assets/img/s5b_vessel_color_white.webp" alt="NeuFlow로 분석한 컬러 뇌혈관" loading="lazy" draggable="false">
+      <div class="ba__before"><img class="ba__img" src="../assets/img/s5a_vessel_gray_white.webp" alt="색이 입혀지기 전의 회색 뇌혈관" loading="lazy" draggable="false"></div>
+      <span class="ba__lb ba__lb--l">BEFORE — TOF-MRA</span>
+      <span class="ba__lb ba__lb--r">AFTER — NeuFlow</span>
+      <div class="ba__scale" aria-hidden="true"><span>SIG</span><span>0.0</span><i></i><span>15.0</span></div>
+      <div class="ba__read" aria-hidden="true">COLOR MAP <b id="baRead">50</b>%</div>
+      <div class="ba__handle" aria-hidden="true"><span class="ba__knob"><svg viewBox="0 0 24 12"><path d="M8 2.5 4.5 6 8 9.5M16 2.5 19.5 6 16 9.5"/></svg></span></div>
+      <input class="ba__range" id="baRange" type="range" min="0" max="100" value="50" aria-label="전후 비교 위치">
+    </div>
+
+    <div class="cmp__table">
+      <div class="cmp__row cmp__row--head"><span></span><span>기존 MRA</span><span><img src="../assets/brand/logo_neuflow.png" alt="NeuFlow" width="1691" height="576"></span></div>
+      <div class="cmp__row" data-reveal><span>01 — 영상</span><span>TOF-MRA 흑백 이미지</span><span>3차원 혈관 영상</span></div>
+      <div class="cmp__row" data-reveal><span>02 — 정보</span><span>정량적 수치로 분석하기 어려움</span><span>혈관별 SIG 정량정보</span></div>
+      <div class="cmp__row" data-reveal><span>03 — 해석</span><span>—</span><span>뇌졸중 위험신호 해석 · 의료진 설명</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 05 parallax floating cards ───────── -->
+<section class="flt sec--cream" id="flt" data-tone="light">
+  <div class="flt__stage">
+    <figure class="fc fc--vessel" data-depth="1.05">
+      <img src="../assets/brand/real_color_vessel.png" alt="NeuFlow 실제 결과 화면: SIG 컬러 뇌혈관" loading="lazy">
+      <figcaption><span>NEUFLOW · 3D SIG MAP</span><span>0.0 — 15.0</span></figcaption>
+    </figure>
+    <div class="fc fc--stat" data-depth="0.4"><span>PATIENTS ANALYZED</span><b>11,579+</b></div>
+    <figure class="fc fc--macro" data-depth="0.55"><img src="../assets/img/p8_vessel_macro.webp" alt="혈관벽 초근접 컬러맵" loading="lazy"><figcaption>WALL · ×40</figcaption></figure>
+    <div class="fc fc--fda" data-depth="1.25"><span><i><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 5 8.6 9.5 3.6"/></svg></i>FDA 510(k) Cleared</span><b>K240385</b><em>식약처 의료기기 인증 · 제인 23-4077호</em></div>
+    <figure class="fc fc--report" data-depth="0.8"><img src="../assets/brand/real_report.png" alt="뇌혈관 건강 보고서 실제 예시" loading="lazy"></figure>
+    <div class="fc fc--hosp" data-depth="0.35"><b>90+</b><span>HOSPITALS INSTALLED</span></div>
+    <div class="fc fc--sat" data-depth="0.5"><span>USER SATISFACTION</span><b>98<small>%</small></b><i><u></u></i></div>
+    <div class="fc fc--trend" data-depth="0.95">
+      <span>SIG · FOLLOW-UP</span>
+      <svg viewBox="0 0 220 84" aria-hidden="true">
+        <path class="trend__ln" d="M10 62 L50 58 M50 58 L90 40" />
+        <path class="trend__dash" d="M90 40 L130 42 L170 24 L210 18" />
+        <circle cx="10" cy="62" r="3"/><circle cx="50" cy="58" r="3"/><circle cx="90" cy="40" r="3"/><circle cx="130" cy="42" r="3"/><circle class="is-hi" cx="170" cy="24" r="4.5"/><circle cx="210" cy="18" r="3"/>
+        <g class="trend__lb"><text x="10" y="80">1Y</text><text x="50" y="80">2Y</text><text x="90" y="80">3Y</text><text x="130" y="80">4Y</text><text x="170" y="80">5Y</text></g>
+      </svg>
+      <em>4.33</em>
+    </div>
+
+    <div class="flt__center">
+      <span class="tag">QUANTITATIVE EVIDENCE</span>
+      <h2 class="flt__h" id="fltH">수치의 의미를,<br>의료진과 함께 확인합니다.</h2>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 06 evidence ───────── -->
+<section class="evi sec sec--cream" data-tone="light">
+  <div class="wrap">
+    <header class="sec__head sec__head--split">
+      <div>
+        <span class="tag" data-reveal>EVIDENCE</span>
+        <h2 class="h2 js-lines"><span class="ln"><span>색과 숫자 뒤에는,</span></span><span class="ln"><span>논문이 있습니다.</span></span></h2>
+      </div>
+      <div class="evi__ctrl" data-reveal>
+        <span class="evi__count"><b id="eviNow">01</b> / 03</span>
+        <button type="button" class="arrow" id="eviPrev" aria-label="이전 논문" disabled><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4"/></svg></button>
+        <button type="button" class="arrow" id="eviNext" aria-label="다음 논문"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+      </div>
+    </header>
+  </div>
+
+  <div class="evi__track" id="eviTrack" data-reveal>
+    <article class="paper">
+      <div class="paper__media"><img src="../assets/img/s1_brain_navy.webp" alt="반투명 뇌 안의 컬러 뇌혈관" loading="lazy"><span>MOYAMOYA</span></div>
+      <div class="paper__body">
+        <div class="paper__meta"><span class="tag">STROKE</span><span>2020</span></div>
+        <h3>모야모야병 진행 예측</h3>
+        <p>모야모야병 환자의 TOF-MRA에서 SIG를 측정해, 질환의 진행과 혈관벽 혈류역학 지표의 관계를 분석한 연구입니다.</p>
+        <dl><div><dt>JOURNAL</dt><dd>Stroke</dd></div><div><dt>FIELD</dt><dd>모야모야병</dd></div><div><dt>INDEX</dt><dd>SIG</dd></div></dl>
+      </div>
+    </article>
+    <article class="paper">
+      <div class="paper__media"><img src="../assets/img/s9_vessel_wide_black.webp" alt="검정 배경의 컬러 뇌혈관" loading="lazy"><span>ISCHEMIC STROKE</span></div>
+      <div class="paper__body">
+        <div class="paper__meta"><span class="tag">FRONTIERS IN NEUROLOGY</span><span>2023</span></div>
+        <h3>뇌경색 예후와 SIG</h3>
+        <p>뇌경색 환자에서 SIG와 예후 사이의 관계를 살펴, 정량 지표가 추적 관찰에 줄 수 있는 근거를 다룬 연구입니다.</p>
+        <dl><div><dt>JOURNAL</dt><dd>Frontiers in Neurology</dd></div><div><dt>FIELD</dt><dd>뇌경색</dd></div><div><dt>INDEX</dt><dd>SIG</dd></div></dl>
+      </div>
+    </article>
+    <article class="paper">
+      <div class="paper__media"><img src="../assets/img/p8_vessel_macro.webp" alt="혈관벽 초근접 컬러맵" loading="lazy"><span>ANEURYSM</span></div>
+      <div class="paper__body">
+        <div class="paper__meta"><span class="tag">CEREBROVASCULAR DISEASES</span><span>2024</span></div>
+        <h3>뇌동맥류와 혈류역학 지표</h3>
+        <p>뇌동맥류와 혈관벽 혈류역학 지표의 관련성을 분석해, 영상 판독에 더할 수 있는 정량 정보를 제시한 연구입니다.</p>
+        <dl><div><dt>JOURNAL</dt><dd>Cerebrovascular Diseases</dd></div><div><dt>FIELD</dt><dd>뇌동맥류</dd></div><div><dt>INDEX</dt><dd>SIG</dd></div></dl>
+      </div>
+    </article>
+  </div>
+
+  <div class="wrap">
+    <ul class="facts" data-reveal>
+      <li><b>7</b><span>등록 특허</span></li>
+      <li><b>SCI(E)</b><span>논문 다수</span></li>
+      <li><b>2018</b><span>설립</span></li>
+      <li><b>4</b><span>적용 연구 분야 — 모야모야병 · 뇌경색 · 뇌동맥류 · 소혈관질환</span></li>
+    </ul>
+
+    <div class="voices">
+      <figure class="voice" data-reveal>
+        <span class="voice__no">V.01</span>
+        <blockquote>“MRA의 PET을 보는 것 같습니다. 컬러로 보는 즉시 확인이 되고 확신이 섭니다.”</blockquote>
+        <figcaption>신경과 전문병원 병원장</figcaption>
+      </figure>
+      <figure class="voice" data-reveal>
+        <span class="voice__no">V.02</span>
+        <blockquote>“이제 뇌혈관을 컬러와 숫자로 볼 수 있습니다.”</blockquote>
+        <figcaption>신경과 전문의</figcaption>
+      </figure>
+      <figure class="voice" data-reveal>
+        <span class="voice__no">V.03</span>
+        <blockquote>“뉴플로우로 판독한다는 소문을 듣고 환자분들이 먼저 찾아오십니다.”</blockquote>
+        <figcaption>신경과 개원의</figcaption>
+      </figure>
+    </div>
+
+    <div class="hosp" data-reveal>
+      <p class="hosp__lb">TRUSTED BY — 함께하는 병원</p>
+      <div class="hosp__mq">
+        <div class="hosp__row">
+          <img src="../assets/brand/hosp_snuh.png" alt="서울대병원" loading="lazy"><img src="../assets/brand/hosp_asan.png" alt="서울아산병원" loading="lazy"><img src="../assets/brand/hosp_samsung.png" alt="삼성서울병원" loading="lazy"><img src="../assets/brand/hosp_boramae.png" alt="보라매병원" loading="lazy"><img src="../assets/brand/hosp_ajou.png" alt="아주대병원" loading="lazy"><img src="../assets/brand/hosp_jeonbuk.png" alt="전북대병원" loading="lazy"><img src="../assets/brand/hosp_chungnam.png" alt="충남대병원" loading="lazy"><img src="../assets/brand/hosp_ulsan.png" alt="울산대병원" loading="lazy"><img src="../assets/brand/hosp_mountsinai.png" alt="Mount Sinai" loading="lazy">
+        </div>
+        <div class="hosp__row" aria-hidden="true">
+          <img src="../assets/brand/hosp_snuh.png" alt="" loading="lazy"><img src="../assets/brand/hosp_asan.png" alt="" loading="lazy"><img src="../assets/brand/hosp_samsung.png" alt="" loading="lazy"><img src="../assets/brand/hosp_boramae.png" alt="" loading="lazy"><img src="../assets/brand/hosp_ajou.png" alt="" loading="lazy"><img src="../assets/brand/hosp_jeonbuk.png" alt="" loading="lazy"><img src="../assets/brand/hosp_chungnam.png" alt="" loading="lazy"><img src="../assets/brand/hosp_ulsan.png" alt="" loading="lazy"><img src="../assets/brand/hosp_mountsinai.png" alt="" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Q&A (NeuFlow 문안 11/04) ───────── -->
+<section class="nf-qa sec sec--cream" id="qa" data-tone="light">
+  <div class="wrap">
+    <header class="sec__head">
+      <span class="tag" data-reveal>Q&amp;A</span>
+      <h2 class="h2 js-lines"><span class="ln"><span>주요 질문</span></span></h2>
+    </header>
+    <div class="nf-qa__list" data-reveal>
+<details class="nf-qa__i" open><summary>추가 촬영이 필요한가요?</summary><p>NeuFlow는 분석에 적합한 기존 TOF-MRA 영상을 활용하는 방식입니다. 실제 분석 가능 여부는 촬영 조건과 영상 품질, 의료기관의 운영 방식에 따라 확인이 필요합니다.</p></details>
+<details class="nf-qa__i"><summary>뇌졸중 위험 정보를 확인할 수 있나요?</summary><p>NeuFlow는 SIG 기반 정량정보와 뇌졸중 위험신호의 해석을 하나의 보고서로 담아 제공합니다. 분석 수치와 그 임상적 의미를 함께 살펴보고, 참고할 수 있습니다.</p></details>
+<details class="nf-qa__i"><summary>보고서만으로 뇌졸중 여부를 판단할 수 있나요?</summary><p>보고서는 관련 정보를 검토하고 설명하는 데 활용하는 자료입니다. 개인의 상태는 의료진이 증상, 병력, 위험요인과 다른 검사 결과를 함께 고려해 판단합니다.</p></details>
+    </div>
+    <p class="nf-note" data-reveal>위 내용은 뇌졸중 위험신호 분석의 적용 방향입니다. 실제 제품 화면이나 확정된 제공 항목을 의미하지 않으며, 보고서에 반영되는 항목은 연구 결과와 제품화 과정에 따라 달라질 수 있습니다.</p>
+  </div>
+</section>
+
+<!-- ───────── 07 CTA + giant wordmark + footer ───────── -->
+<section class="end" id="end" data-tone="dark">
+  <div class="end__bg" aria-hidden="true">
+    <video id="endVideo" muted playsinline loop preload="metadata" poster="../assets/video/v8_vessel_turn.poster.webp" src="../assets/video/v8_vessel_turn.mp4"></video>
+  </div>
+
+  <div class="end__cta">
+    <h2 class="end__h js-lines"><span class="ln"><span>뇌혈관을,</span></span><span class="ln"><span>데이터로.</span></span></h2>
+    <p data-reveal>뇌졸중 위험신호, 뉴플로우의 SIG로 놓치지 마세요.<br>제품 도입·연구 문의 info@mediimg.com / 02-484-5773</p>
+    <div class="end__btns" data-reveal>
+      <button type="button" class="btn btn--solid"><span>도입 문의</span><i class="ico"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i></button>
+      <button type="button" class="btn btn--aqua"><span>데모 신청</span><i class="ico"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i></button>
+      <button type="button" class="btn btn--aqua"><span>소개서 받기</span><i class="ico"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i></button>
+    </div>
+  </div>
+
+  <div class="wm" id="wm" aria-label="NeuFlow"><span class="wm__text" id="wmText" aria-hidden="true"><i>N</i><i>e</i><i>u</i><i>F</i><i>l</i><i>o</i><i>w</i></span></div>
+
+  <footer class="ft">
+    <div class="ft__top">
+      <p class="ft__addr">서울 서초구 강남대로16길 3<br>양재디에스타워 701호<small>연구소 · 분당서울대병원 헬스케어혁신파크</small></p>
+      <div class="ft__cols">
+        <div><h4>MEDIIMG</h4><span>Company</span><span>Technology</span><span>Contact</span></div>
+        <div><h4>Product</h4><span>NeuFlow</span><span>VINT Engine</span><span>SIG</span></div>
+        <div><h4>Evidence</h4><span>Publications</span><span>Hospitals</span><span>History</span></div>
+        <div class="ft__cert"><h4>Certified</h4><span>FDA 510(k) Cleared · K240385</span><span>식약처 의료기기 인증 · 제인 23-4077호</span><span>GMP · ISO 13485 · ISO 27001</span></div>
+      </div>
+    </div>
+    <div class="ft__bot">
+      <span>© 2026 MEDIIMG Co., Ltd.</span>
+      <span>(주)메디이미지 · 사업자등록번호 313-87-00931 · TEL 02-484-5773 · info@mediimg.com</span>
+      <button type="button" id="toTop">Back to top ↑</button>
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script type="module" src="main.js"></script>
+</body>
+</html>

@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"cd \\\"/d/work/외주/MEDIIMG/_deploy\\\" && mkdir -p _sim && rm -rf _sim/mediimg-demo && (python -m http.server 8790 --bind 127.0.0.1 --directory . > /dev/null 2>&1 &) && sleep 1.5 && cat > ../an...",
-  "error": "Exit code 1\n(index)              requests=  26 failed=0 errors=0 | MEDIIMG ������ ���� 6��\r\nTraceback (most recent call last):\r\n  File \"D:\\work\\����\\MEDIIMG\\analysis\\_work\\linkcheck.py\", line 32, in <module>\r\n    asyncio.run(main())\r\n    ~~~~~~~~~~~^^^^^^^^\r\n  File \"C:\\Users\\JEON JAEMAN\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\asyncio\\runners.py\", line 196, in run\r\n    return runner.run(main)\r\n           ~~~~~~~~~~^^^^^^\r\n  File \"C:\\Users\\JEON JAEMAN\\AppData\\Local\\Programs\\Python\\Python313\\Li...",
-  "timestamp": "2026-10-01T16:00:36.741Z",
-  "retry_count": 1
-}

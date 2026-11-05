@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MEDIIMG · NeuFlow — 뇌졸중 위험신호, 뉴플로우의 SIG로 놓치지 마세요</title>
+<meta name="description" content="NeuFlow는 TOF-MRA 영상에서 뇌혈관의 구조와 혈류 관련 특성을 분석하는 의료기기 소프트웨어입니다. 기존 영상에 담긴 정보를 3차원 혈관 영상과 SIG 정량정보로 제시해, 의료진이 뇌졸중 위험을 살펴보도록 돕습니다.">
+<meta name="theme-color" content="#05070d">
+<link rel="icon" href="../assets/brand/favicon.png">
+<script>
+  document.documentElement.classList.add('js');
+  if (/[?&]t=/.test(location.search)) document.documentElement.classList.add('qa');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.css">
+<link rel="preload" as="image" href="../assets/video/film/g1_headache.poster.webp">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ───────── preloader (film leader) ───────── -->
+<div class="pre" id="pre" aria-hidden="true">
+  <div class="pre__in">
+    <span class="pre__k">MEDIIMG BRAND FILM</span>
+    <span class="pre__bar"><i></i></span>
+    <span class="pre__k pre__k--r">00:32</span>
+  </div>
+</div>
+
+<!-- ───────── header ───────── -->
+<header class="hd" id="hd" data-tone="dark">
+  <span class="hd__logo"><img src="../assets/brand/logo_mediimg_header.png" alt="MEDIIMG" width="529" height="132"></span>
+
+  <nav class="hd__nav" aria-label="주 메뉴">
+    <button type="button" class="hd__link"><span data-t="Company">Company</span></button>
+    <button type="button" class="hd__link"><span data-t="Technology">Technology</span></button>
+    <button type="button" class="hd__link"><span data-t="NeuFlow">NeuFlow</span></button>
+    <button type="button" class="hd__link"><span data-t="Evidence">Evidence</span></button>
+    <button type="button" class="hd__link"><span data-t="Contact">Contact</span></button>
+  </nav>
+
+  <div class="hd__side">
+    <div class="lang" role="group" aria-label="필름 언어 / Film language">
+      <button type="button" class="lang__b is-on" data-lang="ko" aria-pressed="true">KR</button>
+      <i aria-hidden="true"></i>
+      <button type="button" class="lang__b" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <button type="button" class="hd__cta"><span>도입 문의</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 9.5 9.5 2.5M4 2.5h5.5V8"/></svg></button>
+    <button type="button" class="hd__burger" id="burger" aria-label="메뉴 열기" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="mnav" id="mnav" aria-hidden="true">
+  <ul>
+    <li><span>01</span>Company</li>
+    <li><span>02</span>Technology</li>
+    <li><span>03</span>NeuFlow</li>
+    <li><span>04</span>Evidence</li>
+    <li><span>05</span>Contact</li>
+  </ul>
+  <button type="button" class="btn btn--w">도입 문의 <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 9.5 9.5 2.5M4 2.5h5.5V8"/></svg></button>
+</div>
+
+<main>
+
+<!-- ═════════ HERO : brand film — footage carries no text, every word below is live DOM type ═════════ -->
+<section class="film" id="film" data-tone="dark" data-act="1" aria-label="MEDIIMG 브랜드 필름">
+  <h1 class="sr">뇌졸중 위험신호, 뉴플로우의 SIG로 놓치지 마세요. — MEDIIMG NeuFlow</h1>
+
+  <!-- background plates (persistent) -->
+  <div class="film__bg" aria-hidden="true">
+    <video class="bg" data-bg="g1" style="--b:.58" muted playsinline loop preload="auto" poster="../assets/video/film/g1_headache.poster.webp" src="../assets/video/film/g1_headache.mp4"></video>
+    <video class="bg" data-bg="g2" style="--b:.56" muted playsinline loop preload="auto" poster="../assets/video/film/g2_crosswalk.poster.webp" src="../assets/video/film/g2_crosswalk.mp4"></video>
+    <video class="bg" data-bg="g3" style="--b:.54" muted playsinline loop preload="auto" poster="../assets/video/film/g3_bloodpressure.poster.webp" src="../assets/video/film/g3_bloodpressure.mp4"></video>
+    <video class="bg" data-bg="g4" style="--b:.5" muted playsinline loop preload="auto" poster="../assets/video/film/g4_hands.poster.webp" src="../assets/video/film/g4_hands.mp4"></video>
+
+    <div class="bg bg--split" data-bg="split">
+      <div class="cell"><img src="../assets/img/p10_patient_mri.webp" alt="" decoding="async"></div>
+      <div class="cell"><img src="../assets/img/p2_control_room.webp" alt="" decoding="async"></div>
+      <div class="cell"><img src="../assets/img/p5_mri_room_portrait.webp" alt="" decoding="async"></div>
+      <div class="cell cell--w"><video muted playsinline loop preload="metadata" poster="../assets/video/v4_mri_white.poster.webp" src="../assets/video/v4_mri_white.mp4"></video></div>
+    </div>
+
+    <video class="bg" data-bg="g6" style="--b:.5" muted playsinline loop preload="metadata" poster="../assets/video/film/g6_mra_bokeh.poster.webp" src="../assets/video/film/g6_mra_bokeh.mp4"></video>
+
+    <div class="bg bg--navy" data-bg="v1">
+      <video muted playsinline loop preload="metadata" poster="../assets/video/v1_brain_loop.poster.webp" src="../assets/video/v1_brain_loop.mp4"></video>
+    </div>
+
+    <div class="bg bg--light" data-bg="light"></div>
+
+    <video class="bg" data-bg="g7" style="--b:.82" muted playsinline loop preload="metadata" poster="../assets/video/film/g7_flow_streaks.poster.webp" src="../assets/video/film/g7_flow_streaks.mp4"></video>
+    <video class="bg" data-bg="v6" style="--b:.5" muted playsinline preload="metadata" poster="../assets/video/v6_specimen.poster.webp" src="../assets/video/v6_specimen.mp4"></video>
+
+    <div class="bg bg--rays" data-bg="rays"><i></i><i></i><i></i></div>
+
+    <video class="bg" data-bg="g8" style="--b:.5" muted playsinline loop preload="metadata" poster="../assets/video/film/g8_inside_vessel.poster.webp" src="../assets/video/film/g8_inside_vessel.mp4"></video>
+
+    <div class="bg bg--vessel" data-bg="v8">
+      <video muted playsinline loop preload="metadata" poster="../assets/video/v8_vessel_turn.poster.webp" src="../assets/video/v8_vessel_turn.mp4"></video>
+    </div>
+
+    <video class="bg" data-bg="v3" style="--b:.42" muted playsinline preload="metadata" poster="../assets/video/v3_mri_bore.poster.webp" src="../assets/video/v3_mri_bore.mp4"></video>
+    <video class="bg" data-bg="v2" style="--b:.46" muted playsinline loop preload="metadata" poster="../assets/video/v2_reading_room.poster.webp" src="../assets/video/v2_reading_room.mp4"></video>
+  </div>
+
+  <div class="film__shade" aria-hidden="true"></div>
+
+  <!-- live type (Korean is the source; main.js swaps in English and rebuilds the same motion) -->
+  <div class="film__type" id="filmType">
+
+    <!-- ACT 1 — keyword montage -->
+    <div class="sc sc--word" data-sc="1">
+      <div class="ol" aria-hidden="true"><span data-k="s1">두통</span></div>
+      <p class="w" data-k="s1" data-fit=".86">두통</p>
+      <i class="flash"></i>
+    </div>
+    <div class="sc sc--word" data-sc="2">
+      <div class="ol" aria-hidden="true"><span data-k="s2">어지럼</span></div>
+      <p class="w" data-k="s2" data-fit=".86">어지럼</p>
+    </div>
+    <div class="sc sc--word" data-sc="3">
+      <div class="ol" aria-hidden="true"><span data-k="s3">혈압</span></div>
+      <p class="w w--v" data-k="s3" data-fit=".86">혈압</p>
+    </div>
+    <div class="sc sc--word" data-sc="4">
+      <div class="ol" aria-hidden="true"><span data-k="s4">가족력</span></div>
+      <p class="w" data-k="s4" data-fit=".86">가족력</p>
+    </div>
+    <div class="sc sc--word sc--split" data-sc="5">
+      <p class="w w--wide" data-k="s5" data-fit=".9">건강검진</p>
+    </div>
+    <div class="sc" data-sc="6">
+      <p class="t-s" data-k="s6" data-fit=".86">우리가 지키고 싶은</p>
+    </div>
+    <div class="sc" data-sc="7">
+      <p class="t-xl" data-k="s7" data-fit=".9">뇌혈관</p>
+    </div>
+    <div class="sc sc--and" data-sc="8">
+      <i class="inv"></i>
+      <p class="t-and" data-k="s8">그리고</p>
+    </div>
+
+    <!-- ACT 2 — connection -->
+    <div class="sc" data-sc="9">
+      <div class="row" data-fitrow>
+        <p class="ph" data-k="s9a">MRA 영상과</p>
+        <i class="rule"></i>
+        <p class="ph" data-k="s9b">혈류의 힘을 잇는</p>
+      </div>
+    </div>
+    <div class="sc sc--shade" data-sc="10">
+      <p class="t-m" data-k="s10" data-fit=".88"><span class="th">가장</span> <b>미세한 신호</b></p>
+    </div>
+
+    <!-- ACT 3 — center -->
+    <div class="sc sc--light" data-sc="11">
+      <i class="cx cx--h"></i><i class="cx cx--v"></i>
+      <div class="box">
+        <i class="box__bd"></i>
+        <p class="t-box" data-k="s11" data-fit=".7">그 <b>중심</b>에</p>
+      </div>
+    </div>
+    <div class="sc sc--light sc--search" data-sc="12">
+      <div class="srch">
+        <div class="srch__card">
+          <div class="srch__tab" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+            <svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg>
+          </div>
+          <svg class="srch__home" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.2 12 4.5l8 6.7V20h-5.4v-5.6H9.4V20H4z"/></svg>
+          <div class="srch__panel">
+            <div class="srch__field">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/></svg>
+              <span class="srch__q"><span class="srch__txt" data-k="s12">뇌졸중 위험신호와 SIG</span><i class="srch__caret" aria-hidden="true"></i></span>
+            </div>
+            <ul class="srch__list">
+              <li class="srch__row is-sel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.3 4.6v3.2h3.2M12 8v4.3l2.8 1.7"/></svg><span data-k="s12r1">NeuFlow</span></li>
+              <li class="srch__row"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.3 4.6v3.2h3.2M12 8v4.3l2.8 1.7"/></svg><span data-k="s12r2">NeuFlow 뉴플로우</span></li>
+              <li class="srch__row"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.3 4.6v3.2h3.2M12 8v4.3l2.8 1.7"/></svg><span data-k="s12r3">NeuFlow SIG 분석</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sc sc--light" data-sc="13">
+      <div class="here" data-fit=".86">
+        <img class="here__logo" src="../assets/brand/logo_neuflow.png" alt="NeuFlow" width="1691" height="576">
+        <p class="here__t" data-k="s13">가 있습니다.</p>
+      </div>
+    </div>
+
+    <!-- ACT 4 — flow -->
+    <div class="sc" data-sc="14">
+      <p class="t-k2" data-fit=".88"><span class="sm" data-k="s14a">TOF-MRA 속에 담겨 있던</span><span class="lg" data-k="s14b">가장 미세한 신호</span></p>
+    </div>
+    <div class="sc" data-sc="15">
+      <p class="t-zm" data-k="s15" data-fit=".86">그 안에서</p>
+    </div>
+    <div class="sc" data-sc="16">
+      <p class="t-l2" data-fit=".88"><span class="ln" data-k="s16a">혈류는 <b>끊임없이</b></span><span class="ln" data-k="s16b">흐르고 있습니다</span></p>
+    </div>
+    <div class="sc" data-sc="17">
+      <div class="roi">
+        <i class="roi__c"></i><i class="roi__c"></i><i class="roi__c"></i><i class="roi__c"></i>
+        <span class="roi__tag" aria-hidden="true">ROI 01</span>
+        <p class="roi__t" data-fit=".8"><span data-k="s17a">보이지 않던</span><b data-k="s17b">힘의 한가운데에서</b></p>
+      </div>
+    </div>
+    <div class="sc sc--rev" data-sc="18">
+      <p class="t-l2 t-l2--rev" data-fit=".86"><span class="ln ln--a" data-k="s18a"><b>NeuFlow</b>의 기술로</span><span class="ln ln--b" data-k="s18b"><em>SIG</em> 정량정보로 제시합니다</span></p>
+      <div class="sig" aria-hidden="true">
+        <i class="sig__bar"><i class="sig__mk"></i></i>
+        <div class="sig__r"><span class="sig__l">SIG</span><span class="sig__n">0.00</span></div>
+      </div>
+    </div>
+
+    <!-- ACT 5 — promise -->
+    <div class="sc sc--shade" data-sc="19">
+      <p class="t-thin" data-k="s19" data-fit=".86">기존 영상에 담긴 정보를</p>
+    </div>
+    <div class="sc sc--fin" data-sc="20">
+      <div class="fin">
+        <div class="fin__aw"><p class="fin__a" data-k="s20" data-fit=".86">SIG · 3D · 정량 분석으로</p></div>
+        <p class="fin__b" data-fit=".88"><i class="fin__hl"></i><span data-k="s21">뇌혈관을 읽는 기업</span></p>
+      </div>
+    </div>
+    <div class="sc sc--light sc--end" data-sc="22">
+      <div class="end">
+        <img class="end__logo" src="../assets/brand/logo_mediimg.png" alt="MEDIIMG" width="882" height="220">
+        <p class="end__t" data-k="s22" data-fit=".86">FDA 510(k) Cleared · 식약처 의료기기 인증</p>
+      </div>
+      <p class="w w--ghost" data-k="s1" data-fit=".86" aria-hidden="true">두통</p>
+      <i class="flash flash--out"></i>
+    </div>
+  </div>
+
+  <!-- film UI -->
+  <div class="film__ui">
+    <div class="acts" role="group" aria-label="필름 구간">
+      <button type="button" class="act is-on" data-act="1"><em>01</em><span data-ko="일상" data-en="Daily">일상</span><i><b></b></i></button>
+      <button type="button" class="act" data-act="2"><em>02</em><span data-ko="연결" data-en="Link">연결</span><i><b></b></i></button>
+      <button type="button" class="act" data-act="3"><em>03</em><span data-ko="중심" data-en="Center">중심</span><i><b></b></i></button>
+      <button type="button" class="act" data-act="4"><em>04</em><span data-ko="흐름" data-en="Flow">흐름</span><i><b></b></i></button>
+      <button type="button" class="act" data-act="5"><em>05</em><span data-ko="약속" data-en="Promise">약속</span><i><b></b></i></button>
+    </div>
+    <div class="cue" aria-hidden="true"><span>Scroll</span><i></i></div>
+    <div class="ctl">
+      <p class="ctl__tag"><i aria-hidden="true"></i><span data-ko="NeuFlow — 뇌졸중 위험신호, SIG로" data-en="NeuFlow — stroke risk signals, in SIG">NeuFlow — 뇌졸중 위험신호, SIG로</span></p>
+      <span class="ctl__tc" aria-hidden="true"><b id="tc">00:00</b> / 00:32</span>
+      <button type="button" class="ctl__pp" id="pp" aria-label="필름 일시정지">
+        <svg class="i-pause" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9M10 2.5v9"/></svg>
+        <svg class="i-play" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.2 11.5 7 4 11.8z"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 1. pinned : Beyond the Image → card swap → full-bleed → circle wipe ═════════ -->
+<section class="by" id="by" data-tone="dark">
+  <div class="by__pin">
+    <header class="by__hd">
+      <h2 class="by__ttl"><span>Beyond the Image,</span><span>Toward the Flow</span></h2>
+      <p class="by__sub">뇌졸중 위험신호, 뉴플로우의 SIG로 놓치지 마세요.</p>
+    </header>
+
+    <div class="by__card" id="byCard">
+      <figure class="by__m" data-i="0">
+        <video muted playsinline loop preload="metadata" poster="../assets/video/v2_reading_room.poster.webp" src="../assets/video/v2_reading_room.mp4"></video>
+      </figure>
+      <figure class="by__m" data-i="1"><img src="../assets/img/p1_doctor_patient.webp" alt="태블릿의 컬러 혈관 영상으로 환자에게 설명하는 신경과 전문의" loading="lazy" decoding="async"></figure>
+      <figure class="by__m" data-i="2"><img src="../assets/img/p13_research_team.webp" alt="대형 화면의 컬러 뇌혈관을 보며 논의하는 연구팀" loading="lazy" decoding="async"></figure>
+
+      <div class="by__cap" data-i="0">
+        <strong>Clinic</strong>
+        <ul><li>신경과</li><li>신경외과</li><li>영상의학과</li></ul>
+      </div>
+      <div class="by__cap" data-i="1">
+        <strong>Health Screening</strong>
+        <ul><li>건강검진센터</li><li>추적 관찰</li><li>환자 설명</li></ul>
+      </div>
+      <div class="by__cap" data-i="2">
+        <strong>Research</strong>
+        <ul><li>모야모야병</li><li>뇌경색</li><li>뇌동맥류</li><li>소혈관질환</li></ul>
+      </div>
+    </div>
+
+    <div class="by__copy">
+      <p class="by__say"><span>눈에 보이지 않는 혈류의 힘을</span><span>임상 현장과 함께</span><span>읽어 왔습니다</span></p>
+      <div class="by__idx" aria-hidden="true"><span class="by__num"><b>01</b><b>02</b><b>03</b></span><i><u></u></i><span>03</span></div>
+    </div>
+
+    <div class="by__full" aria-hidden="true"><img src="../assets/img/p8_vessel_macro.webp" alt="" loading="lazy" decoding="async"></div>
+
+    <div class="by__def">
+      <p class="by__def-s">메디이미지가 정의하는</p>
+      <p class="by__def-x"><span>MRA</span><i>×</i><span>SIG</span><i>×</i><span>3D</span></p>
+      <p class="by__def-l">뇌혈관질환 위험 마커</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 2–3. circle wipe → product line-up ═════════ -->
+<section class="lu" id="lu" data-tone="dark">
+  <div class="lu__flow" aria-hidden="true"><div><span>TOWARD THE FLOW&nbsp;&nbsp;·&nbsp;&nbsp;</span><span>TOWARD THE FLOW&nbsp;&nbsp;·&nbsp;&nbsp;</span></div></div>
+  <div class="lu__grid">
+    <div class="lu__info">
+      <div class="lu__sticky">
+        <p class="eyebrow">Product Line-up</p>
+        <h2 class="lu__ttl">제품 라인업</h2>
+        <p class="lu__desc">NeuFlow는 TOF-MRA 영상에서 뇌혈관의 구조와 혈류 관련 특성을 분석합니다. 분석 엔진부터 보고서까지, 3차원 혈관 영상과 SIG 정량정보를 하나의 흐름으로 제공합니다.</p>
+        <button type="button" class="btn btn--line"><span>소개서 받기</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6h9M7 2.5 10.5 6 7 9.5"/></svg></button>
+      </div>
+    </div>
+
+    <article class="pc pc--top" style="--col:3;--row:1;--d:0">
+      <p class="pc__k">뇌혈관 분석 소프트웨어</p>
+      <h3 class="pc__n">NeuFlow</h3>
+      <p class="pc__s">3D Vessel &amp; SIG Data</p>
+      <div class="pc__img"><img src="../assets/brand/real_color_vessel.png" alt="NeuFlow가 분석한 3D 컬러 뇌혈관" loading="lazy" decoding="async"></div>
+    </article>
+    <article class="pc pc--top" style="--col:4;--row:1;--d:1">
+      <p class="pc__k">SIG 분석 엔진</p>
+      <h3 class="pc__n">VINT</h3>
+      <p class="pc__s">Visual INTelligence</p>
+      <div class="pc__img"><img src="../assets/img/p8_vessel_macro.webp" alt="혈관벽에 입혀진 SIG 컬러맵" loading="lazy" decoding="async"></div>
+    </article>
+    <article class="pc" style="--col:3;--row:2;--d:0">
+      <p class="pc__k">뇌혈관 건강 보고서</p>
+      <h3 class="pc__n">Health Report</h3>
+      <p class="pc__s">Cerebrovascular Health Report</p>
+      <div class="pc__img pc__img--doc"><img src="../assets/brand/real_report.png" alt="뇌혈관 건강 보고서" loading="lazy" decoding="async"></div>
+    </article>
+    <article class="pc" style="--col:4;--row:2;--d:1">
+      <p class="pc__k">임상 정보와 함께하는 결과 검토</p>
+      <h3 class="pc__n">Clinical Review</h3>
+      <p class="pc__s">Risk Signal Interpretation</p>
+      <div class="pc__img"><img src="../assets/img/p2_control_room.webp" alt="MRI 조정실의 판독 워크스테이션" loading="lazy" decoding="async"></div>
+    </article>
+    <article class="pc pc--soon" style="--col:4;--row:3;--d:1">
+      <p class="pc__k">뇌혈류량 측정</p>
+      <h3 class="pc__n">FloCal</h3>
+      <p class="pc__s">Coming soon</p>
+      <div class="pc__img"><img src="../assets/img/p11_flow_bg.webp" alt="" loading="lazy" decoding="async"></div>
+    </article>
+    <div class="lu__note" style="--col:3;--row:3">
+      <p><b>SIG</b></p>
+      <span>혈관별 정량정보와<br>위험신호 해석</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 4. white : oversized sentence + bento ═════════ -->
+<section class="ws" id="ws" data-tone="light">
+  <h2 class="ws__big" aria-label="Making the unseen flow visible in every reading room">
+    <span class="ws__l" aria-hidden="true"><span>MAKING THE UNSEEN FL<span class="ws__o"><video muted playsinline loop preload="metadata" poster="../assets/video/v8_vessel_turn.poster.webp" src="../assets/video/v8_vessel_turn.mp4"></video></span>W</span></span>
+    <span class="ws__l" aria-hidden="true"><span>VISIBLE IN EVERY</span></span>
+    <span class="ws__l" aria-hidden="true"><span>READING ROOM</span></span>
+    <span class="ws__chip" aria-hidden="true"><img src="../assets/brand/real_color_vessel.png" alt="" loading="lazy" decoding="async"></span>
+  </h2>
+
+  <div class="bento">
+    <div class="bn bn--num" data-rv>
+      <p class="bn__k">Analyzed patients</p>
+      <p class="bn__big"><span id="cnt" data-to="11579">11,579</span><sup>+</sup></p>
+      <p class="bn__cap">분석한 환자 수</p>
+      <ul class="bn__mini">
+        <li><b>90+</b><span>설치 병원</span></li>
+        <li><b>98%</b><span>사용자 만족도</span></li>
+      </ul>
+    </div>
+    <div class="bn bn--list" data-rv style="--d:1">
+      <p class="bn__k">How it works</p>
+      <ol>
+        <li><span>TOF-MRA 영상 활용</span><i></i></li>
+        <li><span>3차원 혈관 구성</span><i></i></li>
+        <li><span>SIG 정량 분석</span><i></i></li>
+        <li><span>관심 영역 정량화</span><i></i></li>
+        <li><span>보고서 제공과 해석</span><i></i></li>
+      </ol>
+    </div>
+    <figure class="bn bn--photo" data-rv style="--d:2">
+      <img src="../assets/img/p6_hands_tablet.webp" alt="태블릿 속 컬러 뇌혈관을 가리키는 손" loading="lazy" decoding="async">
+      <figcaption>Color<br>the unseen</figcaption>
+    </figure>
+    <button type="button" class="bn bn--cta" data-rv style="--d:3">
+      <span class="bn__k">Contact</span>
+      <strong>도입 문의</strong>
+      <span class="bn__p">병원·검진센터 도입 상담을 도와드립니다.</span>
+      <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6h9M7 2.5 10.5 6 7 9.5"/></svg>
+    </button>
+    <button type="button" class="bn bn--cta" data-rv style="--d:4">
+      <span class="bn__k">Demo</span>
+      <strong>데모 신청</strong>
+      <span class="bn__p">실제 MRA로 분석 과정을 시연합니다.</span>
+      <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6h9M7 2.5 10.5 6 7 9.5"/></svg>
+    </button>
+    <button type="button" class="bn bn--cta" data-rv style="--d:5">
+      <span class="bn__k">Brochure</span>
+      <strong>소개서 받기</strong>
+      <span class="bn__p">NeuFlow 제품 소개서를 보내드립니다.</span>
+      <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6h9M7 2.5 10.5 6 7 9.5"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- ═════════ 5. certifications ═════════ -->
+<section class="ct" id="ct" data-tone="light">
+  <div class="sec-hd" data-rv>
+    <p class="eyebrow eyebrow--b">인증 · 품질</p>
+    <h2 class="sec-ttl">국내외 인증으로 확인된 기준 위에서<br>뇌혈관 분석 소프트웨어를 만듭니다</h2>
+  </div>
+  <div class="ct__grid">
+    <article class="cc cc--img" data-rv>
+      <div class="cc__ph"><img src="../assets/img/p9_workstation.webp" alt="NeuFlow가 표시된 워크스테이션" loading="lazy" decoding="async"></div>
+      <div class="cc__b">
+        <h3>FDA 510(k) Cleared</h3>
+        <p>K240385</p>
+        <span>2024 · United States</span>
+      </div>
+    </article>
+    <article class="cc cc--txt" data-rv style="--d:1">
+      <div class="cc__b">
+        <p class="cc__mark">MFDS</p>
+        <h3>식약처 의료기기 인증</h3>
+        <p>제인 23-4077호</p>
+        <span>2023 · Republic of Korea</span>
+        <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6h9M7 2.5 10.5 6 7 9.5"/></svg>
+      </div>
+    </article>
+    <article class="cc cc--img" data-rv style="--d:2">
+      <div class="cc__ph"><img src="../assets/img/p13_research_team.webp" alt="화면 앞에서 논의하는 연구팀" loading="lazy" decoding="async"></div>
+      <div class="cc__b">
+        <h3>GMP · ISO 13485 · ISO 27001</h3>
+        <p>품질 · 정보보호 경영시스템</p>
+        <span>2025 · ISO 13485 / 27001</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═════════ 6. evidence ═════════ -->
+<section class="ev" id="ev" data-tone="light">
+  <div class="ev__l">
+    <div class="sec-hd" data-rv>
+      <p class="eyebrow eyebrow--b">Evidence</p>
+      <h2 class="sec-ttl">연구가 뒷받침합니다</h2>
+      <p class="sec-p">NeuFlow는 TOF-MRA 영상의 혈관 경계 부근에서 나타나는 신호(SIG, Signal Intensity Gradient) 변화를 분석해 혈관별 정량정보를 얻습니다. SIG는 혈관벽전단응력과 관련된 혈류역학적 특성을 이해하는 대리지표로 연구되어 왔습니다.</p>
+    </div>
+    <ul class="ev__list">
+      <li data-rv><span class="ev__y">2020</span><span class="ev__t">모야모야병 진행 예측</span><span class="ev__j">Stroke</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 9.5 9.5 2.5M4 2.5h5.5V8"/></svg></li>
+      <li data-rv style="--d:1"><span class="ev__y">2023</span><span class="ev__t">뇌경색 예후와 SIG</span><span class="ev__j">Frontiers in Neurology</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 9.5 9.5 2.5M4 2.5h5.5V8"/></svg></li>
+      <li data-rv style="--d:2"><span class="ev__y">2024</span><span class="ev__t">뇌동맥류와 혈류역학 지표</span><span class="ev__j">Cerebrovascular Diseases</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 9.5 9.5 2.5M4 2.5h5.5V8"/></svg></li>
+    </ul>
+    <p class="ev__tags" data-rv><span>적용 연구 분야</span><i>모야모야병</i><i>뇌경색</i><i>뇌동맥류</i><i>소혈관질환</i></p>
+  </div>
+  <div class="ev__r">
+    <p class="ev__rk" data-rv>함께하는 병원</p>
+    <ul class="ev__logos">
+      <li data-rv><img src="../assets/brand/hosp_snuh.png" alt="서울대학교병원" loading="lazy" width="400" height="150"></li>
+      <li data-rv style="--d:1"><img src="../assets/brand/hosp_asan.png" alt="서울아산병원" loading="lazy" width="400" height="150"></li>
+      <li data-rv style="--d:2"><img src="../assets/brand/hosp_samsung.png" alt="삼성서울병원" loading="lazy" width="400" height="150"></li>
+      <li data-rv><img src="../assets/brand/hosp_boramae.png" alt="보라매병원" loading="lazy" width="400" height="150"></li>
+      <li data-rv style="--d:1"><img src="../assets/brand/hosp_ajou.png" alt="아주대학교병원" loading="lazy" width="400" height="150"></li>
+      <li data-rv style="--d:2"><img src="../assets/brand/hosp_jeonbuk.png" alt="전북대학교병원" loading="lazy" width="400" height="150"></li>
+      <li data-rv><img src="../assets/brand/hosp_chungnam.png" alt="충남대학교병원" loading="lazy" width="400" height="150"></li>
+      <li data-rv style="--d:1"><img src="../assets/brand/hosp_ulsan.png" alt="울산대학교병원" loading="lazy" width="400" height="150"></li>
+      <li data-rv style="--d:2"><img src="../assets/brand/hosp_mountsinai.png" alt="Mount Sinai" loading="lazy" width="400" height="150"></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<!-- ═════════ 7. footer ═════════ -->
+<!-- Q&A (NeuFlow 문안 11/04) -->
+<section class="nf-qa" id="qa" data-tone="light">
+  <div class="nf-qa__in">
+    <h2>주요 질문</h2>
+<details class="nf-qa__i" open><summary>추가 촬영이 필요한가요?</summary><p>NeuFlow는 분석에 적합한 기존 TOF-MRA 영상을 활용하는 방식입니다. 실제 분석 가능 여부는 촬영 조건과 영상 품질, 의료기관의 운영 방식에 따라 확인이 필요합니다.</p></details>
+<details class="nf-qa__i"><summary>뇌졸중 위험 정보를 확인할 수 있나요?</summary><p>NeuFlow는 SIG 기반 정량정보와 뇌졸중 위험신호의 해석을 하나의 보고서로 담아 제공합니다. 분석 수치와 그 임상적 의미를 함께 살펴보고, 참고할 수 있습니다.</p></details>
+<details class="nf-qa__i"><summary>보고서만으로 뇌졸중 여부를 판단할 수 있나요?</summary><p>보고서는 관련 정보를 검토하고 설명하는 데 활용하는 자료입니다. 개인의 상태는 의료진이 증상, 병력, 위험요인과 다른 검사 결과를 함께 고려해 판단합니다.</p></details>
+    <p class="nf-note">위 내용은 뇌졸중 위험신호 분석의 적용 방향입니다. 실제 제품 화면이나 확정된 제공 항목을 의미하지 않으며, 보고서에 반영되는 항목은 연구 결과와 제품화 과정에 따라 달라질 수 있습니다.</p>
+  </div>
+</section>
+
+<footer class="ft" id="ft" data-tone="dark">
+  <div class="ft__bg" aria-hidden="true"><img src="../assets/img/p11_flow_bg.webp" alt="" loading="lazy" decoding="async"></div>
+  <div class="ft__top">
+    <p class="ft__say" data-rv>뇌졸중 위험신호,<br>뉴플로우의 <em>SIG</em>로 놓치지 마세요.</p>
+    <div class="ft__cta" data-rv style="--d:1">
+      <button type="button" class="btn btn--w"><span>도입 문의</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6h9M7 2.5 10.5 6 7 9.5"/></svg></button>
+      <button type="button" class="btn btn--line"><span>데모 신청</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6h9M7 2.5 10.5 6 7 9.5"/></svg></button>
+    </div>
+  </div>
+  <div class="ft__mid">
+    <img class="ft__logo" src="../assets/brand/logo_mediimg_header.png" alt="MEDIIMG" width="529" height="132" loading="lazy">
+    <ul class="ft__nav">
+      <li>Company</li><li>Technology</li><li>NeuFlow</li><li>Evidence</li><li>Contact</li>
+    </ul>
+  </div>
+  <div class="ft__btm">
+    <address>
+      <span>(주)메디이미지</span>
+      <span>사업자등록번호 313-87-00931</span>
+      <span>서울 서초구 강남대로16길 3, 양재디에스타워 701호</span>
+      <span>연구소: 분당서울대병원 헬스케어혁신파크</span>
+      <span>TEL 02-484-5773</span>
+      <span>info@mediimg.com</span>
+    </address>
+    <p class="ft__c">© 2026 MEDIIMG Co., Ltd.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script type="module" src="main.js"></script>
+</body>
+</html>
