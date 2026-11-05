@@ -344,7 +344,7 @@ mm.add('(min-width: 1100px) and (prefers-reduced-motion: no-preference)', () => 
   } }, 0.215)
     .fromTo(cnt, { roi: 0 }, { roi: 4.33, duration: 0.12, ease: 'power2.out', onUpdate: () => { techEls.roi.textContent = cnt.roi.toFixed(2); } }, 0.37)
     .fromTo(techEls.bars, { '--g': 0 }, { '--g': 1, duration: 0.1, stagger: 0.012, ease: 'power3.out' }, 0.535)
-    .fromTo(cnt, { time: 0 }, { time: 3, duration: 0.13, ease: 'power1.out', onUpdate: () => { techEls.time.textContent = String(Math.round(cnt.time)).padStart(2, '0'); } }, 0.68)
+    .fromTo(cnt, { time: 0 }, { time: 5, duration: 0.13, ease: 'power1.out', onUpdate: () => { techEls.time.textContent = '약 ' + Math.round(cnt.time); } }, 0.68)
     .fromTo(techEls.segs, { '--f': 0 }, { '--f': 1, duration: 0.026, stagger: 0.026 }, 0.68)
     .fromTo('.tchip--white', { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.04, ease: 'back.out(2)' }, 0.44)
     .fromTo('.tchip--aqua', { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.04, ease: 'back.out(2)' }, 0.62)
@@ -353,7 +353,7 @@ mm.add('(min-width: 1100px) and (prefers-reduced-motion: no-preference)', () => 
   return () => {
     gsap.ticker.remove(layout);
     svg.replaceChildren();
-    techEls.score.textContent = '7.4'; techEls.roi.textContent = '4.33'; techEls.time.textContent = '03';
+    techEls.score.textContent = '7.4'; techEls.roi.textContent = '4.33'; techEls.time.textContent = '약 5';
     techEls.gauge.style.strokeDashoffset = '';
   };
 });

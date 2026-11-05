@@ -256,7 +256,8 @@ button{font:inherit}
 .arrive-p{max-width:25em;margin-top:26px;font-size:15px;line-height:1.7;color:rgba(255,255,255,.72)}
 .arrive-dl{display:flex;gap:38px;margin:30px 0 34px}
 .arrive-dl dt{font:500 10px/1 var(--f-m);letter-spacing:.1em;color:rgba(255,255,255,.5)}
-.arrive-dl dd{margin:10px 0 0;font:800 28px/1 var(--f-k);letter-spacing:-.02em}
+.arrive-dl dd{margin:10px 0 0;font:800 28px/1 var(--f-k);letter-spacing:-.02em;white-space:nowrap}
+@media (max-width:760px){.arrive-dl{gap:20px}.arrive-dl dd{font-size:20px}}
 .arrive-report{position:relative}
 .arrive-node{position:absolute;left:50%;top:-6px;width:0;height:0}
 .paper{background:#fff;padding:9px;transform:rotate(-4deg);box-shadow:0 46px 90px rgba(0,0,0,.6),0 10px 22px rgba(0,0,0,.4);will-change:transform}

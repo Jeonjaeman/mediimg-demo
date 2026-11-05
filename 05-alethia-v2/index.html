@@ -117,11 +117,11 @@
 
     <!-- phase B : statement + pin markers -->
     <div class="hero__state">
-      <p class="hero__kicker">SIGNAL INTENSITY GRADIENT<br>혈관별 정량정보</p>
+      <p class="hero__kicker">SIGNAL INTENSITY GRADIENT<br>뇌졸중 위험신호</p>
       <h2 class="hero__stmt">
         <span class="ln"><span>혈관 경계의 신호 변화를,</span></span>
-        <span class="ln"><span>혈관별</span></span>
-        <span class="ln"><span>정량정보로.</span></span>
+        <span class="ln"><span>뇌졸중</span></span>
+        <span class="ln"><span>위험신호로.</span></span>
       </h2>
       <div class="pin" data-pin="high"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">HIGH SIG<br><b>5.82 SI/mm</b></span></div></div>
       <div class="pin" data-pin="low"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">LOW SIG<br><b>1.94 SI/mm</b></span></div></div>
@@ -134,7 +134,7 @@
       <div class="steps__lead">
         <svg class="steps__arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg>
         <div>
-          <h2>기존 TOF-MRA 영상에서<br>보고서와 해석까지.</h2>
+          <h2>TOF-MRA 불러오기부터<br>보고서까지, 약 5분.</h2>
           <p>PROCESS — <span id="stepNow">01</span> / 05</p>
         </div>
       </div>
@@ -142,7 +142,7 @@
         <li class="step is-open">
           <button type="button" class="step__head"><span class="step__no">01.</span><span class="step__tt">TOF-MRA 영상 활용</span><i class="step__plus"></i></button>
           <div class="step__body"><div class="step__bodyin"><div class="step__grid">
-            <div><p>분석에 적합한 기존 촬영 영상을 사용합니다.</p><span class="step__meta">INPUT · TOF-MRA</span></div>
+            <div><p>분석에 적합한 기존 촬영 영상을 사용합니다. 추가 촬영도, 조영제도 필요 없습니다.</p><span class="step__meta">INPUT · TOF-MRA / PACS</span></div>
             <img src="../assets/brand/real_step1_tof_source.png" alt="TOF-MRA 원본 영상 화면" loading="lazy">
           </div></div></div>
           <i class="step__bar"></i>
@@ -225,7 +225,7 @@
 
     <div class="tech__copy tech__copy--a">
       <span class="tag" data-reveal>SIG TECHNOLOGY</span>
-      <h2 class="h2 h2--sm js-lines"><span class="ln"><span>혈관 경계의 신호에서,</span></span><span class="ln"><span>혈관별 정량정보를</span></span><span class="ln"><span>얻습니다.</span></span></h2>
+      <h2 class="h2 h2--sm js-lines"><span class="ln"><span>혈관 경계의 신호에서,</span></span><span class="ln"><span>뇌졸중 위험신호를</span></span><span class="ln"><span>얻습니다.</span></span></h2>
       <p data-reveal>NeuFlow는 TOF-MRA 영상의 혈관 경계 부근에서 나타나는 신호(SIG, Signal Intensity Gradient) 변화를 분석해 혈관별 정량정보를 얻습니다. SIG는 혈관벽전단응력과 관련된 혈류역학적 특성을 이해하는 대리지표로 연구되어 왔습니다.</p>
       <button type="button" class="btn" data-reveal><span>SIG 기술 보기</span><i class="ico"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i></button>
     </div>
@@ -236,7 +236,7 @@
       <p>뇌혈관 건강 보고서는 3차원 혈관 구조와 SIG 정량정보를 제공하고, 뇌졸중과 관련된 위험신호의 해석을 더합니다.</p>
       <ul class="flist">
         <li><i>F.01</i>혈관 구조 정보</li>
-        <li><i>F.02</i>SIG 정량정보</li>
+        <li><i>F.02</i>PACS 연동</li>
         <li><i>F.03</i>SIG 기반 뇌졸중 위험 신호 해석</li>
         <li><i>F.04</i>임상 정보와 함께하는 결과 검토</li>
         <li><i>F.05</i>의료진과 병원</li>
@@ -296,10 +296,10 @@
       <!-- time -->
       <article class="gc gc--time" data-gc="time" data-anchor="0.408,0.60">
         <div class="gc__in">
-          <header class="gc__hd"><span>분석 흐름</span><em>PROCESS</em></header>
-          <div class="time__val"><b id="cTime">03</b><span>STEPS</span></div>
-          <div class="time__seg" style="grid-template-columns:repeat(3,1fr)"><i></i><i></i><i></i></div>
-          <footer class="gc__kv"><span>영상 활용</span><span>정량 분석</span><span>보고서</span></footer>
+          <header class="gc__hd"><span>분석 시간</span><em>ANALYSIS</em></header>
+          <div class="time__val"><b id="cTime">약 5</b><span>분</span></div>
+          <div class="time__seg"><i></i><i></i><i></i><i></i><i></i></div>
+          <footer class="gc__kv"><span>추가 촬영 <b>0</b>회</span><span>조영제 불필요</span></footer>
           <i class="gc__node"></i>
         </div>
       </article>
@@ -318,7 +318,7 @@
     <header class="sec__head sec__head--split">
       <div>
         <span class="tag" data-reveal>BEFORE / AFTER</span>
-        <h2 class="h2 js-lines"><span class="ln"><span>TOF-MRA 흑백 이미지가,</span></span><span class="ln"><span>SIG 정량정보가 됩니다.</span></span></h2>
+        <h2 class="h2 js-lines"><span class="ln"><span>TOF-MRA 흑백 이미지가,</span></span><span class="ln"><span>뇌졸중 위험을 보여줍니다.</span></span></h2>
       </div>
       <p data-reveal>SIG 정보가 나오기 전에는 뇌혈관의 상태를 정량적 수치로 분석하기 어려웠습니다. 손잡이를 좌우로 움직여 보세요.</p>
     </header>

@@ -385,7 +385,7 @@ em{font-style:normal}
 
   .reel{height:240vh}
   .reel__stage{padding-top:78px}
-  .reel__title{margin-top:16px;font-size:clamp(76px,24vw,120px)}
+  .reel__title{margin-top:16px;font-size:clamp(50px,15vw,120px)}
   .reel__facts{left:var(--pad);right:var(--pad);bottom:auto;top:calc(78px + 52vw + 64px);grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
   .reel__facts dd{font-size:26px}
   .reel__copy{left:var(--pad);right:var(--pad);width:auto;bottom:18px}

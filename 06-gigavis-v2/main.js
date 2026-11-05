@@ -70,8 +70,8 @@ const EN = {
   s15: 'Within it',
   s16a: 'Blood <b>never stops</b>', s16b: 'flowing',
   s17a: 'At the heart of', s17b: 'an unseen force',
-  s18a: 'With <b>NeuFlow</b>,', s18b: 'it appears as <em>SIG</em> quantitative data',
-  s19: 'From existing images', s20: 'With SIG · 3D · quantification', s21: 'We read the brain’s vessels',
+  s18a: 'With <b>NeuFlow</b>,', s18b: '<em>SIG</em> reveals stroke risk',
+  s19: 'From existing images', s20: 'SIG and 3D, to stroke risk signals', s21: 'We read the brain’s vessels',
   s22: 'FDA 510(k) Cleared · MFDS certified',
 };
 
