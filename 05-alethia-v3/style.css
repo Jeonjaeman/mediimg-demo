@@ -1146,3 +1146,22 @@ body.is-locked { overflow: hidden; }
   /* the ICA(L) pin sits near the right edge: keep its label on the left of the dot */
   .pin--left .pin__in { left: auto; right: -15px; align-items: flex-end; text-align: right; transform-origin: calc(100% - 15px) 15px; }
 }
+
+/* v3.1 header type (고객 의견 4 — 메뉴 글자도 확대) */
+.hd { height: 76px; }
+.hd__logo img { height: 26px; }
+.hd__nav { gap: 10px; }
+.hd__link { font-size: 14.5px; padding: 9px 11px; }
+.hd__link svg { width: 10px; height: 10px; }
+.hd__sub { min-width: 280px; }
+.hd__sub a, .hd__sub span { font-size: 14px; padding: 11px 12px; }
+.hd__lang { font-size: 14px; }
+.hd__cta { font-size: 15px; }
+.hd__cta .ico { width: 26px; height: 26px; }
+.mnav li span { font-size: 13px; }
+.mnav p { font-size: 14px; }
+@media (max-width: 899px) {
+  .hd { height: 64px; }
+  .hd__logo img { height: 22px; }
+  .hd__cta { font-size: 14px; }
+}
