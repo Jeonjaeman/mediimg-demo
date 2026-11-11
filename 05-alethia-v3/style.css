@@ -956,3 +956,193 @@ body.is-locked { overflow: hidden; }
   .hero__real { opacity: 1; visibility: visible; }
   .pin__in, .hero__src, .hud { visibility: visible; }
 }
+
+/* ==========================================================================
+   v3.1 (2026-11-11) — 고객 1차 의견 반영: 히어로 재배치, 글자 크기 전반 확대, 단면 라벨,
+   기술 섹션 배경 정리, 전후 비교 안내, 논문 가로 스크롤, 주소·인증 번호 확정
+   ========================================================================== */
+
+/* hero : title + copy stacked on the left, vessel pushed to the lower right while the title is up */
+.hero__canvas { transform-origin: 50% 50%; will-change: transform; }
+.hero__head { top: clamp(96px, 12.5vh, 136px); max-width: 980px; display: grid; gap: 30px; justify-items: start; }
+.hero__title { font-size: clamp(36px, 4.1vw, 66px); line-height: 1.1; margin-bottom: 0; }
+.hero__sub { max-width: 640px; font-size: clamp(17px, 1.3vw, 21px); line-height: 1.5; }
+.hero__sub p + p { margin-top: 18px; }
+.hero__cert { font-size: 12.5px; margin-bottom: 0; color: rgba(255, 255, 255, .7); }
+.hero__foot { justify-content: flex-end; }
+.hero__scroll { font-size: 14px; }
+.hero__scrim--a {
+  background:
+    linear-gradient(90deg, rgba(2, 5, 12, .9) 0%, rgba(2, 5, 12, .66) 30%, rgba(2, 5, 12, 0) 60%),
+    linear-gradient(0deg, rgba(2, 5, 12, .7) 0%, rgba(2, 5, 12, 0) 30%),
+    linear-gradient(180deg, rgba(2, 5, 12, .55) 0%, rgba(2, 5, 12, 0) 16%);
+}
+/* the result screen is sized by script (measureHero) so the measured segments stay well inside the viewport */
+.hero__real { inset: auto; width: auto; height: auto; object-fit: fill; }
+.hero__kicker { font-size: 12.5px; }
+.hero__stmt { font-size: clamp(32px, 3.8vw, 58px); max-width: 620px; }
+.hero__src { font-size: 12.5px; }
+.pin__lb { font-size: 12px; }
+.pin__lb b { font-size: 14.5px; }
+.hud { font-size: 11.5px; }
+@media (min-width: 900px) { .hero__title .ln { white-space: nowrap; } }
+
+/* markers */
+.chk { font-size: 11.5px; padding: 5px 8px; }
+.chk--lg { font-size: 13px; padding: 8px 11px; }
+
+/* section lead paragraphs */
+.sec__head--split > p { font-size: 18px; line-height: 1.6; max-width: 440px; }
+.tag { font-size: 11.5px; }
+
+/* history */
+.cfacts { gap: 24px 44px; padding: 32px 0; }
+.cfacts span { font-size: 12px; margin-bottom: 12px; }
+.cfacts b { font-size: 20px; line-height: 1.35; }
+.cfacts small { font-size: 15px; margin-top: 8px; line-height: 1.45; }
+.tl__year span { font-size: 14px; }
+.tl__group h3 { font-size: 14px; margin-bottom: 22px; }
+.tl__group ul li { grid-template-columns: 104px 1fr; padding: 16px 0; }
+.tl__group time { font-size: 15px; }
+.tl__group p { font-size: clamp(18px, 1.45vw, 22px); line-height: 1.5; }
+.tl__group p small { font-size: 12.5px; }
+
+/* definition */
+.def__copy > p { font-size: clamp(17px, 1.4vw, 21px); line-height: 1.65; }
+.def__kv span { font-size: 12px; }
+.def__kv b { font-size: 17px; line-height: 1.4; }
+.def__kv li { grid-template-columns: 110px 1fr; padding: 16px 0; }
+
+/* SIG tech : wider copy, bigger type, product screen clear of the copy column (no overlay band on the screen) */
+.tech__copy p { font-size: 18px; line-height: 1.65; max-width: 500px; margin-bottom: 32px; }
+.tech__src { font-size: 12.5px; }
+.tech__note { font-size: 15px; }
+.gc__hd { font-size: 15.5px; }
+.gc__hd em { font-size: 11px; }
+.gc__p { font-size: 14px; line-height: 1.55; }
+.gc__kv { font-size: 12px; }
+.gc__kv--3 { gap: 10px; }
+.cmap__lb { font-size: 11.5px; }
+.bar b { font-size: 12px; }
+.bar span { font-size: 11px; }
+.out__val span { font-size: 12px; }
+.flist li { font-size: 16.5px; padding: 13px 0; }
+.flist i { font-size: 12px; }
+@media (min-width: 1100px) {
+  .tech__copy { width: min(500px, 32vw); }
+  .tech__visual { right: -3vw; width: min(62vw, 110vh); }
+  .tech__visual::after { display: none; }
+  .tech__visual img { border-left: 1px solid rgba(255, 255, 255, .08); }
+}
+
+/* before / after : idle handle nudge + hint pill */
+.ba__lb { font-size: 12px; padding: 7px 9px; }
+.ba__scale { font-size: 11.5px; }
+.ba__read { font-size: 11.5px; }
+.ba__src { font-size: 12.5px; }
+.ba__hint {
+  position: absolute; left: 50%; bottom: 22px; transform: translate(-50%, 0); white-space: nowrap;
+  font: 500 12.5px/1 var(--mono); letter-spacing: .04em; color: var(--ink); background: var(--aqua);
+  padding: 9px 12px; border-radius: 100px; box-shadow: 0 10px 24px -8px rgba(6, 17, 28, .5);
+  transition: opacity .5s ease, transform .5s var(--ease);
+}
+.ba__hint.is-hidden { opacity: 0; transform: translate(-50%, 8px); }
+.cmp__row span { font-size: 17px; }
+.cmp__row--head span { font-size: 12.5px; }
+
+/* process : the three slices fill the media box, each with its plane label */
+.proc__now { font-size: 12.5px; }
+.pstep__no { font-size: 13px; }
+.pstep__tt { font-size: 19px; }
+.pstep__in p { font-size: 16.5px; line-height: 1.55; }
+.pstep__meta { font-size: 12px; }
+.pm figcaption { font-size: 12.5px; }
+.pm--1 { padding: 28px 28px 62px; }
+.pm__slices { display: flex; gap: 16px; width: 100%; height: 100%; max-width: none; align-items: stretch; }
+.slice { position: relative; min-width: 0; background: #000; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255, 255, 255, .1); }
+.slice--ax { flex: none; height: 100%; aspect-ratio: 1; }
+.slice--ax img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
+.pm__side { flex: 1; min-width: 0; display: grid; align-content: center; gap: 16px; }
+.pm__side .slice img { display: block; width: 100%; height: auto; border-radius: 0; }
+.slice span {
+  position: absolute; left: 12px; top: 12px; font: 500 12px/1 var(--mono); letter-spacing: .08em;
+  color: var(--ink); background: var(--aqua); padding: 7px 9px; border-radius: 3px;
+}
+@media (max-width: 1099px) {
+  .pm--1 { padding: 16px 16px 50px; }
+  .pm__slices { flex-direction: column; gap: 10px; }
+  .slice--ax { height: auto; width: 46%; }
+  .pm__side { gap: 10px; }
+  .slice span { font-size: 10px; padding: 5px 6px; left: 8px; top: 8px; }
+}
+
+/* numbers / evidence */
+.fc span, .fc figcaption, .fc em { font-size: 11.5px; }
+.facts span { font-size: 15.5px; }
+.hosp__lb { font-size: 12.5px; }
+.evi__count { font-size: 13px; }
+.paper__meta > span:last-child { font-size: 13px; }
+.paper__body p { font-size: 17px; line-height: 1.6; max-width: 460px; }
+.paper__body dt { font-size: 11.5px; }
+.paper__body dd { font-size: 15px; }
+.evi__track.is-pin { overflow: visible; will-change: transform; }
+.nf-qa__i p { font-size: 17px; }
+.nf-note { font-size: 15px; }
+
+/* contact */
+.end__cta p { font-size: clamp(17px, 1.6vw, 22px); }
+.ft__addr small { font-size: 13.5px; line-height: 1.5; }
+.ft__cols h4 { font-size: 12px; }
+.ft__cols a, .ft__cols span { font-size: 13.5px; }
+.ft__bot { font-size: 13.5px; }
+
+@media (max-width: 899px) {
+  .hero__head { top: 92px; max-width: none; right: var(--pad); gap: 22px; }
+  .hero__title { font-size: clamp(30px, 8vw, 40px); }
+  .hero__sub { font-size: 15.5px; }
+  .hero__btn { display: inline-flex; }
+  .hero__cert { font-size: 11px; }
+  .ba__hint { font-size: 11px; bottom: 14px; }
+  .cfacts b { font-size: 18px; }
+  .cfacts small { font-size: 13.5px; }
+  .tl__group p { font-size: 16.5px; }
+  .tl__group ul li { grid-template-columns: 78px 1fr; }
+  .tl__group time { font-size: 13px; }
+}
+.evi__pin { padding-top: 24px; }
+.evi.sec { padding-top: 100px; }
+.hero__stage { background: #02050c; }
+.hero__title { text-shadow: 0 2px 28px rgba(2, 5, 12, .7), 0 0 2px rgba(2, 5, 12, .6); }
+.hero__sub { text-shadow: 0 1px 14px rgba(2, 5, 12, .8); }
+@media (min-width: 900px) {
+  .hero__scrim--a {
+    background:
+      linear-gradient(90deg, rgba(2, 5, 12, .94) 0%, rgba(2, 5, 12, .78) 34%, rgba(2, 5, 12, .3) 54%, rgba(2, 5, 12, 0) 68%),
+      linear-gradient(0deg, rgba(2, 5, 12, .7) 0%, rgba(2, 5, 12, 0) 30%),
+      linear-gradient(180deg, rgba(2, 5, 12, .55) 0%, rgba(2, 5, 12, 0) 16%);
+  }
+}
+.ba__hint { top: 20px; bottom: auto; }
+.ba__hint.is-hidden { transform: translate(-50%, -8px); }
+/* slices: the axial square leaves room for the two thin planes, which are shown centre-cropped at 2:1 so they read at a glance */
+@media (min-width: 1100px) {
+  .pm--1 { padding: 24px 24px 60px; }
+  .pm__slices { gap: 18px; }
+  .slice--ax { height: 84%; align-self: center; }
+  .pm__side { gap: 18px; }
+  .pm__side .slice { aspect-ratio: 2 / 1; }
+  .pm__side .slice img { height: 100%; object-fit: cover; object-position: 50% 50%; }
+}
+@media (max-width: 1099px) {
+  .pm__slices { flex-direction: row; gap: 10px; }
+  .slice--ax { height: 100%; width: auto; aspect-ratio: 1; }
+  .pm__side { gap: 10px; }
+  .pm__side .slice { aspect-ratio: 2 / 1; }
+  .pm__side .slice img { height: 100%; object-fit: cover; object-position: 50% 50%; }
+}
+.nb { white-space: nowrap; }
+@media (max-width: 899px) {
+  .hero__title { font-size: clamp(28px, 7.4vw, 38px); }
+  /* the ICA(L) pin sits near the right edge: keep its label on the left of the dot */
+  .pin--left .pin__in { left: auto; right: -15px; align-items: flex-end; text-align: right; transform-origin: calc(100% - 15px) 15px; }
+}

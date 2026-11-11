@@ -54,7 +54,7 @@ class SpecimenSequence extends FrameSequence {
 const seq = new SpecimenSequence({
   canvas,
   count: FRAMES,
-  url: (i) => `../assets/seq/specimen/${pad(i + 1, 4)}.webp`,
+  url: (i) => `../assets/seq/specimen_v3/${pad(i + 1, 4)}.webp`,   // v3.1: out-of-focus fragments removed (고객 의견 1)
   fit: 'cover',
   background: '#02050c',
   maxDpr: 1.5,
@@ -73,11 +73,27 @@ const hudFrame = $('#hudFrame'), hudMode = $('#hudMode');
 let geo = { s: 1, ox: 0, oy: 0 };
 let heroP = 0, lastFrame = -1;
 
-/* cover (desktop) / contain (mobile) fit of the real image inside the stage — must mirror .hero__real object-fit in style.css */
+/* The result screen is placed by script so the measured segments (ICA pins sit at y=1000 of 1136) stay clear of the bottom edge:
+   desktop — fitted inside the stage with headroom for the statement, bottom margin for the labels, nudged right of centre;
+   mobile — contained, centred. The same box drives the pin positions. */
 function measureHero() {
-  const r = realImg.getBoundingClientRect(), st = stage.getBoundingClientRect();
-  const s = mqDesk.matches ? Math.max(r.width / REAL_W, r.height / REAL_H) : Math.min(r.width / REAL_W, r.height / REAL_H);
-  geo = { s, ox: r.left - st.left + (r.width - REAL_W * s) * 0.5, oy: r.top - st.top + (r.height - REAL_H * s) * 0.5 };
+  const W = stage.clientWidth, H = stage.clientHeight;
+  let s, ox, oy;
+  if (mqDesk.matches) {
+    const top = Math.max(76, H * 0.085), bottom = Math.max(84, H * 0.095);
+    s = Math.min((W - 2 * 24) / REAL_W, (H - top - bottom) / REAL_H);
+    ox = (W - REAL_W * s) * 0.56;
+    oy = H - bottom - REAL_H * s;
+  } else {
+    s = Math.min(W / REAL_W, H / REAL_H);
+    ox = (W - REAL_W * s) * 0.5;
+    oy = (H - REAL_H * s) * 0.5;
+  }
+  geo = { s, ox, oy };
+  realImg.style.left = `${ox.toFixed(1)}px`;
+  realImg.style.top = `${oy.toFixed(1)}px`;
+  realImg.style.width = `${(REAL_W * s).toFixed(1)}px`;
+  realImg.style.height = `${(REAL_H * s).toFixed(1)}px`;
 }
 
 function renderHero(p) {
@@ -97,7 +113,11 @@ function renderHero(p) {
 
 /* scroll choreography of the sticky stage (timeline positions == scroll progress 0..1) */
 const heroTl = gsap.timeline({ paused: true, defaults: { ease: 'none' } });
+/* while the title is up the rendered vessel sits lower-right of the copy (고객 의견 2); it drifts back to centre as the sequence plays */
+const VESSEL_OFF = () => (mqDesk.matches ? { xPercent: 22, yPercent: 9, scale: 1.12 } : { xPercent: 0, yPercent: 10, scale: 1.18 });
+gsap.set(canvas, VESSEL_OFF());
 heroTl
+  .fromTo(canvas, VESSEL_OFF(), { xPercent: 0, yPercent: 0, scale: 1, duration: 0.3, ease: 'power1.inOut', immediateRender: false }, 0)
   // A → out
   .to('.hero__foot', { autoAlpha: 0, y: 24, duration: 0.05 }, 0.05)
   .to('.hero__head', { autoAlpha: 0, y: -46, duration: 0.07 }, 0.07)
@@ -110,6 +130,7 @@ heroTl
   .fromTo('.hero__stmt .ln > span', { yPercent: 112 }, { yPercent: 0, duration: 0.05, stagger: 0.012, ease: 'power3.out' }, 0.175)
   // render → real result screen
   .fromTo(realImg, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12 }, 0.5)
+  .to(canvas, { autoAlpha: 0, duration: 0.1 }, 0.52)   // the result screen is smaller than the stage; the render must not show around it
   .to('.hero__dim', { opacity: 0.12, duration: 0.1 }, 0.52)
   .fromTo('.hero__src', { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.04 }, 0.6)
   .fromTo('.pin__in', { autoAlpha: 0, scale: 0.3 }, { autoAlpha: 1, scale: 1, duration: 0.04, stagger: 0.03, ease: 'back.out(2.2)' }, 0.64)
@@ -125,6 +146,7 @@ const heroST = ScrollTrigger.create({
   onRefresh: (self) => { measureHero(); renderHero(self.progress); },
 });
 window.addEventListener('resize', () => { measureHero(); renderHero(heroP); });
+mqDesk.addEventListener('change', () => { gsap.set(canvas, heroP < 0.3 ? VESSEL_OFF() : { xPercent: 0, yPercent: 0, scale: 1 }); heroTl.invalidate(); });
 
 /* ---------------------------------------------------------------- loader + intro */
 const introTitle = $$('.hero__title .ln > span');
@@ -347,22 +369,42 @@ function setBa(v) {
   baRange.value = pos;
 }
 const baFromEvent = (e) => { const r = ba.getBoundingClientRect(); return ((e.clientX - r.left) / r.width) * 100; };
+/* idle "curtain" nudge (고객 의견 6): until the visitor touches the slider, the handle sways a little every few seconds while in view */
+const baHint = $('#baHint');
+let baIdle = null, baTouched = false;
+function baStopIdle() {
+  baTouched = true;
+  if (baIdle) { baIdle.kill(); baIdle = null; }
+  baHint && baHint.classList.add('is-hidden');
+}
 ba.addEventListener('pointerdown', (e) => {
   baDrag = true; ba.classList.add('is-drag');
   if (baTween) baTween.kill();
+  baStopIdle();
   try { ba.setPointerCapture(e.pointerId); } catch (_) { /* synthetic pointer */ }
   setBa(baFromEvent(e));
 });
 ba.addEventListener('pointermove', (e) => { if (baDrag) setBa(baFromEvent(e)); });
 ['pointerup', 'pointercancel', 'lostpointercapture'].forEach((t) => ba.addEventListener(t, () => { baDrag = false; ba.classList.remove('is-drag'); }));
-baRange.addEventListener('input', () => setBa(+baRange.value));
+baRange.addEventListener('input', () => { baStopIdle(); setBa(+baRange.value); });
 if (reduce) setBa(50);
 else {
   const st = { v: 88 };
   setBa(st.v);
+  const startIdle = () => {
+    if (baTouched || baIdle) return;
+    baIdle = gsap.timeline({ repeat: -1, repeatDelay: 2.4, defaults: { ease: 'sine.inOut', onUpdate: () => setBa(st.v) } })
+      .to(st, { v: 58, duration: 1.1 })
+      .to(st, { v: 36, duration: 1.6 })
+      .to(st, { v: 46, duration: 1.0 });
+  };
   ScrollTrigger.create({
     trigger: ba, start: 'top 70%', once: true,
-    onEnter: () => { baTween = gsap.to(st, { v: 46, duration: 2.1, ease: 'power3.inOut', onUpdate: () => setBa(st.v) }); },
+    onEnter: () => { baTween = gsap.to(st, { v: 46, duration: 2.1, ease: 'power3.inOut', onUpdate: () => setBa(st.v), onComplete: startIdle }); },
+  });
+  ScrollTrigger.create({
+    trigger: ba, start: 'top 90%', end: 'bottom 10%',
+    onToggle: (self) => { if (baIdle) baIdle[self.isActive ? 'play' : 'pause'](); },
   });
 }
 
@@ -443,12 +485,55 @@ function syncCarousel() {
   const idx = x >= max - 2 ? papers.length - 1 : clamp(Math.round(x / paperStep()), 0, papers.length - 1);
   eviNow.textContent = pad(idx + 1);
 }
-const moveCarousel = (dir) => track.scrollBy({ left: dir * paperStep(), behavior: reduce ? 'auto' : 'smooth' });
+let eviST = null;
+const EVI_SPAN = 0.86;   // share of the pinned scroll that drives the track; the rest is a pause on the last card
+const moveCarousel = (dir) => {
+  if (eviST) {
+    // pinned mode: move the page so the horizontal track lands on the next/previous paper.
+    // Card positions are the real offsets (the last one is capped at the track end), and the
+    // scroll progress is the inverse of the onUpdate mapping (x = progress / EVI_SPAN * dist).
+    const dist = track.scrollWidth - track.clientWidth;
+    const stops = papers.map((p) => Math.min(p.offsetLeft - papers[0].offsetLeft, dist));
+    const cur = -gsap.getProperty(track, 'x');
+    let idx = 0;
+    for (let i = 0; i < stops.length; i++) if (Math.abs(stops[i] - cur) < Math.abs(stops[idx] - cur)) idx = i;
+    const x = stops[clamp(idx + dir, 0, stops.length - 1)];
+    scrollToY(eviST.start + (EVI_SPAN * x / dist) * (eviST.end - eviST.start));
+    return;
+  }
+  track.scrollBy({ left: dir * paperStep(), behavior: reduce ? 'auto' : 'smooth' });
+};
 prev.addEventListener('click', () => moveCarousel(-1));
 next.addEventListener('click', () => moveCarousel(1));
 track.addEventListener('scroll', syncCarousel, { passive: true });
 window.addEventListener('resize', syncCarousel);
 syncCarousel();
+
+/* desktop (고객 의견 5): the papers ride the page scroll — the section pins, the track slides left until the last paper is
+   fully in view, then the page continues down. Phones keep the native swipe. */
+const eviPin = $('#eviPin');
+mm.add('(min-width: 1100px) and (prefers-reduced-motion: no-preference)', () => {
+  track.classList.add('is-pin');
+  const dist = () => Math.max(0, track.scrollWidth - track.clientWidth);
+  const syncPinned = (x) => {
+    const d = dist();
+    prev.disabled = x <= 2;
+    next.disabled = x >= d - 2;
+    eviNow.textContent = pad((x >= d - 2 ? papers.length - 1 : clamp(Math.round(x / paperStep()), 0, papers.length - 1)) + 1);
+  };
+  eviST = ScrollTrigger.create({
+    trigger: eviPin,
+    start: () => `top ${Math.min(0, window.innerHeight - eviPin.offsetHeight - 24)}`,
+    end: () => `+=${dist() + window.innerHeight * 0.25}`,
+    pin: true, scrub: 0.5, anticipatePin: 1, invalidateOnRefresh: true,
+    onUpdate: (self) => {
+      const x = Math.round(clamp(self.progress / EVI_SPAN, 0, 1) * dist());
+      gsap.set(track, { x: -x });
+      syncPinned(x);
+    },
+  });
+  return () => { eviST.kill(); eviST = null; gsap.set(track, { clearProps: 'x' }); track.classList.remove('is-pin'); syncCarousel(); };
+});
 
 /* ---------------------------------------------------------------- contact : wordmark fit, back to top, brochure modal */
 const wm = $('#wm'), wmText = $('#wmText');
