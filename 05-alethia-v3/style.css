@@ -1165,3 +1165,35 @@ body.is-locked { overflow: hidden; }
   .hd__logo img { height: 22px; }
   .hd__cta { font-size: 14px; }
 }
+
+/* ==========================================================================
+   v3.2 (2026-11-12) 제목 3단계 정리 — 고객 문의: 배경색(흑·백)마다 제목 크기가 달라 통일감이 없다.
+   대제목(첫 화면 · 마지막 문의) > 섹션 제목(배경과 관계없이 한 크기) > 보조 제목(측정 결과 위 문구)
+   ========================================================================== */
+:root {
+  --t-display: clamp(44px, 5vw, 80px);
+  --t-section: clamp(32px, 3.9vw, 62px);
+  --t-sub: clamp(26px, 2.6vw, 46px);
+}
+.hero__title, .end__h { font-size: var(--t-display); }
+.h2, .h2.h2--sm, .def__h, .flt__h { font-size: var(--t-section); line-height: 1.14; letter-spacing: -.045em; }
+.hero__stmt { font-size: var(--t-sub); line-height: 1.16; max-width: none; }
+@media (min-width: 900px) {
+  .h2 .ln, .def__h .ln, .end__h .ln, .hero__stmt .ln { white-space: nowrap; }
+}
+/* 제품 화면 옆 좁은 문안 열: 제목은 문단 폭(500px)보다 넓게 두어 두 줄로 읽히게 */
+@media (min-width: 1100px) {
+  .tech__copy h2, .proc__copy h2 { width: max-content; max-width: 46vw; }
+  /* 제품 화면은 제목 오른쪽 끝(여백 + 제목 폭 + 간격) 뒤에서 시작하도록 폭을 줄인다 — 1280~1600px 노트북 화면 대비 */
+  .tech__visual { width: min(62vw, 110vh, calc(103vw - 96px - min(41vw, 650px))); }
+}
+@media (max-width: 899px) {
+  :root {
+    --t-display: clamp(30px, 8.2vw, 40px);
+    --t-section: clamp(26px, 6.9vw, 34px);
+    --t-sub: clamp(22px, 5.6vw, 28px);
+  }
+  .hero__title { font-size: var(--t-display); }
+  .flt__h { font-size: var(--t-section); }
+  .hero__stmt { font-size: var(--t-sub); }
+}
