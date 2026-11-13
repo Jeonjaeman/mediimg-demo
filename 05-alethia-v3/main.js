@@ -114,7 +114,8 @@ function renderHero(p) {
 /* scroll choreography of the sticky stage (timeline positions == scroll progress 0..1) */
 const heroTl = gsap.timeline({ paused: true, defaults: { ease: 'none' } });
 /* while the title is up the rendered vessel sits lower-right of the copy (고객 의견 2); it drifts back to centre as the sequence plays */
-const VESSEL_OFF = () => (mqDesk.matches ? { xPercent: 22, yPercent: 9, scale: 1.12 } : { xPercent: 0, yPercent: 10, scale: 1.18 });
+/* mobile (고객 모바일 의견 ①, 11/13): the vessel starts in the lower part of the screen so it does not run behind the copy */
+const VESSEL_OFF = () => (mqDesk.matches ? { xPercent: 22, yPercent: 9, scale: 1.12 } : { xPercent: 8, yPercent: 30, scale: 1.02 });
 gsap.set(canvas, VESSEL_OFF());
 heroTl
   .fromTo(canvas, VESSEL_OFF(), { xPercent: 0, yPercent: 0, scale: 1, duration: 0.3, ease: 'power1.inOut', immediateRender: false }, 0)
@@ -597,6 +598,46 @@ document.addEventListener('error', (e) => {
   el.dataset.retry = n + 1;
   setTimeout(() => { const src = el.getAttribute('src'); el.removeAttribute('src'); el.setAttribute('src', src); }, 600 * (n + 1));
 }, true);
+
+/* ---------------------------------------------------------------- slice zoom (고객 모바일 의견 ⑥, 11/13) : 단면 영상을 누르면 크게 */
+const zoom = document.createElement('div');
+zoom.className = 'zoom';
+zoom.setAttribute('role', 'dialog');
+zoom.setAttribute('aria-modal', 'true');
+zoom.setAttribute('aria-hidden', 'true');
+zoom.innerHTML = '<img alt=""><p></p><button type="button" aria-label="닫기">×</button>';
+document.body.appendChild(zoom);
+let zoomReturn = null;
+function openZoom(slice) {
+  const img = $('img', slice), label = ($('span', slice) || {}).textContent || '';
+  $('img', zoom).src = img.currentSrc || img.src;
+  $('img', zoom).alt = img.alt;
+  $('p', zoom).textContent = label;
+  zoomReturn = slice;
+  zoom.classList.add('is-open');
+  zoom.setAttribute('aria-hidden', 'false');
+  lenis && lenis.stop();
+  document.body.classList.add('is-locked');
+  $('button', zoom).focus();
+}
+function closeZoom() {
+  if (!zoom.classList.contains('is-open')) return;
+  zoom.classList.remove('is-open');
+  zoom.setAttribute('aria-hidden', 'true');
+  lenis && lenis.start();
+  document.body.classList.remove('is-locked');
+  zoomReturn && zoomReturn.focus && zoomReturn.focus();
+}
+$$('.slice').forEach((s) => {
+  const label = ($('span', s) || {}).textContent || '단면 영상';
+  s.tabIndex = 0;
+  s.setAttribute('role', 'button');
+  s.setAttribute('aria-label', `${label} 크게 보기`);
+  s.addEventListener('click', () => openZoom(s));
+  s.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openZoom(s); } });
+});
+zoom.addEventListener('click', closeZoom);
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeZoom(); });
 
 /* ---------------------------------------------------------------- settle */
 const settle = () => { fitWordmark(); measureHero(); renderHero(heroP); ScrollTrigger.refresh(); syncCarousel(); };

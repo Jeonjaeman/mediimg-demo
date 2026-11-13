@@ -7,6 +7,8 @@
 <title>MEDIIMG · NeuFlow — 뇌졸중 위험신호, 뉴플로우의 SIG로 놓치지 마세요</title>
 <meta name="description" content="NeuFlow는 TOF-MRA 영상에서 뇌혈관의 구조와 혈류 관련 특성을 분석하는 의료기기 소프트웨어입니다. 기존 영상에 담긴 정보를 3차원 혈관 영상과 SIG 정량정보로 제시해, 의료진이 뇌졸중 위험을 살펴보도록 돕습니다.">
 <meta name="theme-color" content="#02050c">
+<!-- 페이지가 색을 직접 정한다는 선언: 휴대폰 브라우저(삼성 인터넷 등)의 강제 다크 모드가 화면 색을 바꾸지 않도록 -->
+<meta name="color-scheme" content="light dark">
 <link rel="icon" href="../assets/brand/favicon.png">
 <script>document.documentElement.classList.add('js');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +16,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.css">
-<link rel="preload" as="image" href="../assets/seq/specimen/0001.webp">
+<link rel="preload" as="image" href="../assets/seq/specimen_v3/0001.webp">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -103,10 +105,10 @@
         <span class="ln"><span>혈관 경계의 신호 변화를,</span></span>
         <span class="ln"><span>혈관별 정량정보로.</span></span>
       </h2>
-      <p class="hero__src" data-src>NeuFlow 측정 결과 화면 · 2026-11-10 수신 자료</p>
-      <div class="pin" data-pin="icar"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">ICA (R) · MEAN SIG<br><b>7.822</b></span></div></div>
-      <div class="pin pin--left" data-pin="ical"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">ICA (L) · MEAN SIG<br><b>8.227</b></span></div></div>
-      <div class="pin" data-pin="ba"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">BA · MEAN SIG<br><b>7.902</b></span></div></div>
+      <p class="hero__src" data-src>NeuFlow 측정 결과 화면</p>
+      <div class="pin" data-pin="icar"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">ICA (R)<i class="pin__k"> · MEAN SIG</i><br><b>7.822</b></span></div></div>
+      <div class="pin pin--left" data-pin="ical"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">ICA (L)<i class="pin__k"> · MEAN SIG</i><br><b>8.227</b></span></div></div>
+      <div class="pin" data-pin="ba"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">BA<i class="pin__k"> · MEAN SIG</i><br><b>7.902</b></span></div></div>
     </div>
 
     <div class="hud" aria-hidden="true"><span>MOTION STUDY</span><span id="hudFrame">FRAME 001/121</span><span id="hudMode">RENDER</span></div>
@@ -219,7 +221,7 @@
       <span class="tag" data-reveal>SIG TECHNOLOGY</span>
       <h2 class="h2 h2--sm js-lines"><span class="ln"><span>혈관 경계의 신호에서,</span></span><span class="ln"><span>혈관별 정량정보를 얻습니다.</span></span></h2>
       <p data-reveal>NeuFlow는 TOF-MRA 영상의 혈관 경계 부근에서 나타나는 신호(SIG, Signal Intensity Gradient) 변화를 분석해 혈관별 정량정보를 얻습니다. 혈액이 혈관벽을 따라 흐를 때 작용하는 힘을 혈관벽전단응력이라고 하며, SIG는 이와 관련된 혈류역학적 특성을 이해하는 대리지표로 연구되어 왔습니다.</p>
-      <p class="tech__src" data-reveal>화면 · NeuFlow 1.2.0.5 실제 캡처 (2026-11-10 수신)</p>
+      <p class="tech__src" data-reveal>화면 · NeuFlow 1.2.0.5 실제 캡처</p>
     </div>
 
     <div class="tech__copy tech__copy--b">
@@ -312,7 +314,7 @@
     <p class="ba__src" data-reveal>실제 결과물 한 쌍 (같은 구도) · 현 홈페이지 자료</p>
 
     <div class="cmp__table">
-      <div class="cmp__row cmp__row--head"><span></span><span>기존 MRA</span><span><img src="../assets/client-1110/logo_neuflow_blue.png" alt="NeuFlow" width="1152" height="218"></span></div>
+      <div class="cmp__row cmp__row--head"><span></span><span>기존 MRA</span><span><img src="../assets/client-1110/logo_neuflow_blue.png" alt="NeuFlow" width="1145" height="218"></span></div>
       <div class="cmp__row" data-reveal><span>01 — 영상</span><span>TOF-MRA 흑백 이미지</span><span>3차원 혈관 영상</span></div>
       <div class="cmp__row" data-reveal><span>02 — 정보</span><span>정량적 수치로 분석하기 어려움</span><span>혈관별 SIG 정량정보</span></div>
       <div class="cmp__row" data-reveal><span>03 — 해석</span><span>—</span><span>뇌졸중 위험신호 해석 · 의료진 설명</span></div>
@@ -355,11 +357,11 @@
             <div class="slice"><img src="../assets/client-1110/tof_sagittal_326.webp" alt="시상 단면" width="640" height="162" loading="lazy"><span>SAGITTAL · 시상</span></div>
           </div>
         </div>
-        <figcaption><span>TOF-MRA · AXIAL / CORONAL / SAGITTAL</span><span>원본 슬라이스 · 11/10 수신</span></figcaption>
+        <figcaption><span>TOF-MRA · AXIAL / CORONAL / SAGITTAL</span><span>원본 슬라이스 · 누르면 크게 보기</span></figcaption>
       </figure>
       <figure class="pm pm--2">
         <img src="../assets/client-1110/vessel_full_a.webp" alt="SIG 컬러가 입혀진 3차원 뇌혈관" width="1448" height="1086" loading="lazy">
-        <figcaption><span>3D VESSEL · SIG COLOR MAP</span><span>실제 결과물 · 11/10 수신</span></figcaption>
+        <figcaption><span>3D VESSEL · SIG COLOR MAP</span><span>실제 결과물</span></figcaption>
       </figure>
       <figure class="pm pm--3">
         <div class="pm__report"><img src="../assets/client-1110/result_roi.webp" alt="혈관별 SIG 값이 표시된 결과 화면" width="1600" height="1136" loading="lazy"><img class="pm__paper" src="../assets/brand/real_report.png" alt="뇌혈관 건강 보고서 예시(샘플)" width="329" height="474" loading="lazy"></div>
