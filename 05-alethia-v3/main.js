@@ -26,12 +26,13 @@ const scrollToY = (y) => (lenis ? lenis.scrollTo(y, { duration: 1.4 }) : window.
 /* ---------------------------------------------------------------- hero : sequence → real screen */
 const FRAMES = 121;
 const SEQ_END = 0.55;                 // the 121 frames play over the first 55% of the hero scroll
-const REAL_W = 1600, REAL_H = 1136;   // result_roi.webp
+const REAL_W = 1544, REAL_H = 1085;   // result_roi_1116.webp (고객 11/16 교체본)
 
 const hero = $('#hero');
 const stage = $('.hero__stage');
 const canvas = $('#seq');
 const realImg = $('#heroReal');
+const heroCopy = $('#heroCopy');
 const loader = $('#loader'), loaderNum = $('#loaderNum'), loaderBar = $('#loaderBar');
 
 /* The shared player is used as-is; this wrapper only caps parallel requests and retries a frame that failed to arrive. */
@@ -65,8 +66,8 @@ const seq = new SpecimenSequence({
   },
 });
 
-/* measured ROI segments on the result screen, in pixels of the 1600×1136 image (values from the output table of the captured screen) */
-const PINS = { icar: [470, 1000], ical: [1190, 1000], ba: [818, 700] };
+/* measured ROI segments on the result screen, in pixels of the 1544×1085 image (lower part of the coloured segments so the dots do not cover the labels printed on the capture; values from the output table, 11/16) */
+const PINS = { icar: [663, 722], ical: [917, 734], ba: [802, 692] };
 const pinEls = $$('.pin').map((el) => ({ el, key: el.dataset.pin }));
 const hudFrame = $('#hudFrame'), hudMode = $('#hudMode');
 
@@ -87,7 +88,10 @@ function measureHero() {
   } else {
     s = Math.min(W / REAL_W, H / REAL_H);
     ox = (W - REAL_W * s) * 0.5;
-    oy = (H - REAL_H * s) * 0.5;
+    // mobile: keep the screen below the statement + description (11/16 설명문 추가), but leave room for the pin labels
+    const copyBottom = heroCopy ? heroCopy.offsetTop + heroCopy.offsetHeight + 14 : 0;
+    const free = H - 64 - copyBottom - REAL_H * s;   // 64px below for the pin labels and the caption
+    oy = free >= 0 ? copyBottom + free * 0.5 : H - REAL_H * s - 64;
   }
   geo = { s, ox, oy };
   realImg.style.left = `${ox.toFixed(1)}px`;
@@ -129,6 +133,7 @@ heroTl
   .fromTo('.hud', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.03 }, 0.16)
   .fromTo('.hero__kicker', { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.03 }, 0.17)
   .fromTo('.hero__stmt .ln > span', { yPercent: 112 }, { yPercent: 0, duration: 0.05, stagger: 0.012, ease: 'power3.out' }, 0.175)
+  .fromTo('.hero__desc', { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.04 }, 0.2)
   // render → real result screen
   .fromTo(realImg, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12 }, 0.5)
   .to(canvas, { autoAlpha: 0, duration: 0.1 }, 0.52)   // the result screen is smaller than the stage; the render must not show around it
@@ -338,7 +343,7 @@ mm.add('(min-width: 1100px) and (prefers-reduced-motion: no-preference)', () => 
 
   const cnt = { out: 0 };
   tl2.fromTo(techBars, { '--g': 0 }, { '--g': 1, duration: 0.1, stagger: 0.012, ease: 'power3.out' }, 0.38)
-    .fromTo(cnt, { out: 0 }, { out: 8.227, duration: 0.13, ease: 'power2.out', onUpdate: () => { outVal.textContent = cnt.out.toFixed(3); } }, 0.68)
+    .fromTo(cnt, { out: 0 }, { out: 7.177, duration: 0.13, ease: 'power2.out', onUpdate: () => { outVal.textContent = cnt.out.toFixed(3); } }, 0.68)
     .fromTo('.tchip--white', { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.04, ease: 'back.out(2)' }, 0.44)
     .fromTo('.tchip--aqua', { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.04, ease: 'back.out(2)' }, 0.62)
     .set({}, {}, 1);
@@ -346,7 +351,7 @@ mm.add('(min-width: 1100px) and (prefers-reduced-motion: no-preference)', () => 
   return () => {
     gsap.ticker.remove(layout);
     svg.replaceChildren();
-    outVal.textContent = '8.227';
+    outVal.textContent = '7.177';
   };
 });
 

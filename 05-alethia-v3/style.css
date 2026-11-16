@@ -1293,3 +1293,25 @@ html, body { background-color: var(--abyss); }
   }
 }
 @media (max-width: 1099px) { .pm__slices .pm__side { gap: 30px; } }   /* .pm__slices div(gap 14px)보다 우선하도록 */
+
+/* ==========================================================================
+   v3.4 (2026-11-16) 고객 메인 수정 요청 — ICA 측정 위치 교체 · SIG 설명문 · 연혁 2023 · 인증 표기 · ©2018
+   ========================================================================== */
+/* ① 측정 결과 화면 왼쪽 설명문: 제목과 설명을 한 덩어리로 배치 */
+.hero__copy { position: absolute; left: var(--pad); top: clamp(150px, 19vh, 190px); width: min(520px, 36vw); }
+.hero__copy .hero__stmt { position: static; max-width: none; }
+.hero__desc { margin-top: 24px; max-width: 30em; font-size: clamp(14px, 1.05vw, 16.5px); line-height: 1.7; color: rgba(255, 255, 255, .78); text-shadow: 0 0 14px rgba(2, 5, 12, .9); visibility: hidden; }
+.hero__desc strong { display: block; margin-bottom: 6px; font-weight: 500; color: #fff; }
+/* 새 측정 화면은 세 구간이 가까워 BA 라벨을 점 아래 가운데로 (ICA(R)은 왼쪽, ICA(L)은 오른쪽) */
+.pin--down .pin__in { left: -60px; right: auto; width: 120px; flex-direction: column; align-items: center; gap: 8px; text-align: center; transform-origin: 60px 18px; }
+@media (max-width: 899px) {
+  .hero__copy { top: 128px; right: var(--pad); width: auto; }
+  .hero__desc { margin-top: 12px; font-size: 13px; line-height: 1.6; }
+  .hero__desc strong { margin-bottom: 3px; }
+  /* 모바일: 세 구간 간격이 30px 안팎이라 점을 줄이고, BA 라벨은 점 위 가운데 (아래는 ICA 라벨 자리) */
+  .pin__dot, .pin__dot svg { width: 20px; height: 20px; }
+  .pin__in { left: -10px; top: -10px; transform-origin: 10px 10px; }
+  .pin--left .pin__in { left: auto; right: -10px; transform-origin: calc(100% - 10px) 10px; }
+  .pin--down .pin__in { left: -50px; right: auto; top: auto; bottom: -10px; width: 100px; flex-direction: column-reverse; align-items: center; gap: 5px; text-align: center; transform-origin: 50px calc(100% - 10px); }
+}
+@media (prefers-reduced-motion: reduce) { .hero__desc { visibility: visible; } }

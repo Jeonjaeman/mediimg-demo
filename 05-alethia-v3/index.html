@@ -75,7 +75,7 @@
 <section class="hero" id="hero" data-tone="dark">
   <div class="hero__stage">
     <canvas class="hero__canvas" id="seq" aria-hidden="true"></canvas>
-    <img class="hero__real" id="heroReal" src="../assets/client-1110/result_roi.webp" alt="NeuFlow 측정 결과 화면: 3차원 뇌혈관과 혈관별 SIG 값 (ICA(R) 7.822 · ICA(L) 8.227 · BA 7.902)" width="1600" height="1136" decoding="async">
+    <img class="hero__real" id="heroReal" src="../assets/client-1110/result_roi_1116.webp" alt="NeuFlow 측정 결과 화면: 3차원 뇌혈관과 혈관별 SIG 값 (ICA(R) 6.912 · ICA(L) 7.177 · BA 7.945)" width="1544" height="1085" decoding="async">
     <div class="hero__dim" aria-hidden="true"></div>
     <div class="hero__scrim hero__scrim--a" aria-hidden="true"></div>
     <div class="hero__scrim hero__scrim--b" aria-hidden="true"></div>
@@ -89,7 +89,7 @@
         </h1>
         <div class="hero__sub">
           <p><strong>TOF-MRA 기반 뇌혈관질환 위험 마커.</strong><br>NeuFlow는 TOF-MRA 영상에서 뇌혈관의 구조와 혈류 관련 특성을 분석하는 의료기기 소프트웨어입니다. 기존 영상에 담긴 정보를 3차원 혈관 영상과 SIG 정량정보로 제시해, 의료진이 뇌졸중 위험을 살펴보도록 돕습니다.</p>
-          <p class="hero__cert">FDA 510(k) Cleared · K240385 &nbsp;—&nbsp; 식약처 의료기기 인증 제인 23-4077 호</p>
+          <p class="hero__cert">FDA 510(k) Cleared · K240385 &nbsp;—&nbsp; 식약처 의료기기 인증 제인 23-4077호</p>
         </div>
         <a class="btn hero__btn" href="#contact"><span>도입 문의</span><i class="ico"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i></a>
       </div>
@@ -101,14 +101,17 @@
     <!-- phase B : statement + measured pins on the real result screen -->
     <div class="hero__state">
       <p class="hero__kicker">SIGNAL INTENSITY GRADIENT<br>뇌졸중 위험신호</p>
-      <h2 class="hero__stmt">
-        <span class="ln"><span>혈관 경계의 신호 변화를,</span></span>
-        <span class="ln"><span>혈관별 정량정보로.</span></span>
-      </h2>
+      <div class="hero__copy" id="heroCopy">
+        <h2 class="hero__stmt">
+          <span class="ln"><span>혈관 경계의 신호 변화를,</span></span>
+          <span class="ln"><span>혈관별 정량정보로.</span></span>
+        </h2>
+        <p class="hero__desc"><strong>흑백 MRA에 담긴 혈류 특성을, 색과 숫자로 쉽게 보여줍니다.</strong> 혈관 경계의 신호변화(SIG)를 분석해, 혈관벽을 따라 작용하는 혈류의 힘인 ‘혈관벽 전단응력’과 관련된 정보를 제공합니다. 의료진의 정량적 평가를 지원하고, 환자와 수검자가 검사 결과를 더 쉽게 이해하도록 돕는 SIG 기반 영상 바이오마커입니다.</p>
+      </div>
       <p class="hero__src" data-src>NeuFlow 측정 결과 화면</p>
-      <div class="pin" data-pin="icar"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">ICA (R)<i class="pin__k"> · MEAN SIG</i><br><b>7.822</b></span></div></div>
-      <div class="pin pin--left" data-pin="ical"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">ICA (L)<i class="pin__k"> · MEAN SIG</i><br><b>8.227</b></span></div></div>
-      <div class="pin" data-pin="ba"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">BA<i class="pin__k"> · MEAN SIG</i><br><b>7.902</b></span></div></div>
+      <div class="pin pin--left" data-pin="icar"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">ICA (R)<i class="pin__k"> · MEAN SIG</i><br><b>6.912</b></span></div></div>
+      <div class="pin" data-pin="ical"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">ICA (L)<i class="pin__k"> · MEAN SIG</i><br><b>7.177</b></span></div></div>
+      <div class="pin pin--down" data-pin="ba"><div class="pin__in"><span class="pin__dot"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="2.2"/><path d="M18 8.5v5M18 22.5v5M8.5 18h5M22.5 18h5"/></svg></span><span class="pin__lb">BA<i class="pin__k"> · MEAN SIG</i><br><b>7.945</b></span></div></div>
     </div>
 
     <div class="hud" aria-hidden="true"><span>MOTION STUDY</span><span id="hudFrame">FRAME 001/121</span><span id="hudMode">RENDER</span></div>
@@ -151,11 +154,16 @@
             <li data-reveal><time>2021.11</time><p>디딤돌 · 창업성장기술개발사업(중소벤처기업부) 완료</p></li>
           </ul>
         </li>
-        <li class="tl__group" data-year="2022" data-lb="인허가 · 투자">
-          <h3>2022 — 2023</h3>
+        <li class="tl__group" data-year="2022" data-lb="인허가">
+          <h3>2022</h3>
           <ul>
             <li data-reveal><time>2022.10</time><p>의료기기 제조 및 품질관리 기준 적합인정서(GMP)</p></li>
             <li data-reveal><time>2022.12</time><p>의료기기제조업 허가</p></li>
+          </ul>
+        </li>
+        <li class="tl__group" data-year="2023" data-lb="인증 · 투자">
+          <h3>2023</h3>
+          <ul>
             <li data-reveal><time>2023.01</time><p>의료기기제조인증(품목 허가)</p></li>
             <li data-reveal><time>2023.05</time><p>해외규격인증획득지원(중소벤처기업부) 완료</p></li>
             <li data-reveal><time>2023.08</time><p>바이오·의료 기업 역량강화 사업(과학기술원) 완료</p></li>
@@ -202,8 +210,8 @@
         <ul class="def__kv" data-reveal>
           <li><span>INPUT</span><b>TOF-MRA 영상</b></li>
           <li><span>OUTPUT</span><b>3차원 혈관 영상 · 혈관별 SIG 정량정보</b></li>
-          <li><span>CLEARANCE</span><b>FDA 510(k) Cleared · K240385</b></li>
-          <li><span>KR</span><b>식약처 의료기기 인증 제인 23-4077 호 (NeuFlow) · 제인 24-1076 호 (FloCal)</b></li>
+          <li><span>USA</span><b>FDA 510(k) Cleared · K240385</b></li>
+          <li><span>KR</span><b>식약처 의료기기 인증<br>NeuFlow(제인 23-4077호)<br>FloCal(제인 24-1076호)</b></li>
         </ul>
       </div>
     </div>
@@ -213,7 +221,7 @@
 <!-- ───────── 04 SIG technology : real product screen + glass data cards ───────── -->
 <section class="tech" id="sig" data-tone="dark">
   <div class="tech__stage">
-    <div class="tech__visual"><img src="../assets/client-1110/screen_neuflow.webp" alt="NeuFlow 1.2.0.5 실행 화면: 단면 영상, SIG 컬러 스케일, 3차원 혈관과 혈관별 SIG 출력 표" width="2000" height="1523" loading="lazy"></div>
+    <div class="tech__visual"><img src="../assets/client-1110/screen_neuflow_1116.webp" alt="NeuFlow 1.2.0.5 실행 화면: 단면 영상, SIG 컬러 스케일, 3차원 혈관과 혈관별 SIG 출력 표" width="2000" height="1414" loading="lazy"></div>
 
     <svg class="tech__wires" aria-hidden="true"></svg>
 
@@ -238,7 +246,7 @@
 
     <div class="tech__cards">
       <!-- color map -->
-      <article class="gc gc--map" data-gc="map" data-anchor="0.173,0.45">
+      <article class="gc gc--map" data-gc="map" data-anchor="0.143,0.46">
         <div class="gc__in">
           <header class="gc__hd"><span>SIG 컬러 스케일</span><em>COLOR MAP</em></header>
           <div class="cmap"><i></i><div class="cmap__lb"><span>+ HIGH</span><span>− LOW</span></div></div>
@@ -248,13 +256,13 @@
       </article>
 
       <!-- roi bars (values from the output table of the captured screen) -->
-      <article class="gc gc--bars" data-gc="bars" data-anchor="0.56,0.54">
+      <article class="gc gc--bars" data-gc="bars" data-anchor="0.572,0.5">
         <div class="gc__in">
           <header class="gc__hd"><span>혈관별 SIG · MEAN</span><em><i class="live"></i>MEASURED</em></header>
           <div class="bars">
-            <div class="bar" style="--v:.78"><b>7.822</b><i></i><span>ICA (R)</span></div>
-            <div class="bar is-hi" style="--v:.82"><b>8.227</b><i></i><span>ICA (L)</span></div>
-            <div class="bar" style="--v:.79"><b>7.902</b><i></i><span>BA</span></div>
+            <div class="bar" style="--v:.69"><b>6.912</b><i></i><span>ICA (R)</span></div>
+            <div class="bar" style="--v:.72"><b>7.177</b><i></i><span>ICA (L)</span></div>
+            <div class="bar is-hi" style="--v:.79"><b>7.945</b><i></i><span>BA</span></div>
           </div>
           <footer class="gc__kv"><span>ROI <b>3</b></span><span>TYPE <b>Routine</b></span></footer>
           <i class="gc__node"></i>
@@ -262,7 +270,7 @@
       </article>
 
       <!-- cross section -->
-      <article class="gc gc--sec" data-gc="sec" data-anchor="0.075,0.25">
+      <article class="gc gc--sec" data-gc="sec" data-anchor="0.058,0.262">
         <div class="gc__in">
           <header class="gc__hd"><span>단면 영상</span><em>CROSS SECTION</em></header>
           <div class="sec3"><img src="../assets/client-1110/tof_axial_081.webp" alt="" loading="lazy"><img src="../assets/client-1110/tof_coronal_344.webp" alt="" loading="lazy"><img src="../assets/client-1110/tof_sagittal_326.webp" alt="" loading="lazy"></div>
@@ -275,13 +283,13 @@
       <article class="gc gc--out" data-gc="out" data-anchor="0.45,0.835">
         <div class="gc__in">
           <header class="gc__hd"><span>ICA (L) · OUTPUT</span><em>TABLE</em></header>
-          <div class="out__val"><b id="cOut">8.227</b><span>MEAN</span></div>
-          <footer class="gc__kv gc__kv--3"><span>MIN <b>2.025</b></span><span>MAX <b>15.930</b></span><span>STD <b>2.111</b></span></footer>
+          <div class="out__val"><b id="cOut">7.177</b><span>MEAN</span></div>
+          <footer class="gc__kv gc__kv--3"><span>MIN <b>2.779</b></span><span>MAX <b>13.547</b></span><span>STD <b>1.615</b></span></footer>
           <i class="gc__node"></i>
         </div>
       </article>
 
-      <span class="tchip tchip--aqua">BA · 7.902</span>
+      <span class="tchip tchip--aqua">BA · 7.945</span>
       <span class="tchip tchip--white"><i></i>Powered by VINT</span>
     </div>
 
@@ -364,7 +372,7 @@
         <figcaption><span>3D VESSEL · SIG COLOR MAP</span><span>실제 결과물</span></figcaption>
       </figure>
       <figure class="pm pm--3">
-        <div class="pm__report"><img src="../assets/client-1110/result_roi.webp" alt="혈관별 SIG 값이 표시된 결과 화면" width="1600" height="1136" loading="lazy"><img class="pm__paper" src="../assets/brand/real_report.png" alt="뇌혈관 건강 보고서 예시(샘플)" width="329" height="474" loading="lazy"></div>
+        <div class="pm__report"><img src="../assets/client-1110/result_roi_1116.webp" alt="혈관별 SIG 값이 표시된 결과 화면" width="1544" height="1085" loading="lazy"><img class="pm__paper" src="../assets/brand/real_report.png" alt="뇌혈관 건강 보고서 예시(샘플)" width="329" height="474" loading="lazy"></div>
         <figcaption><span>RESULT · REPORT</span><span>보고서 예시(샘플) · 항목은 제품화 과정에 따라 달라질 수 있음</span></figcaption>
       </figure>
     </div>
@@ -414,7 +422,7 @@
     <figure class="fc fc--report" data-depth="0.8"><img src="../assets/brand/real_report.png" alt="뇌혈관 건강 보고서 예시(샘플)" loading="lazy"></figure>
     <div class="fc fc--hosp" data-depth="0.35"><em class="chk">확인 중 ⑥</em><b data-count="90" data-suffix="+">0</b><span>HOSPITALS INSTALLED</span></div>
     <div class="fc fc--sat" data-depth="0.5"><em class="chk">확인 중 ⑥</em><span>USER SATISFACTION</span><b><span data-count="98">0</span><small>%</small></b><i><u></u></i></div>
-    <figure class="fc fc--screen" data-depth="0.95"><img src="../assets/client-1110/screen_neuflow.webp" alt="NeuFlow 실행 화면" loading="lazy"><figcaption>NEUFLOW 1.2.0.5</figcaption></figure>
+    <figure class="fc fc--screen" data-depth="0.95"><img src="../assets/client-1110/screen_neuflow_1116.webp" alt="NeuFlow 실행 화면" loading="lazy"><figcaption>NEUFLOW 1.2.0.5</figcaption></figure>
 
     <div class="flt__center">
       <span class="tag">BY THE NUMBERS</span>
@@ -535,11 +543,11 @@
         <div><h4>MEDIIMG</h4><a href="#history">Company</a><a href="#sig">Technology</a><a href="#contact">Contact</a></div>
         <div><h4>Product</h4><a href="#neuflow">NeuFlow</a><a href="#process">How it works</a><span>FloCal</span></div>
         <div><h4>Evidence</h4><a href="#evidence">Publications</a><a href="#evidence">Hospitals</a><a href="#history">History</a></div>
-        <div class="ft__cert"><h4>Certified</h4><span>FDA 510(k) Cleared · K240385</span><span>식약처 의료기기 인증 제인 23-4077 호 (NeuFlow) · 제인 24-1076 호 (FloCal)</span><span>GMP · ISO 13485 · ISO 27000 시리즈 · HIPAA</span></div>
+        <div class="ft__cert"><h4>Certified</h4><span>FDA 510(k) Cleared · K240385</span><span>식약처 의료기기 인증<br>NeuFlow(제인 23-4077호)<br>FloCal(제인 24-1076호)</span><span>GMP · ISO 13485 · ISO 27000 시리즈 · HIPAA</span></div>
       </div>
     </div>
     <div class="ft__bot">
-      <span>© 2026 MEDIIMG Co., Ltd.</span>
+      <span>© 2018 MEDIIMG Co., Ltd.</span>
       <span>(주)메디이미지 · TEL 02-484-5773 · info@mediimg.com</span>
       <button type="button" id="toTop">Back to top ↑</button>
     </div>
