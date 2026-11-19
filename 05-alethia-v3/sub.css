@@ -391,3 +391,15 @@
 /* v3.4 검증 지적: 서브 메뉴가 밝은 구간과 어두운 구간의 경계에 걸쳐도 탁해 보이지 않게 배경을 더 불투명하게 */
 .snav { background: rgba(2, 5, 12, .95); }
 .snav[data-tone="light"] { background: rgba(244, 243, 239, .96); }
+
+/* ───────── 11/19 고객 의견: 서브 메뉴가 배경과 같은 색이라 잘 안 보이고 글씨가 작음 ───────── */
+:root { --snav-h: 60px; }
+@media (max-width: 899px) { :root { --snav-h: 54px; } }
+.snav { background: rgba(14, 30, 56, .97); border-bottom: 1px solid rgba(255, 255, 255, .14); box-shadow: 0 10px 24px -14px rgba(0, 0, 0, .7); }
+.snav[data-tone="light"] { background: rgba(255, 255, 255, .97); border-bottom: 1px solid rgba(10, 22, 34, .16); box-shadow: 0 10px 26px -16px rgba(10, 22, 34, .45); }
+.snav__lb { font-size: 13px; opacity: .7; }
+.snav__list a { font-size: 17.5px; font-weight: 600; opacity: .68; padding: 0 18px; }
+.snav__list a i { font-size: 12.5px; }
+.snav__list li.snav__bar { height: 3px; }
+@media (max-width: 899px) { .snav__list a { font-size: 16.5px; padding: 0 14px; } }
+

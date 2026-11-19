@@ -308,24 +308,27 @@
       <p data-reveal>SIG 정보가 나오기 전에는 뇌혈관의 상태를 정량적 수치로 분석하기 어려웠습니다. 손잡이를 좌우로 움직여 보세요.</p>
     </header>
 
-    <div class="ba ba--dark" id="ba" style="--pos:50%" data-reveal>
-      <img class="ba__img" src="../assets/brand/real_color_vessel.png" alt="NeuFlow로 분석한 SIG 컬러 뇌혈관" width="760" height="648" loading="lazy" draggable="false">
-      <div class="ba__before"><img class="ba__img" src="../assets/brand/real_original_mra.jpg" alt="같은 구도의 TOF-MRA 원본 영상" width="759" height="648" loading="lazy" draggable="false"></div>
-      <span class="ba__lb ba__lb--l">BEFORE — TOF-MRA</span>
-      <span class="ba__lb ba__lb--r">AFTER — NeuFlow</span>
-      <div class="ba__scale" aria-hidden="true"><span>SIG</span><span>− LOW</span><i></i><span>+ HIGH</span></div>
-      <div class="ba__read" aria-hidden="true">COLOR MAP <b id="baRead">50</b>%</div>
-      <div class="ba__handle" aria-hidden="true"><span class="ba__knob"><svg viewBox="0 0 24 12"><path d="M8 2.5 4.5 6 8 9.5M16 2.5 19.5 6 16 9.5"/></svg></span></div>
-      <span class="ba__hint" id="baHint" aria-hidden="true">← 손잡이를 좌우로 움직여 보세요 →</span>
-      <input class="ba__range" id="baRange" type="range" min="0" max="100" value="50" aria-label="전후 비교 위치">
-    </div>
-    <p class="ba__src" data-reveal>실제 결과물 한 쌍 (같은 구도) · 현 홈페이지 자료</p>
-
-    <div class="cmp__table">
-      <div class="cmp__row cmp__row--head"><span></span><span>기존 MRA</span><span><img src="../assets/client-1110/logo_neuflow_blue.png" alt="NeuFlow" width="1145" height="218"></span></div>
-      <div class="cmp__row" data-reveal><span>01 — 영상</span><span>TOF-MRA 흑백 이미지</span><span>3차원 혈관 영상</span></div>
-      <div class="cmp__row" data-reveal><span>02 — 정보</span><span>정량적 수치로 분석하기 어려움</span><span>혈관별 SIG 정량정보</span></div>
-      <div class="cmp__row" data-reveal><span>03 — 해석</span><span>—</span><span>뇌졸중 위험신호 해석 · 의료진 설명</span></div>
+    <div class="cmp__grid">
+      <div class="cmp__media">
+        <div class="ba ba--dark" id="ba" style="--pos:50%" data-reveal>
+          <img class="ba__img" src="../assets/brand/real_color_vessel.png" alt="NeuFlow로 분석한 SIG 컬러 뇌혈관" width="760" height="648" loading="lazy" draggable="false">
+          <div class="ba__before"><img class="ba__img" src="../assets/brand/real_original_mra.jpg" alt="같은 구도의 TOF-MRA 원본 영상" width="759" height="648" loading="lazy" draggable="false"></div>
+          <span class="ba__lb ba__lb--l">BEFORE — TOF-MRA</span>
+          <span class="ba__lb ba__lb--r">AFTER — NeuFlow</span>
+          <div class="ba__scale" aria-hidden="true"><span>SIG</span><span>− LOW</span><i></i><span>+ HIGH</span></div>
+          <div class="ba__read" aria-hidden="true">COLOR MAP <b id="baRead">50</b>%</div>
+          <div class="ba__handle" aria-hidden="true"><span class="ba__knob"><svg viewBox="0 0 24 12"><path d="M8 2.5 4.5 6 8 9.5M16 2.5 19.5 6 16 9.5"/></svg></span></div>
+          <span class="ba__hint" id="baHint" aria-hidden="true">← 손잡이를 좌우로 움직여 보세요 →</span>
+          <input class="ba__range" id="baRange" type="range" min="0" max="100" value="50" aria-label="전후 비교 위치">
+        </div>
+        <p class="ba__src" data-reveal>실제 결과물 한 쌍 (같은 구도) · 현 홈페이지 자료</p>
+      </div>
+      <div class="cmp__table">
+        <div class="cmp__row cmp__row--head"><span></span><span>기존 MRA</span><span><img src="../assets/client-1110/logo_neuflow_blue.png" alt="NeuFlow" width="1145" height="218"></span></div>
+        <div class="cmp__row" data-reveal><span>01 — 영상</span><span>TOF-MRA 흑백 이미지</span><span>3차원 혈관 영상</span></div>
+        <div class="cmp__row" data-reveal><span>02 — 정보</span><span>정량적 수치로 분석하기 어려움</span><span>혈관별 SIG 정량정보</span></div>
+        <div class="cmp__row" data-reveal><span>03 — 해석</span><span>—</span><span>뇌졸중 위험신호 해석 · 의료진 설명</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -416,18 +419,18 @@
       <img src="../assets/client-1110/vessel_full_b.webp" alt="NeuFlow 실제 결과 화면: SIG 컬러 뇌혈관" loading="lazy">
       <figcaption><span>NEUFLOW · 3D SIG MAP</span><span>− LOW / + HIGH</span></figcaption>
     </figure>
-    <div class="fc fc--stat" data-depth="0.4"><em class="chk">확인 중 ⑥</em><span>PATIENTS ANALYZED</span><b data-count="11579" data-suffix="+">0</b></div>
+    <div class="fc fc--stat" data-depth="0.4"><span class="fc__kr">누적 분석 건수</span><b id="importTotal" data-count="26443" data-suffix="+">0</b></div>
     <figure class="fc fc--macro" data-depth="0.55"><img src="../assets/client-1110/tof_axial_050.webp" alt="TOF-MRA 축상 단면" loading="lazy"><figcaption>TOF-MRA · AXIAL</figcaption></figure>
     <div class="fc fc--fda" data-depth="1.25"><span><i><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 5 8.6 9.5 3.6"/></svg></i>FDA 510(k) Cleared</span><b>K240385</b><em>식약처 의료기기 인증 · 2024.10 FDA</em></div>
     <figure class="fc fc--report" data-depth="0.8"><img src="../assets/brand/real_report.png" alt="뇌혈관 건강 보고서 예시(샘플)" loading="lazy"></figure>
-    <div class="fc fc--hosp" data-depth="0.35"><em class="chk">확인 중 ⑥</em><b data-count="90" data-suffix="+">0</b><span>HOSPITALS INSTALLED</span></div>
+    <div class="fc fc--hosp" data-depth="0.35"><b data-count="30" data-suffix="+">0</b><span>HOSPITALS INSTALLED</span></div>
     <div class="fc fc--sat" data-depth="0.5"><em class="chk">확인 중 ⑥</em><span>USER SATISFACTION</span><b><span data-count="98">0</span><small>%</small></b><i><u></u></i></div>
     <figure class="fc fc--screen" data-depth="0.95"><img src="../assets/client-1110/screen_neuflow_1116.webp" alt="NeuFlow 실행 화면" loading="lazy"><figcaption>NEUFLOW 1.2.0.5</figcaption></figure>
 
     <div class="flt__center">
       <span class="tag">BY THE NUMBERS</span>
       <h2 class="flt__h" id="fltH">수치의 의미를,<br>의료진과 함께 확인합니다.</h2>
-      <p class="chk chk--lg" title="갑 확인 요청 ⑥">현 홈페이지 표기 수치 · 최신 수치로 추후 갱신 ⑥</p>
+      <p class="chk chk--lg" title="갑 확인 요청 ⑥">사용자 만족도 수치 확인 중 ⑥</p>
     </div>
   </div>
 </section>

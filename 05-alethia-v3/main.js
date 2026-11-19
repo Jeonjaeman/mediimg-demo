@@ -447,16 +447,36 @@ pstepEls.forEach((el, i) => {
 });
 
 /* ---------------------------------------------------------------- numbers : count-ups + floating parallax cards */
+const fmtCount = (el, v) => Math.round(v).toLocaleString('en-US') + (el.dataset.suffix || '');
 $$('[data-count]').forEach((el) => {
-  const to = +el.dataset.count, suffix = el.dataset.suffix || '';
-  const fmt = (v) => Math.round(v).toLocaleString('en-US') + suffix;
-  if (reduce) { el.textContent = fmt(to); return; }
+  if (reduce) { el.textContent = fmtCount(el, +el.dataset.count); el.dataset.done = '1'; return; }
   const o = { v: 0 };
   ScrollTrigger.create({
     trigger: el, start: 'top 88%', once: true,
-    onEnter: () => gsap.to(o, { v: to, duration: 1.8, ease: 'power2.out', onUpdate: () => { el.textContent = fmt(o.v); } }),
+    onEnter: () => gsap.to(o, {
+      v: +el.dataset.count, duration: 1.8, ease: 'power2.out',
+      onUpdate: () => { el.textContent = fmtCount(el, o.v); },
+      onComplete: () => { el.textContent = fmtCount(el, +el.dataset.count); el.dataset.done = '1'; },
+    }),
   });
 });
+
+/* 누적 분석 건수 — 메디이미지 Clinical API(Import 건수) 값.
+   API에 CORS 허용이 없어 브라우저가 직접 부르지 않고, 서버(시안은 배포 시점)에서 받아 둔 data/clinical.json을 읽는다.
+   파일이 없거나 실패하면 HTML에 적힌 값을 그대로 쓴다. */
+(() => {
+  const el = $('#importTotal');
+  if (!el) return;
+  fetch('data/clinical.json', { cache: 'no-store' })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((d) => {
+      const n = d && Number(d.importTotal);
+      if (!(n > 0)) return;
+      el.dataset.count = String(n);
+      if (el.dataset.done) el.textContent = fmtCount(el, n);
+    })
+    .catch(() => {});
+})();
 
 const flt = $('#flt');
 const fltH = $('#fltH');

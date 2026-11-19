@@ -1315,3 +1315,37 @@ html, body { background-color: var(--abyss); }
   .pin--down .pin__in { left: -50px; right: auto; top: auto; bottom: -10px; width: 100px; flex-direction: column-reverse; align-items: center; gap: 5px; text-align: center; transform-origin: 50px calc(100% - 10px); }
 }
 @media (prefers-reduced-motion: reduce) { .hero__desc { visibility: visible; } }
+
+/* ───────── v3.5 (11/19 고객 의견) ───────── */
+/* ⑧ 누적 분석 건수: 국문 라벨 */
+.fc--stat .fc__kr { font: 600 14px/1.2 var(--sans); letter-spacing: -.01em; }
+@media (max-width: 899px) { .fc--stat .fc__kr { font-size: 12.5px; } }
+
+/* ⑤ 전후 비교(왼쪽, 크기 유지) + 비교표(오른쪽)를 한 화면에 */
+@media (min-width: 1100px) {
+  .cmp__grid { display: grid; grid-template-columns: minmax(0, 900px) minmax(320px, 1fr); gap: clamp(40px, 4.4vw, 80px); align-items: center; }
+  .cmp__grid .ba--dark { max-width: none; margin: 0; }
+  .cmp__grid .cmp__table { margin-top: 0; }
+  .cmp__grid .cmp__row--head { display: flex; align-items: center; gap: 10px; padding: 0 0 16px; }
+  .cmp__grid .cmp__row--head > span:first-child, .cmp__grid .cmp__row--head > span:nth-child(2) { display: none; }
+  .cmp__grid .cmp__row--head img { height: 30px; margin-left: 0; }
+  .cmp__grid .cmp__row { grid-template-columns: 76px 1fr; gap: 10px 18px; align-items: start; padding: 22px 0; }
+  .cmp__grid .cmp__row > span:first-child { grid-row: 1 / span 2; font-size: 16px; padding-top: 2px; }
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(2),
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(3) { display: block; grid-column: 2; }
+  .cmp__grid .cmp__row > span:nth-child(2) { font-size: 16px; color: #7b858b; }
+  .cmp__grid .cmp__row > span:nth-child(3) { font-size: 19px; color: var(--text); }
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(2)::before,
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(3)::before {
+    display: block; width: auto; height: auto; border-radius: 0; background: none; box-shadow: none;
+    font: 500 11px/1 var(--mono); letter-spacing: .08em; margin-bottom: 7px;
+  }
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(2)::before { content: "기존 MRA"; color: #8a949a; }
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(3)::before { content: "NEUFLOW"; color: #1f5a86; }
+}
+
+/* 만족도 카드: 확인 중 표시가 USER SATISFACTION 글자와 겹치지 않게 — 표시는 카드 안 오른쪽 위, 글자는 그 아래로 */
+.fc--sat { padding-top: 36px; }
+.fc--sat .chk { top: 10px; right: 10px; }
+/* 98 숫자가 .fc span(작은 고정폭 글씨) 규칙을 받아 작게 보이던 것 바로잡음 */
+.fc--sat b span { font: inherit; letter-spacing: inherit; color: inherit; }
