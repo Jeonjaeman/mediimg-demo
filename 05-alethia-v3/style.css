@@ -1349,3 +1349,72 @@ html, body { background-color: var(--abyss); }
 .fc--sat .chk { top: 10px; right: 10px; }
 /* 98 숫자가 .fc span(작은 고정폭 글씨) 규칙을 받아 작게 보이던 것 바로잡음 */
 .fc--sat b span { font: inherit; letter-spacing: inherit; color: inherit; }
+
+/* ───────── v3.6 (11/24 고객 의견) ───────── */
+/* ⑤ 전후 비교: 넓은 화면에서 이미지와 표가 왼쪽에 몰리고, 글씨가 작고, 기존 MRA와의 비교가 잘 안 보이던 것.
+   → 표의 글씨를 키우고 기존 MRA · NeuFlow 값을 각각 칸(바탕)으로 구분. 넓은 화면(1680px~)은 두 칸을 나란히 놓아 오른쪽 끝까지 쓴다. */
+@media (min-width: 1100px) {
+  .cmp__grid .cmp__row { gap: 8px 18px; }
+  .cmp__grid .cmp__row > span:first-child { font-size: 17px; padding-top: 14px; }
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(2),
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(3) { padding: 13px 16px 14px; border-radius: 10px; }
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(2) { font-size: 17.5px; font-weight: 500; color: #38434b; background: rgba(10, 22, 34, .06); }
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(3) { font-size: 20px; font-weight: 600; background: #fff; box-shadow: inset 0 0 0 1.5px rgba(14, 30, 56, .88); }
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(2)::before,
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(3)::before { font-size: 12.5px; font-weight: 600; margin-bottom: 8px; }
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(2)::before { color: #55606a; }
+  .cmp__grid .ba__src { font-size: 13.5px; }
+}
+/* 두 칸 나란히: 표가 넓게 놓이는 폭 — 넓은 화면(1680px~)과, 표가 이미지 아래로 내려가는 900~1099px */
+@media (min-width: 900px) and (max-width: 1099px), (min-width: 1680px) {
+  .cmp__grid { align-items: center; }
+  .cmp__grid .cmp__row,
+  .cmp__grid .cmp__row--head { display: grid; grid-template-columns: clamp(104px, 7vw, 168px) 1fr 1fr; gap: 0 12px; align-items: stretch; padding: 0; border: 0; }
+  .cmp__grid .cmp__row > span { display: flex; align-items: center; }
+  .cmp__grid .cmp__row > span:first-child { grid-row: auto; padding: 0; font-size: clamp(17px, 1.05vw, 23px); border-top: 1px solid var(--rule); }
+  .cmp__grid .cmp__row--head > span:first-child { display: block; border-top: 0; }
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(2),
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(3) {
+    display: flex; grid-column: auto; border-radius: 0; text-wrap: balance;
+    padding: clamp(24px, 1.75vw, 40px) clamp(20px, 1.5vw, 34px);
+  }
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(2) { font-size: clamp(18px, 1.12vw, 27px); font-weight: 500; color: #38434b; background: rgba(10, 22, 34, .06); border-top: 1px solid rgba(10, 22, 34, .09); }
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(3) {
+    font-size: clamp(20px, 1.22vw, 30px); font-weight: 600; color: var(--text); gap: 14px; box-shadow: none; background-color: #fff;
+    border: solid rgba(14, 30, 56, .88); border-width: 0 1.5px; background-image: linear-gradient(rgba(10, 22, 34, .09), rgba(10, 22, 34, .09)); background-size: 100% 1px; background-repeat: no-repeat;
+  }
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(2)::before { display: none; }
+  .cmp__grid .cmp__row:not(.cmp__row--head) > span:nth-child(3)::before {
+    content: ""; display: block; flex: none; width: 10px; height: 10px; margin: 0; border-radius: 2px;
+    background: var(--aqua); box-shadow: 0 0 0 1px rgba(6, 17, 28, .85);
+  }
+  /* 머리줄: 기존 MRA · NeuFlow 칸 이름 */
+  .cmp__grid .cmp__row--head > span:nth-child(2),
+  .cmp__grid .cmp__row--head > span:nth-child(3) { display: flex; align-items: center; padding: clamp(18px, 1.3vw, 28px) clamp(20px, 1.5vw, 34px); border-radius: 14px 14px 0 0; }
+  .cmp__grid .cmp__row--head > span:nth-child(2) { font: 600 clamp(15px, .95vw, 21px)/1 var(--sans); letter-spacing: -.01em; color: #38434b; background: rgba(10, 22, 34, .06); }
+  .cmp__grid .cmp__row--head > span:nth-child(3) { background: #fff; border: solid rgba(14, 30, 56, .88); border-width: 1.5px 1.5px 0; }
+  .cmp__grid .cmp__row--head img { height: clamp(30px, 2vw, 46px); }
+  .cmp__grid .cmp__row:last-child > span:nth-child(2) { border-radius: 0 0 14px 14px; }
+  .cmp__grid .cmp__row:last-child > span:nth-child(3) { border-radius: 0 0 14px 14px; border-bottom-width: 1.5px; }
+  .cmp__grid .cmp__row:last-child > span:first-child { border-bottom: 1px solid var(--rule); }
+  .cmp__grid .ba__src { font-size: 14px; }
+  .cmp__grid .ba__lb { font-size: 13px; }
+}
+/* 아주 넓은 화면(2050px~): 비교 이미지도 화면 높이 안에서 함께 키워 오른쪽이 비지 않게 */
+@media (min-width: 2050px) {
+  .cmp__grid { grid-template-columns: minmax(0, max(900px, min(44vw, 1120px, calc((100vh - 150px) * 1.1728)))) minmax(320px, 1fr); }
+}
+/* 모바일 · 태블릿 세로(~899px)도 같은 방식: 값마다 칸(바탕)으로 구분하고 라벨 · 글씨를 키움 */
+@media (max-width: 899px) {
+  .cmp__row { gap: 8px 14px; }
+  .cmp__row > span:first-child { padding-top: 13px; }
+  .cmp__row:not(.cmp__row--head) > span:nth-child(2),
+  .cmp__row:not(.cmp__row--head) > span:nth-child(3) { padding: 11px 14px 12px; border-radius: 10px; }
+  .cmp__row:not(.cmp__row--head) > span:nth-child(2) { font-size: 15.5px; font-weight: 500; color: #38434b; background: rgba(10, 22, 34, .06); }
+  .cmp__row:not(.cmp__row--head) > span:nth-child(3) { font-size: 17px; font-weight: 600; background: #fff; box-shadow: inset 0 0 0 1.5px rgba(14, 30, 56, .88); }
+  .cmp__row:not(.cmp__row--head) > span:nth-child(2)::before,
+  .cmp__row:not(.cmp__row--head) > span:nth-child(3)::before { font-size: 11.5px; font-weight: 600; margin-bottom: 7px; }
+  .cmp__row:not(.cmp__row--head) > span:nth-child(2)::before { color: #55606a; }
+  /* 안내 문구가 BEFORE · AFTER 라벨을 가리지 않게 라벨 아래로 */
+  .ba__hint { top: 46px; }
+}
