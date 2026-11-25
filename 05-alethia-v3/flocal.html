@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MEDIIMG · FloCal — 출시 예고</title>
-<meta name="description" content="FloCal은 뇌혈관 혈류량 측정을 위한 메디이미지의 두 번째 제품입니다. 출시 소식을 가장 먼저 받아 보세요.">
-<meta name="theme-color" content="#02050c">
+<title>MEDIIMG · FloCal — 뇌혈관의 형태에서 흐름의 양까지</title>
+<meta name="description" content="FloCal은 TOF-MRA 기반 뇌혈관 혈류량 분석 소프트웨어입니다. TOF-MRA 영상에 SIG 기반 혈류량 정량정보를 더해, 뇌혈관의 구조와 혈액 흐름의 특성을 함께 이해할 수 있도록 지원합니다.">
+<meta name="theme-color" content="#030a1c">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="../assets/brand/favicon.png">
 <script>document.documentElement.classList.add('js');</script>
@@ -26,13 +26,12 @@
   <nav class="hd__nav" aria-label="주 메뉴">
     <div class="hd__item"><a class="hd__link" href="index.html#history">Company</a></div>
     <div class="hd__item has-sub">
-      <a class="hd__link" href="index.html#neuflow">NeuFlow <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5"/></svg></a>
+      <a class="hd__link" href="neuflow.html">NeuFlow <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5"/></svg></a>
       <div class="hd__sub">
-        <a href="index.html#neuflow"><i>01</i>제품 정의</a>
-        <a href="index.html#sig"><i>02</i>SIG 기술 · 보고서 기능</a>
-        <a href="index.html#compare"><i>03</i>기존 MRA와의 차이</a>
-        <a href="index.html#process"><i>04</i>작동 과정</a>
-        <a href="index.html#evidence"><i>05</i>근거 · 도입 병원</a>
+        <a href="neuflow.html#intro"><i>01</i>개요</a>
+        <a href="neuflow.html#features"><i>02</i>주요 기능</a>
+        <a href="neuflow.html#fields"><i>03</i>임상적 가치</a>
+        <a href="neuflow.html#faq"><i>04</i>FAQ</a>
       </div>
     </div>
     <div class="hd__item"><a class="hd__link" href="index.html#evidence">Evidence</a></div>
@@ -41,7 +40,7 @@
 
   <div class="hd__right">
     <div class="hd__lang" role="group" aria-label="언어"><button type="button" class="is-on">KR</button><span>/</span><button type="button">EN</button></div>
-    <a class="hd__cta" href="index.html#contact"><span>도입 문의</span><i class="ico"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i></a>
+    <a class="hd__cta" href="#contact"><span>도입 문의</span><i class="ico"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i></a>
     <button type="button" class="hd__burger" id="burger" aria-label="메뉴 열기" aria-expanded="false"><i></i><i></i></button>
   </div>
 </header>
@@ -49,29 +48,26 @@
 <div class="mnav" id="mnav" aria-hidden="true">
   <ul>
     <li><a href="index.html#history"><span>01</span>Company</a></li>
-    <li><a href="index.html#neuflow"><span>02</span>NeuFlow</a></li>
-    <li><a href="index.html#process"><span>03</span>작동 과정</a></li>
+    <li><a href="neuflow.html"><span>02</span>NeuFlow</a></li>
+    <li><a href="flocal.html"><span>03</span>FloCal</a></li>
     <li><a href="index.html#evidence"><span>04</span>Evidence</a></li>
-    <li><a href="index.html#contact"><span>05</span>Contact</a></li>
+    <li><a href="#contact"><span>05</span>Contact</a></li>
   </ul>
   <p>KR / EN</p>
 </div>
 
 <main>
 
-<!-- ───────── hero : teaser reveal ───────── -->
+<!-- ───────── hero : blood flow streaming to the right ───────── -->
 <section class="sh sh--flo" id="top" data-tone="dark">
-  <div class="fh__vid" id="fhVid" aria-hidden="true">
-    <video id="fhVideo" muted loop playsinline preload="none" poster="../assets/video/film/g7_flow_streaks.poster.webp" tabindex="-1"><source src="../assets/video/film/g7_flow_streaks.mp4" type="video/mp4"></video>
-  </div>
-  <i class="fh__ring" id="fhRing" aria-hidden="true"></i>
+  <canvas class="fh__flow" id="fhFlow" aria-hidden="true"></canvas>
   <div class="sh__scrim" aria-hidden="true"></div>
   <div class="sh__in sh__in--c">
-    <img class="fh__logo" src="../assets/client-1110/logo_flocal_white.png" alt="FloCal" width="1010" height="229">
-    <div class="fh__tags"><span class="tag">PRODUCT · 02</span><span class="tag tag--light">COMING SOON</span></div>
-    <h1 class="sh__title"><span class="ln"><span>뇌혈류량 측정을,</span></span><span class="ln"><span>더 쉽고 빠르게.</span></span></h1>
-    <p class="sh__desc">기존에 오래 걸리고 어려웠던 뇌혈류량 측정을 FloCal과 함께 쉽고 빠르게 경험해 보세요.</p>
-    <a class="btn btn--solid sh__btn" href="#notify"><span>출시 알림 신청</span><i class="ico"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i></a>
+    <h1 class="sh__tag fh__name"><img src="../assets/client-1110/logo_flocal_white.png" alt="FloCal" width="1010" height="229"></h1>
+    <div class="fh__tags"><span class="tag tag--light">PRODUCT · 02</span><span class="tag">TOF-MRA 기반 뇌혈관 혈류량 분석</span></div>
+    <p class="sh__title sh__title--3"><span class="ln"><span>뇌혈관의 형태에서</span></span><span class="ln"><span>흐름의 양까지,</span></span><span class="ln"><span>분석의 깊이를 더하다.</span></span></p>
+    <p class="sh__desc">TOF-MRA 영상에 SIG 기반 혈류량 정량정보를 더해, 뇌혈관의 구조와 혈액 흐름의 특성을 함께 이해할 수 있도록 지원합니다.</p>
+    <a class="btn btn--solid sh__btn" href="#contact"><span>도입 문의</span><i class="ico"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i></a>
   </div>
   <div class="sh__scroll"><i></i>Scroll to discover</div>
 </section>
@@ -81,106 +77,236 @@
   <div class="snav__in">
     <span class="snav__lb">FLOCAL</span>
     <ul class="snav__list" id="snavList">
-      <li><a href="#about" data-sec="about"><i>01</i>소개</a></li>
-      <li><a href="#cert" data-sec="cert"><i>02</i>인증</a></li>
-      <li><a href="#notify" data-sec="notify"><i>03</i>출시 알림</a></li>
+      <li><a href="#overview" data-sec="overview"><i>01</i>개요</a></li>
+      <li><a href="#features" data-sec="features"><i>02</i>주요 기능</a></li>
+      <li><a href="#process" data-sec="process"><i>03</i>사용 과정</a></li>
+      <li><a href="#guide" data-sec="guide"><i>04</i>활용 안내</a></li>
+      <li><a href="#cert" data-sec="cert"><i>05</i>인증</a></li>
+      <li><a href="#faq" data-sec="faq"><i>06</i>FAQ</a></li>
       <li class="snav__bar" aria-hidden="true"></li>
     </ul>
   </div>
   <i class="snav__prog" id="snavProg" aria-hidden="true"></i>
 </nav>
 
-<!-- ───────── 01 about ───────── -->
-<section class="fab sec sec--cream" id="about" data-tone="light">
+<!-- ───────── 01 개요 : 무엇을 측정하나요 · 기존 방법과의 차이 ───────── -->
+<div id="overview">
+<section class="fov sec sec--cream" data-tone="light">
+  <div class="wrap fov__grid">
+    <div class="fov__copy">
+      <span class="tag" data-reveal>OVERVIEW · 무엇을 측정하나요</span>
+      <h2 class="h2 js-lines"><span class="ln"><span>무엇을 측정하나요?</span></span></h2>
+      <p class="fov__lead" data-reveal>뇌혈관 TOF-MRA의 DICOM 원본 영상을 분석합니다. 의료진이 선택한 혈관 영역의 SIG 기반 혈류량 값과 상한·하한, 영역 간 비율, 혈관 반지름·길이·각도 정보를 제공합니다. 결과는 3차원 혈관 영상 위에 색상으로 표시됩니다.</p>
+      <ul class="fov__kv" data-reveal>
+        <li><span>INPUT</span><b>뇌혈관 TOF-MRA DICOM 원본 영상</b></li>
+        <li><span>OUTPUT</span><b>SIG 기반 혈류량 값 · 상한·하한 · 영역 간 비율 · 혈관 반지름·길이·각도</b></li>
+        <li><span>VIEW</span><b>3차원 혈관 영상 위 색상 표시</b></li>
+      </ul>
+    </div>
+    <div class="slot slot--navy fov__vis" style="--ar: 4 / 3" data-slide="right"><div class="ph"><span>이미지 예정 · FloCal 대표 화면</span></div></div>
+  </div>
+</section>
+
+<section class="cmp cmp--fc fdf sec" data-tone="light">
   <div class="wrap">
-    <header class="sec__head">
-      <span class="tag" data-reveal>FLOCAL</span>
-      <h2 class="h2 js-lines"><span class="ln"><span>FloCal은 뇌혈관 혈류량 <span class="nb">측정을 위한</span></span></span><span class="ln"><span>메디이미지의 두 번째 제품입니다.</span></span></h2>
-      <p class="fab__lead" data-reveal>기다려 주신 만큼, 보다 좋은 제품으로 찾아뵙겠습니다.</p>
+    <header class="sec__head sec__head--split">
+      <div>
+        <span class="tag" data-reveal>PC-MR / FLOCAL · 기존 방법과의 차이</span>
+        <h2 class="h2 js-lines"><span class="ln"><span>기존 방법과의 차이</span></span></h2>
+      </div>
+      <p data-reveal>PC-MR은 속도 부호화 영상을 통해 혈류량을 계산하는 반면, FloCal은 기존 TOF-MRA 영상의 SIG를 활용해 혈류량 값을 산출합니다. 혈관의 형태와 혈류량 관련 정량정보를 3D 컬러 영상으로 함께 살펴볼 수 있습니다.</p>
     </header>
 
-    <div class="pcs">
-      <article class="pc pc--nf" data-reveal>
-        <div class="pc__top"><span class="tag tag--light">PRODUCT · 01</span></div>
-        <img class="pc__logo" src="../assets/client-1110/logo_neuflow_white.png" alt="NeuFlow" width="1162" height="220" loading="lazy">
-        <div class="pc__b">
-          <h3>TOF-MRA 기반 뇌혈관질환 위험 마커</h3>
-          <p>혈관별 SIG 정량정보</p>
-          <a class="pc__go" href="index.html#neuflow"><span>NeuFlow 보기</span><i class="ico"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i></a>
-        </div>
+    <div class="cmp__grid">
+      <div class="cmp__media">
+        <div class="slot slot--navy" style="--ar: 760 / 648" data-reveal><div class="ph"><span>이미지 예정 · PC-MR · FloCal 비교</span></div></div>
+      </div>
+      <div class="cmp__table">
+        <div class="cmp__row cmp__row--head"><span></span><span>PC-MR</span><span><b class="cmp__name">FloCal</b></span></div>
+        <div class="cmp__row" data-reveal><span>01 — 검사 · 영상</span><span>속도 부호화 전용 영상</span><span>TOF-MRA 원본 영상</span></div>
+        <div class="cmp__row" data-reveal><span>02 — 시간 · 과정</span><span>전용 촬영 후 유량 분석</span><span>촬영된 TOF 영상 후처리</span></div>
+        <div class="cmp__row" data-reveal><span>03 — 결과 · 정보</span><span>속도와 단면 기반 유량</span><span>SIG 기반 혈류량 값</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ───────── 02 주요 기능 ───────── -->
+<section class="ffe sec sec--cream" id="features" data-tone="light">
+  <div class="wrap">
+    <header class="sec__head">
+      <span class="tag" data-reveal>FEATURES · 주요 기능</span>
+      <h2 class="h2 js-lines"><span class="ln"><span>FloCal의 주요 기능</span></span></h2>
+    </header>
+    <div class="ffe__grid">
+      <article class="fcard" data-reveal>
+        <div class="slot slot--navy" style="--ar: 4 / 3"><div class="ph"><span>이미지 예정 · 영상 불러오기 화면</span></div></div>
+        <div class="fcard__b"><i>F.01</i><h3>TOF-MRA 영상 활용</h3><p>로컬 또는 PACS에 저장된 뇌혈관 TOF-MRA DICOM 영상을 불러와 분석합니다.</p></div>
       </article>
-      <article class="pc pc--fc" data-slide="right">
-        <div class="pc__top"><span class="tag">PRODUCT · 02</span><span class="pc__soon"><i></i>출시 준비 중</span></div>
-        <img class="pc__logo pc__logo--blue" src="../assets/client-1110/logo_flocal_blue.png" alt="FloCal" width="1200" height="1200" loading="lazy">
-        <div class="pc__b">
-          <h3>뇌혈관 혈류량 측정</h3>
-          <p>출시 준비 중</p>
-        </div>
+      <article class="fcard" data-reveal>
+        <div class="slot slot--navy" style="--ar: 4 / 3"><div class="ph"><span>이미지 예정 · 3차원 혈관 화면</span></div></div>
+        <div class="fcard__b"><i>F.02</i><h3>3차원 혈관 확인</h3><p>뇌혈관을 3차원으로 구현하고, 2차원 단면 영상과 함께 확인합니다. 회전과 확대·축소를 지원합니다.</p></div>
+      </article>
+      <article class="fcard" data-reveal>
+        <div class="slot slot--navy" style="--ar: 4 / 3"><div class="ph"><span>이미지 예정 · 혈류량 산출 화면</span></div></div>
+        <div class="fcard__b"><i>F.03</i><h3>SIG 기반 혈류량 산출</h3><p>의료진이 선택한 관심 영역의 혈류량 값과 상한·하한을 산출합니다. 신호강도구배(SIG)를 바탕으로 계산합니다.</p></div>
+      </article>
+      <article class="fcard" data-reveal>
+        <div class="slot slot--navy" style="--ar: 4 / 3"><div class="ph"><span>이미지 예정 · 색상 표시 화면</span></div></div>
+        <div class="fcard__b"><i>F.04</i><h3>수치를 색상으로 표시</h3><p>산출값을 3차원 혈관의 관심 영역에 색상으로 표시합니다. 색상 범위는 사용자가 설정하며, 색 자체가 정상·질환 판정은 아닙니다.</p></div>
+      </article>
+      <article class="fcard" data-reveal>
+        <div class="slot slot--navy" style="--ar: 4 / 3"><div class="ph"><span>이미지 예정 · 영역 간 비교 화면</span></div></div>
+        <div class="fcard__b"><i>F.05</i><h3>혈관 영역 간 비교</h3><p>선택한 영역의 혈류량 비율과 반지름 비율을 확인합니다. 혈관 반지름·길이·각도 정보도 함께 제공합니다.</p></div>
+      </article>
+      <article class="fcard" data-reveal>
+        <div class="slot slot--navy" style="--ar: 4 / 3"><div class="ph"><span>이미지 예정 · 보고서 화면</span></div></div>
+        <div class="fcard__b"><i>F.06</i><h3>결과를 보고서로 정리</h3><p>분석 결과를 PDF 보고서로 생성하고, 로컬에 저장하거나 PACS로 전송할 수 있습니다.</p></div>
       </article>
     </div>
-    <p class="fab__note" data-reveal>제품 세부 내용은 출시 시점에 공개합니다.</p>
   </div>
 </section>
 
-<!-- ───────── 02 cert ───────── -->
+<!-- ───────── 03 사용 과정 ───────── -->
+<section class="fpr" id="process" data-tone="dark">
+  <div class="wrap">
+    <header class="sec__head">
+      <span class="tag tag--light" data-reveal>HOW IT WORKS · 사용 과정</span>
+      <h2 class="h2 js-lines"><span class="ln"><span>영상 불러오기에서</span></span><span class="ln"><span>보고서까지, 5단계.</span></span></h2>
+    </header>
+    <div class="fpr__line" aria-hidden="true"><i></i></div>
+    <ol class="fpr__list">
+      <li class="fpr__i" data-reveal>
+        <span class="fpr__no">STEP 01</span>
+        <div class="slot slot--dark" style="--ar: 4 / 3"><div class="ph"><span>이미지 예정 · 영상 불러오기</span></div></div>
+        <h3>영상 불러오기</h3><p>로컬 또는 PACS의 TOF-MRA DICOM 영상을 불러옵니다.</p>
+      </li>
+      <li class="fpr__i" data-reveal>
+        <span class="fpr__no">STEP 02</span>
+        <div class="slot slot--dark" style="--ar: 4 / 3"><div class="ph"><span>이미지 예정 · 혈관 영상 확인</span></div></div>
+        <h3>혈관 영상 확인</h3><p>3차원 혈관과 단면 영상을 확인하고 분석할 부위를 살펴봅니다.</p>
+      </li>
+      <li class="fpr__i" data-reveal>
+        <span class="fpr__no">STEP 03</span>
+        <div class="slot slot--dark" style="--ar: 4 / 3"><div class="ph"><span>이미지 예정 · 관심 영역 선택</span></div></div>
+        <h3>관심 영역(ROI) 선택</h3><p>의료진이 분석할 혈관 영역을 선택하고 혈관명을 지정합니다.</p>
+      </li>
+      <li class="fpr__i" data-reveal>
+        <span class="fpr__no">STEP 04</span>
+        <div class="slot slot--dark" style="--ar: 4 / 3"><div class="ph"><span>이미지 예정 · 산출 결과</span></div></div>
+        <h3>산출 결과 확인</h3><p>선택 영역의 SIG 기반 혈류량 값과 색상 표시를 확인합니다.</p>
+      </li>
+      <li class="fpr__i" data-reveal>
+        <span class="fpr__no">STEP 05</span>
+        <div class="slot slot--dark" style="--ar: 4 / 3"><div class="ph"><span>이미지 예정 · 보고서 생성</span></div></div>
+        <h3>보고서 생성</h3><p>분석 결과를 PDF 보고서로 정리해 저장하거나 PACS로 전송합니다.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ───────── 04 활용 안내 ───────── -->
+<section class="fgd sec sec--cream" id="guide" data-tone="light">
+  <div class="wrap">
+    <header class="sec__head">
+      <span class="tag" data-reveal>GUIDE · 활용 안내</span>
+      <h2 class="h2 js-lines"><span class="ln"><span>활용 안내</span></span></h2>
+    </header>
+
+    <div class="fgd__apply" data-reveal>
+      <h3><i>APPLICATION</i>적용 질환 · 검사 대상</h3>
+      <p class="fgd__target">뇌혈관 TOF-MRA 영상 분석</p>
+      <ul class="chips"><li>3차원 혈관 확인</li><li>SIG 기반 혈류량 값 산출</li><li>결과 보고서 작성</li></ul>
+    </div>
+
+    <p class="nff__lb" data-reveal><i>FOR USERS</i>사용자별 혜택</p>
+    <div class="utabs" role="tablist" aria-label="사용자별 혜택" data-reveal>
+      <button type="button" role="tab" id="ftab-doc" aria-controls="fpan-doc" aria-selected="true"><i>FOR CLINICIANS</i>의료진 · 병원</button>
+      <button type="button" role="tab" id="ftab-pat" aria-controls="fpan-pat" aria-selected="false" tabindex="-1"><i>FOR PATIENTS</i>환자 · 검진자</button>
+      <span class="utabs__ink" aria-hidden="true"></span>
+    </div>
+    <div class="utab utab--text" role="tabpanel" id="fpan-doc" aria-labelledby="ftab-doc" tabindex="0">
+      <ol class="utab__list utab__list--2">
+        <li class="utab__fx"><i>01</i><h3>뇌혈관 분석 정보의 확장</h3><p>기존 TOF-MRA 영상에서 뇌혈관의 구조뿐 아니라 SIG 기반 혈류량 정보를 추가로 확보하여, 혈류역학적 특성을 다각도로 살펴볼 수 있습니다.</p></li>
+        <li class="utab__fx"><i>02</i><h3>정량정보 기반의 진료 지원</h3><p>혈관별 혈류량 산출값과 영역 간 비율을 수치 및 3D 컬러 영상으로 확인하고, 이를 환자 상태 검토와 진료 상담에 활용할 수 있습니다.</p></li>
+      </ol>
+    </div>
+    <div class="utab utab--text" role="tabpanel" id="fpan-pat" aria-labelledby="ftab-pat" tabindex="0" hidden>
+      <ol class="utab__list utab__list--2">
+        <li class="utab__fx"><i>01</i><h3>뇌혈관의 흐름 이해</h3><p>기존 MRA에서 확인하는 혈관의 형태를 넘어, SIG 기반 혈류량 정보를 의료진의 설명과 함께 살펴보며 자신의 뇌혈관 상태를 이해할 수 있습니다.</p></li>
+        <li class="utab__fx"><i>02</i><h3>더 구체적인 뇌혈관 건강 상담</h3><p>뇌혈관 구조와 혈류량 관련 정량정보를 바탕으로 의료진과 검사 결과를 구체적으로 상담하고, 개인의 건강 상태에 대한 이해를 높일 수 있습니다.</p></li>
+      </ol>
+    </div>
+
+    <div class="rsch rsch--one">
+      <p class="nff__lb" data-reveal><i>RESEARCH</i>관련 연구</p>
+      <ol class="rsch__list">
+        <li data-reveal><span class="rsch__j">Scientific Reports · 2025</span><b lang="en">Arterial flow volume measurement using signal intensity gradient versus phase contrast.</b><span class="rsch__t" lang="en">Lee CH et al. Scientific Reports 2025;15:44848. <a href="https://doi.org/10.1038/s41598-025-28379-7" target="_blank" rel="noopener">doi:10.1038/s41598-025-28379-7</a></span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 05 인증 ───────── -->
 <section class="fce sec" id="cert" data-tone="light">
-  <div class="wrap fce__grid">
-    <div class="fce__head">
-      <span class="tag" data-reveal>CERTIFIED</span>
-    </div>
-    <div class="fce__card" data-slide="right">
-      <i class="fce__ck" aria-hidden="true"><svg viewBox="0 0 40 40"><circle class="fce__c" pathLength="1" cx="20" cy="20" r="18"/><path class="fce__v" pathLength="1" d="M11.5 20.8 17.6 27 28.8 13.6"/></svg></i>
-      <div class="fce__t">
-        <h2>식약처 의료기기 인증 · 제인 24-1076호</h2>
-        <p class="fce__h"><time>2024.11</time><span>FloCal 의료기기 제조인증 — 식품의약품안전처(MFDS)</span></p>
+  <div class="wrap">
+    <header class="sec__head">
+      <span class="tag" data-reveal>CERTIFIED · 인증</span>
+      <h2 class="h2 js-lines"><span class="ln"><span>FloCal 인증 정보</span></span></h2>
+    </header>
+    <div class="fce__card" data-reveal>
+      <div class="fce__head">
+        <i class="fce__ck" aria-hidden="true"><svg viewBox="0 0 40 40"><circle class="fce__c" pathLength="1" cx="20" cy="20" r="18"/><path class="fce__v" pathLength="1" d="M11.5 20.8 17.6 27 28.8 13.6"/></svg></i>
+        <div class="fce__t">
+          <span class="fce__flag">KR · 국내 의료기기 제조인증</span>
+          <h3>FloCal · 제인 24-1076호</h3>
+        </div>
       </div>
-      <em class="chk">인허가 범위 확인 중 ⑦</em>
+      <dl class="fce__dl">
+        <div><dt>발급기관</dt><dd>식품의약품안전처(MFDS)</dd></div>
+        <div><dt>인증일</dt><dd>2024.11.27</dd></div>
+        <div><dt>품목명</dt><dd>뇌 영상 분석 소프트웨어</dd></div>
+        <div><dt>분류번호 · 등급</dt><dd>E06020.02 · 2등급</dd></div>
+        <div class="fce__wide"><dt>사용목적</dt><dd>TOF-MRA DICOM으로 3차원 혈관 영상을 구현하고 혈류량 값을 산출한 후, 이를 기반으로 색채화하여 표시하는 프로그램.</dd></div>
+      </dl>
+      <p class="fce__h"><time>2024.11.27</time><span>FloCal 의료기기 제조인증 획득 · 제인 24-1076호</span></p>
     </div>
   </div>
 </section>
 
-<!-- ───────── 03 notify + footer ───────── -->
-<section class="nt" id="notify" data-tone="dark">
-  <div class="nt__bg" aria-hidden="true"></div>
-  <div class="nt__in">
-    <div class="nt__copy">
-      <span class="tag tag--light" data-reveal>COMING SOON · NOTIFY</span>
-      <h2 class="h2 js-lines"><span class="ln"><span>출시 소식을 가장 먼저</span></span><span class="ln"><span>받아 보세요.</span></span></h2>
-      <p class="nt__contact" data-reveal>제품 도입·연구 문의 <a href="mailto:info@mediimg.com">info@mediimg.com</a> / <a href="tel:024845773">02-484-5773</a></p>
+<!-- ───────── 06 FAQ ───────── -->
+<section class="nfq sec sec--cream" id="faq" data-tone="light">
+  <div class="wrap nfq__grid">
+    <header class="sec__head">
+      <span class="tag" data-reveal>FAQ</span>
+      <h2 class="h2 js-lines"><span class="ln"><span>자주 묻는 질문</span></span></h2>
+    </header>
+    <div class="qa" data-reveal>
+      <details class="qa__i" open><summary><i>Q1</i><span>어떤 MRI 영상이 필요한가요?</span></summary><div class="qa__a"><p>뇌혈관 TOF-MRA의 DICOM 원본 영상이 필요합니다. 일반 뇌 MRI나 캡처 이미지만으로 같은 분석을 하는 제품은 아닙니다.</p></div></details>
+      <details class="qa__i"><summary><i>Q2</i><span>색상만으로 질환을 판단하나요?</span></summary><div class="qa__a"><p>색상은 설정 범위 내 SIG 기반 혈류량 값을 나타냅니다. 정상·위험을 자동 판정하는 색이 아니며, 결과는 전문 의료진이 해석합니다.</p></div></details>
+      <details class="qa__i"><summary><i>Q3</i><span>환자가 직접 사용하는 제품인가요?</span></summary><div class="qa__a"><p>인가받은 전문 의료인이 사용하는 영상 분석 소프트웨어입니다. 추가 검사나 진료 계획은 의료진이 영상과 환자 상태를 함께 고려해 결정합니다.</p></div></details>
     </div>
+  </div>
+</section>
 
-    <form class="nf" id="notifyForm" novalidate data-slide="right">
-      <div class="nf__done" id="nfDone" aria-live="polite" hidden>
-        <svg viewBox="0 0 64 64" aria-hidden="true"><circle class="nf__dc" pathLength="1" cx="32" cy="32" r="29"/><path class="nf__dv" pathLength="1" d="M19 33.5 28 42.5 45.5 23.5"/></svg>
-        <p>신청 내용을 확인했습니다.</p>
-        <small>시안에서는 발송되지 않습니다.</small>
-        <button type="button" class="nf__again" id="nfAgain">다시 입력</button>
-      </div>
-      <div class="nf__body" id="nfBody">
-        <label class="nf__f"><span>이름 <b aria-hidden="true">*</b></span><input type="text" name="name" autocomplete="name" required aria-describedby="er-name"><small class="nf__e" id="er-name" role="alert"></small></label>
-        <label class="nf__f"><span>소속 기관 <b aria-hidden="true">*</b></span><input type="text" name="org" autocomplete="organization" required aria-describedby="er-org"><small class="nf__e" id="er-org" role="alert"></small></label>
-        <label class="nf__f"><span>이메일 <b aria-hidden="true">*</b></span><input type="email" name="email" autocomplete="email" inputmode="email" required aria-describedby="er-email"><small class="nf__e" id="er-email" role="alert"></small></label>
-        <fieldset class="nf__chips">
-          <legend>관심 분야 <em>선택</em></legend>
-          <label><input type="radio" name="interest" value="병원 도입"><span>병원 도입</span></label>
-          <label><input type="radio" name="interest" value="연구 협력"><span>연구 협력</span></label>
-          <label><input type="radio" name="interest" value="기타"><span>기타</span></label>
-        </fieldset>
-        <label class="nf__agree"><input type="checkbox" name="agree" required aria-describedby="er-agree"><span>개인정보 수집·이용에 동의합니다. <em>(정책 문구 · 갑 확인)</em></span></label>
-        <small class="nf__e" id="er-agree" role="alert"></small>
-        <div class="nf__ft">
-          <p class="chk">시안에서는 발송되지 않습니다</p>
-          <button type="submit" class="btn btn--solid"><span>출시 알림 신청</span><i class="ico"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i></button>
-        </div>
-      </div>
-    </form>
+<!-- ───────── closing + footer ───────── -->
+<section class="end end--sub end--flo" id="contact" data-tone="dark">
+  <div class="end__cta">
+    <span class="tag tag--light" data-reveal>CONTACT · 도입 문의</span>
+    <h2 class="end__h js-lines"><span class="ln"><span>FloCal 도입 문의</span></span></h2>
+    <p data-reveal>제품 도입·연구 문의 <a href="mailto:info@mediimg.com">info@mediimg.com</a> / <a href="tel:024845773">02-484-5773</a> <span class="chk" title="갑 확인 요청 ④">접수 이메일 확인 중 ④</span></p>
+    <div class="end__btns" data-reveal>
+      <a class="btn btn--solid" href="mailto:info@mediimg.com?subject=%5BFloCal%5D%20%EB%8F%84%EC%9E%85%20%EB%AC%B8%EC%9D%98"><span>도입 문의</span><i class="ico"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i></a>
+      <a class="btn btn--aqua" href="neuflow.html"><span>NeuFlow 살펴보기</span><i class="ico"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6 4.5 9.5"/></svg></i></a>
+    </div>
   </div>
   <footer class="ft">
     <div class="ft__top">
       <p class="ft__addr">서울시 서초구 강남대로 16길 3,<br>양재디에스타워 701호<small>R&amp;D 센터 · 경기 성남시 분당구 분당서울대병원 헬스케어혁신파크(HIP) 2층 6호</small></p>
       <div class="ft__cols">
         <div><h4>MEDIIMG</h4><a href="index.html#history">Company</a><a href="technology.html">Technology</a><a href="index.html#contact">Contact</a></div>
-        <div><h4>Product</h4><a href="index.html#neuflow">NeuFlow</a><a href="index.html#process">How it works</a><a href="flocal.html">FloCal</a></div>
+        <div><h4>Product</h4><a href="neuflow.html">NeuFlow</a><a href="neuflow.html#steps">How it works</a><a href="flocal.html">FloCal</a></div>
         <div><h4>Evidence</h4><a href="index.html#evidence">Publications</a><a href="index.html#evidence">Hospitals</a><a href="index.html#history">History</a></div>
         <div class="ft__cert"><h4>Certified</h4><span>NeuFlow · FDA 510(k) Cleared · K240385</span><span>식약처 의료기기 인증<br>NeuFlow(제인 23-4077호)<br>FloCal(제인 24-1076호)</span><span>GMP · ISO 13485 · ISO 27000 시리즈 · HIPAA</span></div>
       </div>
