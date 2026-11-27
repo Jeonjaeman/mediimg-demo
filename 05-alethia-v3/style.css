@@ -1165,6 +1165,13 @@ body.is-locked { overflow: hidden; }
   .hd__logo img { height: 22px; }
   .hd__cta { font-size: 14px; }
 }
+/* 11/27 상단 메뉴에 FloCal 추가 — 900~1099px에서 메뉴 · 도입 문의가 겹치지 않도록 간격만 줄임 (글자 크기 유지) */
+.hd__cta { white-space: nowrap; }
+@media (min-width: 900px) and (max-width: 1099px) {
+  .hd__nav { gap: 0; }
+  .hd__link { padding: 9px 7px; }
+  .hd__right { gap: 14px; }
+}
 
 /* ==========================================================================
    v3.2 (2026-11-12) 제목 3단계 정리 — 고객 문의: 배경색(흑·백)마다 제목 크기가 달라 통일감이 없다.

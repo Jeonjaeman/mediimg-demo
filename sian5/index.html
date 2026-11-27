@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MEDIIMG 홈페이지 리뉴얼 시안</title>
+<link rel="icon" href="../assets/brand/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root { --bg: #070b12; --card: #0f1520; --line: #1f2836; --text: #eef0f5; --mute: #9aa3b4; --accent: #7df5e0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif; -webkit-font-smoothing: antialiased; word-break: keep-all; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 72px 32px 88px; }
+  header { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap; margin-bottom: 44px; }
+  header img { height: 30px; width: auto; display: block; margin-bottom: 28px; }
+  .eyebrow { font-size: 13px; letter-spacing: .12em; color: var(--accent); margin: 0 0 12px; }
+  h1 { font-size: clamp(30px, 4vw, 50px); line-height: 1.12; letter-spacing: -0.03em; font-weight: 600; margin: 0; }
+  header p.lead { max-width: 440px; color: var(--mute); font-size: 15.5px; line-height: 1.7; margin: 0; }
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  a.card { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; color: inherit; text-decoration: none; transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s; }
+  a.card:hover { transform: translateY(-6px); border-color: #3a4558; }
+  a.card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .thumb { aspect-ratio: 16 / 10; background: #05070b; overflow: hidden; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+  a.card:hover .thumb img { transform: scale(1.04); }
+  .body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .no { font-size: 12.5px; letter-spacing: .12em; color: var(--accent); font-variant-numeric: tabular-nums; }
+  h2 { font-size: 22px; letter-spacing: -0.02em; font-weight: 600; margin: 0; }
+  .desc { font-size: 15px; line-height: 1.65; color: #c9cfda; margin: 4px 0 0; }
+  .go { margin-top: auto; padding-top: 16px; font-size: 14px; color: var(--accent); }
+  footer { margin-top: 52px; color: var(--mute); font-size: 14px; line-height: 1.75; border-top: 1px solid var(--line); padding-top: 24px; }
+  footer p { margin: 0; }
+  @media (max-width: 980px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 640px) { .wrap { padding: 48px 16px 64px; } .grid { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { a.card, .thumb img { transition: none; } a.card:hover { transform: none; } a.card:hover .thumb img { transform: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <img src="../assets/client-1110/logo_mediimg.svg" alt="MEDIIMG" width="1431" height="358">
+      <p class="eyebrow">HOMEPAGE RENEWAL · 시안 5</p>
+      <h1>메디이미지 홈페이지<br>리뉴얼 시안</h1>
+    </div>
+    <p class="lead">지금까지 만든 시안 페이지를 한곳에 모았습니다. 카드를 누르면 해당 페이지가 열리고, 각 페이지 상단 메뉴로 서로 오갈 수 있습니다.</p>
+  </header>
+
+  <div class="grid">
+    <a class="card" href="../05-alethia-v3/index.html">
+      <div class="thumb"><img src="thumbs/index.jpg" alt="메인 페이지 첫 화면" width="1440" height="900" loading="lazy"></div>
+      <div class="body">
+        <span class="no">01 · MAIN</span>
+        <h2>메인 페이지</h2>
+        <p class="desc">회사 소개, NeuFlow 핵심 내용, 근거 · 도입 병원, 도입 문의까지 담은 메인 페이지입니다.</p>
+        <span class="go">페이지 열기 →</span>
+      </div>
+    </a>
+    <a class="card" href="../05-alethia-v3/neuflow.html">
+      <div class="thumb"><img src="thumbs/neuflow.jpg" alt="NeuFlow 상세페이지 첫 화면" width="1440" height="900" loading="lazy"></div>
+      <div class="body">
+        <span class="no">02 · PRODUCT</span>
+        <h2>NeuFlow 상세페이지</h2>
+        <p class="desc">제품 소개, 기존 MRA와의 차이, 인증, 주요 기능, 구동 단계, 활용 분야, 사용자별 혜택, FAQ로 구성했습니다.</p>
+        <span class="go">페이지 열기 →</span>
+      </div>
+    </a>
+    <a class="card" href="../05-alethia-v3/flocal.html">
+      <div class="thumb"><img src="thumbs/flocal.jpg" alt="FloCal 상세페이지 첫 화면" width="1440" height="900" loading="lazy"></div>
+      <div class="body">
+        <span class="no">03 · PRODUCT</span>
+        <h2>FloCal 상세페이지</h2>
+        <p class="desc">측정 대상, 기존 방법과의 차이, 주요 기능, 사용 과정, 활용 안내, 인증, FAQ로 구성했습니다.</p>
+        <span class="go">페이지 열기 →</span>
+      </div>
+    </a>
+  </div>
+
+  <footer>
+    <p>제안용 시안입니다. 문구와 이미지는 확정 전이며, 「이미지 예정」으로 표시한 칸은 자료를 받는 대로 채웁니다.</p>
+    <p>탱탱소프트</p>
+  </footer>
+</div>
+</body>
+</html>
